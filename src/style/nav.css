@@ -1,0 +1,38 @@
+.navbar{
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+    opacity: 0.3;
+    position: fixed;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 25px 0px 0px 25px;
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.navbar:hover{
+    opacity: 1;
+}
+
+.shapes{
+    border-top: solid 1px rgb(153, 153, 153);
+    border-bottom: solid 1px rgb(153, 153, 153);
+    margin: 20px 20px;
+    padding: 30px 10px; 
+}
+
+.zoom{
+    text-align: end;
+    margin-right: 10px;
+}
+
+.btn-navbar{
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 23px;
+}
+
+.save, .open-file{
+    float: right;
+}

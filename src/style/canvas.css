@@ -1,0 +1,8 @@
+.grid-canvas{
+    z-index: auto;
+    position: absolute;
+}
+
+#svgOne{
+    position: absolute
+}

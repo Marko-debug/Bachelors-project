@@ -1,0 +1,246 @@
+.elements{
+    width: 3000px;
+    height: 1500px;
+}
+
+.process{
+    position: absolute;
+    /* top:60px;
+    left:500px; */
+    width:300px;
+    height:200px;
+    border: 2px solid black;
+    border-radius: 15px;
+    cursor: move;
+}
+.process:after{
+    content: "";
+    position: absolute;
+    top:-2px;
+    left:148px;
+    width:150px;
+    height:60px;
+    border: 2px solid black;
+    border-radius: 15px;
+    cursor: move;
+}
+.process:before{
+    content: "";
+    position: absolute;
+    top:138px;
+    left:0px;
+    width:150px;
+    height:60px;
+    border: 2px solid black;
+    border-radius: 15px;
+    cursor: move;
+}
+
+/* .input{
+    position: absolute;
+    border: 2px solid black;
+    border-radius: 15px;
+    cursor: move;
+} */
+.input {
+    position: absolute;
+    height: 60px;
+    width: 150px;
+    left: 500px;
+    top: 60px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: move;
+}
+.input:after {
+    content: "";
+    position: absolute;
+    left: 96px;
+    top: -30px;
+    transform: rotate(-45deg);
+    width: 110px;
+    height: 110px;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 5px;
+    /* border-left: 70px solid red;
+    border-top: 70px solid transparent;
+    border-bottom: 70px solid transparent; */
+}
+.input:before {
+    content: "";
+    position: absolute;
+    left: 74px;
+    top: 23px;
+    transform: rotate(-90deg);
+    width: 148px;
+    border: 1px solid black;
+}
+
+.output {
+    position: relative;
+    height: 60px;
+    width: 150px;
+    left: 500px;
+    top: 60px;
+    background: black;
+    border-radius: 5px;
+    cursor: move;
+}
+.output:after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    bottom: -40px;
+    width: 0px;
+    height: 0px;
+    border-radius:5px;
+    border-left: 70px solid black;
+    border-top: 70px solid transparent;
+    border-bottom: 70px solid transparent;
+}
+
+.end-of-instance{
+    position: relative;
+    top: -140px;
+    left: 500px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: move;
+}
+.end-of-instance:after{
+    content: "E";
+    position: absolute;
+    font-size: 55px;
+    top: 15px;
+    left: 30px;
+}
+
+.event-transition{
+    position: absolute;
+    top:60px;
+    left:500px;
+    width:150px;
+    height:60px;
+    border: 2px solid black;
+    border-radius: 15px;
+    cursor: move;
+}
+
+.two-branching{
+    position: relative;
+    top: -140px;
+    left: 550px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: move;
+}
+
+.three-branching{
+    position: relative;
+    top: -140px;
+    left: 550px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: move;
+}
+
+.parallel{
+    position: relative;
+    top:-140px;
+    left:500px;
+    width:110px;
+    height:70px;
+    border: 2px solid black;
+    cursor: move;
+}
+.parallel:after{
+    position: absolute;
+    content: "";
+    border-right: 70px solid transparent;
+}
+
+.redirection-symbol{
+    /* top: -140px; */
+    left: 500px;
+    width: 100px;
+    height: 57.735px;
+    background: red;
+    position: relative;
+    cursor: move;
+  }
+.redirection-symbol:before {
+    content: "";
+    position: absolute;
+    top: -28.8675px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 28.8675px solid red;
+    cursor: move;
+  }
+.redirection-symbol:after {
+    content: "";
+    position: absolute;
+    bottom: -28.8675px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 28.8675px solid red;
+    cursor: move;
+  }
+
+  .split {
+    margin: 50px 0;
+    position: relative;
+    display: block;
+    color: red;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    border-left: 100px solid transparent;
+    transform: rotate(35deg);
+  }
+  .split:before {
+    border-bottom: 80px solid red;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -45px;
+    left: -65px;
+    display: block;
+    content: '';
+    transform: rotate(-35deg);
+  }
+  .split:after {
+    position: absolute;
+    display: block;
+    color: red;
+    top: 3px;
+    left: -105px;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    border-left: 100px solid transparent;
+    transform: rotate(-70deg);
+    content: '';
+  }
+
+  .select-circle{
+    position: absolute;
+    width: 15px;
+  }
