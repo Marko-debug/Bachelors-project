@@ -6,13 +6,35 @@ const chooseElement = (element) => {
     const svg = document.createElement("svg");
     if(element === "btn-process"){
 
-        console.log("hello")
         const div = document.createElement("div")
-        div.setAttribute("id", "1")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("process")
         elements.appendChild(div)
         div.setAttribute("onclick","dragElement(event);");
-
+        const image0 = document.createElement("image")
+        image0.classList.add("select-circle");
+        image0.setAttribute("src", "./src/images/circle.png")
+        image0.setAttribute("hidden", "true")
+        image0.setAttribute("style","top:150px; left: 150px; cursor: nw-resize");
+        const image1 = document.createElement("image")
+        image1.classList.add("select-circle");
+        image1.setAttribute("src", "./src/images/circle.png")
+        image1.setAttribute("hidden", "true")
+        image1.setAttribute("style","top:150px; left: 150px; cursor: sw-resize");
+        const image2 = document.createElement("image")
+        image2.classList.add("select-circle");
+        image2.setAttribute("src", "./src/images/circle.png")
+        image2.setAttribute("hidden", "true")
+        image2.setAttribute("style","top:150px; left: 150px; cursor: ne-resize");
+        const image3 = document.createElement("image")
+        image3.classList.add("select-circle");
+        image3.setAttribute("src", "./src/images/circle.png")
+        image3.setAttribute("hidden", "true")
+        image3.setAttribute("style","top:150px; left: 150px; cursor: se-resize");
+        div.appendChild(image0)
+        div.appendChild(image1)
+        div.appendChild(image2)
+        div.appendChild(image3)
     //     const rect = document.createElement("rect");
     //     svg.setAttribute("id", "1");
     //     svg.setAttribute("width", "3000");
@@ -28,17 +50,96 @@ const chooseElement = (element) => {
     //     svg.appendChild(rect);        
     }
     else if(element === "btn-input"){
-        // const newpath = document.createElement("SVG","path"); 
-        // newpath.setAttribute("id", "2");
-        // newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
-        // newpath.setAttribute("stroke", "black");
-        // newpath.setAttribute("fill", "transparent");
-        // newpath.setAttribute("stroke-width", "2");
-        // elements.appendChild(svg);        
-        // svg.appendChild(newpath);        
+        const newpath = document.createElement("g","path"); 
+        newpath.setAttribute("id", "2");
+        newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
+        newpath.setAttribute("stroke", "black");
+        newpath.setAttribute("fill", "transparent");
+        newpath.setAttribute("stroke-width", "2");
+        elements.appendChild(svg);        
+        svg.appendChild(newpath);        
+    }
+    else if(element === "btn-output"){
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("output")
+        elements.appendChild(div)
+        div.setAttribute("onclick","dragElement(event);");
+        const image0 = document.createElement("image")
+        image0.classList.add("select-circle");
+        image0.setAttribute("src", "./src/images/btn-rotate.png")
+        image0.setAttribute("hidden", "true")
+        image0.setAttribute("style","top: -2px; left: 0px; cursor: crosshair");
+        div.appendChild(image0)
+    }
+    else if(element === "btn-event-transition"){
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("event-transition")
+        elements.appendChild(div)
+        div.setAttribute("onclick","dragElement(event);");
+        const image0 = document.createElement("image")
+        image0.classList.add("select-circle");
+        image0.setAttribute("src", "./src/images/circle.png")
+        image0.setAttribute("hidden", "true")
+        image0.setAttribute("style","top: -2px; left: 0px; cursor: nw-resize");
+        const image1 = document.createElement("image")
+        image1.classList.add("select-circle");
+        image1.setAttribute("src", "./src/images/circle.png")
+        image1.setAttribute("hidden", "true")
+        image1.setAttribute("style","top: 50px; left: 0px; cursor: sw-resize");
+        const image2 = document.createElement("image")
+        image2.classList.add("select-circle");
+        image2.setAttribute("src", "./src/images/circle.png")
+        image2.setAttribute("hidden", "true")
+        image2.setAttribute("style","top: -2px; left: 140px; cursor: ne-resize; z-index: 1;");
+        const image3 = document.createElement("image")
+        image3.classList.add("select-circle");
+        image3.setAttribute("src", "./src/images/circle.png")
+        image3.setAttribute("hidden", "true")
+        image3.setAttribute("style","top: 50px; left: 140px; cursor: se-resize");
+        div.appendChild(image0)
+        div.appendChild(image1)
+        div.appendChild(image2)
+        div.appendChild(image3)
     }
     else if(element === "btn-end-of-instance"){
-        
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("end-of-instance")
+        elements.appendChild(div)
+        div.setAttribute("onclick","dragElement(event);");
+    }
+    else if(element === "btn-two-branches"){
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("two-branching")
+        elements.appendChild(div)
+        div.setAttribute("onclick","dragElement(event);");
+    }
+    else if(element === "btn-three-branches"){
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("three-branching")
+        elements.appendChild(div)
+        div.setAttribute("onclick","dragElement(event);");
+    }
+    else if(element === "btn-rediraction"){
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("rediraction")
+        div.setAttribute("onclick","dragElement(event);");
+        const inner = document.createElement("div")
+        inner.classList.add("inner")
+        elements.appendChild(div)
+        div.appendChild(inner)
+    }
+    else if(element === "btn-parallel"){
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("parallel")
+        elements.appendChild(div)
+        div.setAttribute("onclick","dragElement(event);");
     }
     else{
         console.log('i do not know')

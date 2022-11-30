@@ -5,8 +5,8 @@
 
 .process{
     position: absolute;
-    /* top:60px;
-    left:500px; */
+    top:60px;
+    left:500px;
     width:300px;
     height:200px;
     border: 2px solid black;
@@ -78,7 +78,7 @@
 }
 
 .output {
-    position: relative;
+    position: absolute;
     height: 60px;
     width: 150px;
     left: 500px;
@@ -101,8 +101,8 @@
 }
 
 .end-of-instance{
-    position: relative;
-    top: -140px;
+    position: absolute;
+    top: 60px;
     left: 500px;
     width: 100px;
     height: 100px;
@@ -114,8 +114,8 @@
     content: "E";
     position: absolute;
     font-size: 55px;
-    top: 15px;
-    left: 30px;
+    top: 16px;
+    left: 33px;
 }
 
 .event-transition{
@@ -130,8 +130,8 @@
 }
 
 .two-branching{
-    position: relative;
-    top: -140px;
+    position: absolute;
+    top: 60px;
     left: 550px;
     width: 100px;
     height: 100px;
@@ -141,8 +141,8 @@
 }
 
 .three-branching{
-    position: relative;
-    top: -140px;
+    position: absolute;
+    top: 60px;
     left: 550px;
     width: 100px;
     height: 100px;
@@ -152,8 +152,8 @@
 }
 
 .parallel{
-    position: relative;
-    top:-140px;
+    position: absolute;
+    top:60px;
     left:500px;
     width:110px;
     height:70px;
@@ -161,9 +161,25 @@
     cursor: move;
 }
 .parallel:after{
-    position: absolute;
     content: "";
-    border-right: 70px solid transparent;
+    position: absolute;
+    top: -2px;
+    left: 93px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid black;
+}
+.parallel:before{
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 27px;
+    transform: rotate(45deg);
+    border-bottom: 2px solid black;
+    left: 99px;
+    top: -16px;
+    z-index: 1;
+    background: white;
 }
 
 .redirection-symbol{
@@ -242,5 +258,76 @@
 
   .select-circle{
     position: absolute;
-    width: 15px;
+    width: 18px;
+  }
+
+  .rediraction:before,
+.rediraction:after,
+.inner:before,
+.inner:after { background: black; }
+.inner { border-color: black}
+
+  .rediraction {
+    position: absolute;
+    top: 100px;
+    left: 45%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    z-index: 10;
+    cursor: move;
+  }
+  
+  .rediraction:before,
+  .rediraction:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 2px;
+    height: 86px;
+    margin-top: -41px;
+    z-index: 1;
+  }
+  
+  .rediraction:after {
+    left: auto;
+    right: 0;
+    margin-top: -45px;
+    height: 92px;
+  }
+  
+  .inner {
+    position: absolute;
+    top: 0px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255,255,255,.25);
+    border-width: 2px;
+    border-style: solid;
+    -webkit-transform: rotate(45deg);
+  }
+  
+  .inner:before,
+  .inner:after {
+    -webkit-transform: rotate(45deg);
+    content: "";
+    position: absolute;
+    width: 2px;
+    
+    height: 85px;
+    margin-top: -41px;
+    z-index: 1;
+    right: auto;
+    left: 27px;
+    bottom: auto;
+    top: 27px;
+  }
+  
+  .inner:after {
+    height: 90px;
+    right: 30px;
+    left: auto;
+    bottom: -13px;
+    top: auto;
   }

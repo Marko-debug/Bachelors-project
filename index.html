@@ -155,35 +155,39 @@
       <rect width="100%" height="100%" fill="url(#grid)" />
     </svg>
   </div>
-  <div class="elements">
+  <!-- <div class="elements">
     <div
       id="0"
       class="process"
       onclick="dragElement(event)"
+      onmousedown="dragMouseDown(event)"
       ondblclick="writing(event)"
-      style="left: 500px; top: 60px"
     >
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: -2px; left: 0px; cursor: nw-resize" /></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: 190px; left: 0px; cursor: sw-resize"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: -2px; left: 290px; cursor: ne-resize; z-index: 1;"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: 190px; left: 290px; cursor: se-resize"/></image>
-    </div>
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: -2px; left: 0px; cursor: nw-resize" /></image>
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: 190px; left: 0px; cursor: sw-resize"/></image>
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: -2px; left: 290px; cursor: ne-resize; z-index: 1;"/></image>
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: 190px; left: 290px; cursor: se-resize"/></image>
+    </div> -->
     <!-- <div id="1" class="input"></div> -->
-    <div id="2" class="event-transition"
+    <!-- <div id="2" class="event-transition"
       onclick="dragElement(event)"
       ondblclick="writing(event)"
       style="left: 500px; top: 60px">
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: -2px; left: 0px; cursor: nw-resize" /></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: 50px; left: 0px; cursor: sw-resize"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: -2px; left: 140px; cursor: ne-resize; z-index: 1;"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="position:absolute; top: 50px; left: 140px; cursor: se-resize"/></image>
-    </div>
-    <!-- <div id="2" class="end-of-instance"></div> -->
-    <!-- <div id="2" class="output"></div> -->
-    <!-- <div id="2" class="two-branching"></div> -->
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: -2px; left: 0px; cursor: nw-resize" /></image>
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: 50px; left: 0px; cursor: sw-resize"/></image>
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: -2px; left: 140px; cursor: ne-resize"/></image>
+      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: 50px; left: 140px; cursor: se-resize"/></image>
+    </div> -->
+    <!-- <div id="3" class="end-of-instance" onclick="dragElement(event)"></div> -->
+    <!-- <div id="4" class="output" onclick="dragElement(event)">
+      <image class="select-circle" src="./src/images/btn-rotate.png" hidden="true" style="top: 20px;left: 220px; cursor: crosshair" /></image>
+    </image></div> -->
+    <!-- <div id="2" class="two-branching" onclick="dragElement(event)"></div> -->
     <!-- <div id="2" class="three-branching"></div> -->
-    <!-- <div id="2" class="parallel"></div> -->
-    <!-- <div id="2" class="redirection-symbol"></div> -->
+    <!-- <div id="2" class="parallel" onclick="dragElement(event)"></div> -->
+    <!-- <div id="2" class="rediraction" onclick="dragElement(event)">
+      <div class="inner"></div>
+    </div> -->
     <!-- <div id="2" class="split"></div> -->
 
     <!-- <svg id="0" width="3000" height="1500">
@@ -193,11 +197,23 @@
         <rect x="500" y="210" rx="10" ry="10" width="150" height="50" />
       </g>
     </svg> -->
+    <svg id="2" width="3000" height="1500">
+      <!-- <g transform="translate(0.5, 0.5)" style="visibility: visible">
+        <path d="M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60" stroke="black" fill="none" stroke-width="2"></path>
+      </g> -->
+      <!-- <g transform="translate(0.5, 0.5)" style="visibility: visible">
+        <path d="M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 " stroke="black" fill="none" stroke-width="2"></path>
+      </g> -->
+      <!-- <g transform="translate(0.5, 0.5)" style="visibility: visible">
+        <path d="M 500 90 L 500 150 L 540 190 L 600 190 L 640 150 L 640 90 L 600 50 L 540 50 L 500 90" stroke="black" fill="none" stroke-width="2"></path>
+      </g> -->
+    </svg>
   </div>
   <!-- <textarea class="text-area" hidden="true"></textarea> -->
   <script type="module" src="src/buttons/btnNavbar.js"></script>
   <script type="module" src="src/buttons/btnGrid.js"></script>
 </body>
+
 
 <!-- <svg width="3000" height="1500">
       <defs>

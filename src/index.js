@@ -1,29 +1,7 @@
 import {getButtons} from './components/showBlock.js';
 import {chooseElement} from './components/chooseShape.js';
-
-window.dragging = function dragging(event){
-    event.preventDefault();
-     let rect = event.target.getBoundingClientRect();
-    //  console.log(event);  
-     let x = event.pageX;
-     let y = event.pageY;
-     event.target.style.left = x + 'px'; 
-     event.target.style.top = y + 'px'; 
-    }
-
-window.dragStart = function dragStart(event){
-    console.log("start");  
-}
-
-window.drop = function drop(event){
-    event.preventDefault();
-    console.log("drop");
-}
-
-window.allowDrop = function allowDrop(event){
-    event.preventDefault();
-    // event.target.style.border = "4px dotted green";     // it is for inserting element into process
-}
+import {resize} from './components/resize.js';
+import {removeDown, removeUp} from './components/remove.js';
 
 window.selection = function selection(event){
     event.preventDefault();
@@ -35,86 +13,76 @@ window.selection = function selection(event){
 }
 
 window.dragElement = function dragElement(event) {
-    event.target.children[0].hidden = false;
-    event.target.children[1].hidden = false;
-    event.target.children[2].hidden = false;
-    event.target.children[3].hidden = false;
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(event.target.id)) {
-    /* if present, the header is where you move the DIV from:*/
-    document.getElementById(event.target.id).onmousedown = dragMouseDown;
-  } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
-    event.target.onmousedown = dragMouseDown;
-  }
+    if(event){
+          
+        // if(event.target.childElementCount === 1){
+        //     event.target.children[0].hidden = false;
+        // }
+        // if(event.target.childElementCount === 4){
+            // }
+        if(event.target.className !== "select-circle"){
+            event.target.children[0].hidden = false;
+            event.target.children[1].hidden = false;
+            event.target.children[2].hidden = false;
+            event.target.children[3].hidden = false;
+        }
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
+        // document.addEventListener('keydown', (event) => removeDown(event), false);
+        const referenceDiv = document.querySelector(`.${event.target.className}`)
+        document.addEventListener('keyup', (event) => removeUp(event, referenceDiv), false);
+
+    }else{
+        // here is hidding function, but it has not work yet because of references on alls id elements
+        // if(event.target.childElementCount === 1){
+        //     event.target.children[0].hidden = true;
+        // }
+        // if(event.target.childElementCount === 4){
+        //     event.target.children[0].hidden = true;
+        //     event.target.children[1].hidden = true;
+        //     event.target.children[2].hidden = true;
+        //     event.target.children[3].hidden = true;
+        // }
+    }
+}
+let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+window.dragMouseDown = function dragMouseDown(event) {
     // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    pos3 = event.clientX;
+    pos4 = event.clientY;
+    event.preventDefault();
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
-  }
+}
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    e.target.style.top = (e.target.offsetTop - pos2) + "px";
-    e.target.style.left = (e.target.offsetLeft - pos1) + "px";
-  }
+function elementDrag(event) {
+    event.preventDefault();
+    if(event.target.className === "navbar")return;
+    else if(event.target.className === "select-circle"){
+        resize(event)
+    }
+    else{
 
-  function closeDragElement() {
+        // calculate the new cursor position:
+        pos1 = pos3 - event.clientX;
+        pos2 = pos4 - event.clientY;
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+        // set the element's new position:
+        event.target.style.top = (event.target.offsetTop - pos2) + "px";
+        event.target.style.left = (event.target.offsetLeft - pos1) + "px";
+    }
+}
+
+function closeDragElement() {
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
-  }
 }
 
-window.resize = function resize(event){
+window.writing = function writing(event){
     event.preventDefault();
-    const rect = event.target.getBoundingClientRect();
-    
-    console.log(event.target.children[0].style.cursor)
-    if(event.target.children[0].style.cursor === "nw-resize"){
-        console.log(event.target.children[0].style.cursor)
-        event.target.style.width = rect.width + "px";
-        event.target.style.height = rect.height + "px";
-        event.target.style.top = rect.top + "px";
-        event.target.style.left = rect.left + "px";
-    }
-    else if(event.target.children[1].style.cursor === "sw-resize"){
-        console.log(event.target.children[1].style.cursor)
-        event.target.style.width = rect.width + "px";
-        event.target.style.height = rect.height + "px";
-        event.target.style.left = rect.left + "px";
-    }
-    else if(event.target.children[2].style.cursor === "ne-resize"){
-        console.log(event.target.children[2].style.cursor)
-        event.target.style.width = rect.width + "px";
-        event.target.style.height = rect.height + "px";
-        event.target.style.top = rect.top + "px";
-    }
-    else if(event.target.children[0].style.cursor === "se-resize"){
-        console.log(event.target.children[3].style.cursor)
-        event.target.style.width = rect.width + "px";
-        event.target.style.height = rect.height + "px";
-    }
-    else{
-        console.log("bad corner")
-    }
-}
-
-window.write = function write(event){
-    event.preventDefault();
+    console.log(Math. floor(Math. random() * 100))
 }
 
 window.addEventListener("load", (e)=>{
