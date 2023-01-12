@@ -1,7 +1,7 @@
 import {getButtons} from './components/showBlock.js';
 import {chooseElement} from './components/chooseShape.js';
-import {resize} from './components/resize.js';
-import {removeDown, removeUp} from './components/remove.js';
+// import {resize} from './components/resize.js';
+// import {removeDown, removeUp} from './components/remove.js';
 
 window.selection = function selection(event){
     event.preventDefault();
@@ -20,6 +20,8 @@ window.dragElement = function dragElement(event) {
         // }
         // if(event.target.childElementCount === 4){
             // }
+
+        // show resizing dots around the object
         if(event.target.className !== "select-circle"){
             event.target.children[0].hidden = false;
             event.target.children[1].hidden = false;
@@ -29,7 +31,7 @@ window.dragElement = function dragElement(event) {
 
         // document.addEventListener('keydown', (event) => removeDown(event), false);
         const referenceDiv = document.querySelector(`.${event.target.className}`)
-        document.addEventListener('keyup', (event) => removeUp(event, referenceDiv), false);
+        // document.addEventListener('keyup', (event) => removeUp(event, referenceDiv), false);
 
     }else{
         // here is hidding function, but it has not work yet because of references on alls id elements
@@ -47,27 +49,33 @@ window.dragElement = function dragElement(event) {
 let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 window.dragMouseDown = function dragMouseDown(event) {
     // get the mouse cursor position at startup:
-    pos3 = event.clientX;
-    pos4 = event.clientY;
+    event = event || window.event;
     event.preventDefault();
+    pos3 = event.pageX;
+    pos4 = event.pageY;
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
 }
 
 function elementDrag(event) {
+    event = event || window.event;
     event.preventDefault();
+    // if I select navbar div, then it will return and nothing will move
     if(event.target.className === "navbar")return;
+    // if I select resizing dots of object, then it will resize object
     else if(event.target.className === "select-circle"){
-        resize(event)
+        original_mouse_x = event.pageX;
+        original_mouse_y = event.pageY;
+        resize(event, original_mouse_x, original_mouse_y);
     }
+    //if I select object, it will move 
     else{
-
         // calculate the new cursor position:
-        pos1 = pos3 - event.clientX;
-        pos2 = pos4 - event.clientY;
-        pos3 = event.clientX;
-        pos4 = event.clientY;
+        pos1 = pos3 - event.pageX;
+        pos2 = pos4 - event.pageY;
+        pos3 = event.pageX;
+        pos4 = event.pageY;
         // set the element's new position:
         event.target.style.top = (event.target.offsetTop - pos2) + "px";
         event.target.style.left = (event.target.offsetLeft - pos1) + "px";

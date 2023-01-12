@@ -1,11 +1,12 @@
-export function resize(event){
+export function resize(event, original_mouse_x, original_mouse_y) {
     event.preventDefault();
-    const rect = event.target.parentNode.getBoundingClientRect();
     const minimum_size = 20;
+    let original_mouse_x = 0;
+    let original_mouse_y = 0;
 
     if(event.target.style.cursor === "se-resize") {
-        const width = event.target.parentNode.getBoundingClientRect().width + (event.pageX - event.pageX);
-        const height = event.target.parentNode.getBoundingClientRect().height + (event.pageY - event.pageY)
+        const width = event.target.parentNode.getBoundingClientRect().width + (event.pageX - original_mouse_x);
+        const height = event.target.parentNode.getBoundingClientRect().height + (event.pageY - original_mouse_y)
         if (width > minimum_size) {
             event.target.parentNode.style.width = width + 'px'
         }
@@ -14,41 +15,41 @@ export function resize(event){
         }
       }
       else if (event.target.style.cursor === "sw-resize") {
-        const height = event.target.parentNode.getBoundingClientRect().height  + (event.pageY - event.pageY)
-        const width = event.target.parentNode.getBoundingClientRect().width - (event.pageX - event.pageX)
+        const height = event.target.parentNode.getBoundingClientRect().height  + (event.pageY - original_mouse_y)
+        const width = event.target.parentNode.getBoundingClientRect().width - (event.pageX - original_mouse_x)
         if (height > minimum_size) {
             event.target.parentNode.style.height = height + 'px'
-            console.log(`height: ${event.target.parentNode.style.height}`)
+            // console.log(`height: ${event.target.parentNode.style.height}`)
         }
         if (width > minimum_size) {
             event.target.parentNode.style.width = width + 'px'
-            event.target.parentNode.style.left = event.target.parentNode.getBoundingClientRect().left + (event.pageX - event.pageX) + 'px'
-            console.log(`width: ${event.target.parentNode.style.width}`)
+            event.target.parentNode.style.left = event.target.parentNode.getBoundingClientRect().left + (event.movementX) + 'px'
+            // console.log(`width: ${event.target.parentNode.style.width}`)
             console.log(`left: ${event.target.parentNode.style.left}`)
-            console.log(`top: ${event.target.parentNode.style.top}`)
+            // console.log(`top: ${event.target.parentNode.style.top}`)
         }
       }
       else if (event.target.style.cursor === "ne-resize") {
-        const width = event.target.parentNode.getBoundingClientRect().width + (event.pageX - event.pageX)
-        const height = event.target.parentNode.getBoundingClientRect().height - (event.pageY - event.pageY)
+        const width = event.target.parentNode.getBoundingClientRect().width + (event.pageX - original_mouse_x)
+        const height = event.target.parentNode.getBoundingClientRect().height - (event.pageY - original_mouse_y)
         if (width > minimum_size) {
             event.target.parentNode.style.width = width + 'px'
         }
         if (height > minimum_size) {
             event.target.parentNode.style.height = height + 'px'
-            event.target.parentNode.style.top = event.target.parentNode.getBoundingClientRect().top + (event.pageY - event.pageY) + 'px'
+            event.target.parentNode.style.top = event.target.parentNode.getBoundingClientRect().top + (event.pageY - original_mouse_y) + 'px'
         }
       }
       else {
-        const width = event.target.parentNode.getBoundingClientRect().width - (event.pageX - event.pageX)
-        const height = event.target.parentNode.getBoundingClientRect().height - (event.pageY - event.pageY)
+        const width = event.target.parentNode.getBoundingClientRect().width - (event.pageX - original_mouse_x)
+        const height = event.target.parentNode.getBoundingClientRect().height - (event.pageY - original_mouse_y)
         if (width > minimum_size) {
             event.target.parentNode.style.width = width + 'px'
-            event.target.parentNode.style.left = event.target.parentNode.getBoundingClientRect().left + (event.pageX - event.pageX) + 'px'
+            event.target.parentNode.style.left = event.target.parentNode.getBoundingClientRect().left + (event.pageX - original_mouse_x) + 'px'
         }
         if (height > minimum_size) {
             event.target.parentNode.style.height = height + 'px'
-            event.target.parentNode.style.top = event.target.parentNode.getBoundingClientRect().top + (event.pageY - event.pageY) + 'px'
+            event.target.parentNode.style.top = event.target.parentNode.getBoundingClientRect().top + (event.pageY - original_mouse_y) + 'px'
         }
       }
     // console.log(event.target.style.cursor)
