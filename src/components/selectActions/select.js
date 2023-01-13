@@ -1,4 +1,18 @@
-export function selectElement(elmnt, select){
+import { removeSelect} from './selectRemoveAll.js';
+import { removeElement} from '../remove.js';
+
+//array select save final clicked element
+let select = [];
+
+//remove resizing dots of object when is clicked outside of element
+const divElements = document.querySelector('.elements') 
+divElements.addEventListener('click', (event)=>removeSelect(event, select))
+
+// listener for removing elements by pressing keyboard key d 
+document.addEventListener("keypress", (event)=>removeElement(event, select))
+
+//function for showing resizing dots of object
+window.selectElement = function selectElement(elmnt){
 
     if(select.length === 1){
 
@@ -13,7 +27,7 @@ export function selectElement(elmnt, select){
             popped.children[3].hidden = true;
         }
     }
-    
+
     select.push(elmnt)
     if(elmnt.childElementCount === 1){
         elmnt.children[0].hidden = false;
@@ -23,16 +37,5 @@ export function selectElement(elmnt, select){
         elmnt.children[1].hidden = false;
         elmnt.children[2].hidden = false;
         elmnt.children[3].hidden = false;
-    }
-
-        // document.addEventListener('keydown', () => removeDown(elmnt), false);
-        // const referenceDiv = document.getElementById(`.${elmnt.id}`)
-        // document.addEventListener('keyup', (event) => removeUp(event, referenceDiv), false);       
-}
-
-export function removeSelect(event){
-    if(event.target.className === "elements"){
-      for(let i = 0; i < event.target.childElementCount; i++){}
-      console.log(event.target)    
     }
 }
