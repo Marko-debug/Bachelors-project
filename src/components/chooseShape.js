@@ -10,27 +10,28 @@ const chooseElement = (element) => {
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("process")
         elements.appendChild(div)
-        div.setAttribute("onclick","dragElement(event);");
-        const image0 = document.createElement("image")
+        div.setAttribute("onclick","selectElement(document.getElementById(event.target.id));");
+        div.setAttribute("onmousedown","dragElement(document.getElementById(event.target.id));");
+        const image0 = document.createElement("img")
         image0.classList.add("select-circle");
         image0.setAttribute("src", "./src/images/circle.png")
         image0.setAttribute("hidden", "true")
-        image0.setAttribute("style","top:150px; left: 150px; cursor: nw-resize");
-        const image1 = document.createElement("image")
+        image0.setAttribute("style","top: -2px; left: 0px; cursor: nw-resize");
+        const image1 = document.createElement("img")
         image1.classList.add("select-circle");
         image1.setAttribute("src", "./src/images/circle.png")
         image1.setAttribute("hidden", "true")
-        image1.setAttribute("style","top:150px; left: 150px; cursor: sw-resize");
-        const image2 = document.createElement("image")
+        image1.setAttribute("style","top: 190px; left: 0px; cursor: sw-resize");
+        const image2 = document.createElement("img")
         image2.classList.add("select-circle");
         image2.setAttribute("src", "./src/images/circle.png")
         image2.setAttribute("hidden", "true")
-        image2.setAttribute("style","top:150px; left: 150px; cursor: ne-resize");
-        const image3 = document.createElement("image")
+        image2.setAttribute("style","top: -2px; left: 290px; cursor: ne-resize");
+        const image3 = document.createElement("img")
         image3.classList.add("select-circle");
         image3.setAttribute("src", "./src/images/circle.png")
         image3.setAttribute("hidden", "true")
-        image3.setAttribute("style","top:150px; left: 150px; cursor: se-resize");
+        image3.setAttribute("style","top: 190px; left: 290px; cursor: se-resize");
         div.appendChild(image0)
         div.appendChild(image1)
         div.appendChild(image2)

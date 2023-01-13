@@ -1,97 +1,86 @@
 import {getButtons} from './components/showBlock.js';
 import {chooseElement} from './components/chooseShape.js';
 // import {resize} from './components/resize.js';
-// import {removeDown, removeUp} from './components/remove.js';
+import {removeDown, removeUp, removeElement, removeSelect} from './components/remove.js';
+//to create function for moving object by keyboard key
 
-window.selection = function selection(event){
-    event.preventDefault();
-    const reference = event.target.id;
-    event.target.children[0].hidden = false;
-    event.target.children[1].hidden = false;
-    event.target.children[2].hidden = false;
-    event.target.children[3].hidden = false;
-}
 
-window.dragElement = function dragElement(event) {
-    if(event){
-          
-        // if(event.target.childElementCount === 1){
-        //     event.target.children[0].hidden = false;
-        // }
-        // if(event.target.childElementCount === 4){
-            // }
+let select = [];
+const divElements = document.querySelector('.elements') 
+divElements.addEventListener('click', (event)=>removeSelect(event))
 
-        // show resizing dots around the object
-        if(event.target.className !== "select-circle"){
-            event.target.children[0].hidden = false;
-            event.target.children[1].hidden = false;
-            event.target.children[2].hidden = false;
-            event.target.children[3].hidden = false;
-        }
+window.dragElement = function dragElement(elmnt) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    elmnt.onmousedown = dragMouseDown;
 
-        // document.addEventListener('keydown', (event) => removeDown(event), false);
-        const referenceDiv = document.querySelector(`.${event.target.className}`)
-        // document.addEventListener('keyup', (event) => removeUp(event, referenceDiv), false);
-
-    }else{
-        // here is hidding function, but it has not work yet because of references on alls id elements
-        // if(event.target.childElementCount === 1){
-        //     event.target.children[0].hidden = true;
-        // }
-        // if(event.target.childElementCount === 4){
-        //     event.target.children[0].hidden = true;
-        //     event.target.children[1].hidden = true;
-        //     event.target.children[2].hidden = true;
-        //     event.target.children[3].hidden = true;
-        // }
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
     }
-}
-let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-window.dragMouseDown = function dragMouseDown(event) {
-    // get the mouse cursor position at startup:
-    event = event || window.event;
-    event.preventDefault();
-    pos3 = event.pageX;
-    pos4 = event.pageY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-}
-
-function elementDrag(event) {
-    event = event || window.event;
-    event.preventDefault();
-    // if I select navbar div, then it will return and nothing will move
-    if(event.target.className === "navbar")return;
-    // if I select resizing dots of object, then it will resize object
-    else if(event.target.className === "select-circle"){
-        original_mouse_x = event.pageX;
-        original_mouse_y = event.pageY;
-        resize(event, original_mouse_x, original_mouse_y);
-    }
-    //if I select object, it will move 
-    else{
+    
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
         // calculate the new cursor position:
-        pos1 = pos3 - event.pageX;
-        pos2 = pos4 - event.pageY;
-        pos3 = event.pageX;
-        pos4 = event.pageY;
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
         // set the element's new position:
-        event.target.style.top = (event.target.offsetTop - pos2) + "px";
-        event.target.style.left = (event.target.offsetLeft - pos1) + "px";
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+    
+      function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+}
+
+//function for showing resizing dots of object
+window.selectElement = function selectElement(elmnt){
+
+    if(select.length === 1){
+
+        const popped = select.pop()
+        if(popped.childElementCount === 1){
+            popped.children[0].hidden = true;
+        }
+        if(popped.className !== "select-circle" && popped.childElementCount === 4){
+            popped.children[0].hidden = true;
+            popped.children[1].hidden = true;
+            popped.children[2].hidden = true;
+            popped.children[3].hidden = true;
+        }
     }
+    
+    select.push(elmnt)
+    if(elmnt.childElementCount === 1){
+        elmnt.children[0].hidden = false;
+    }
+    if(elmnt.className !== "select-circle" && elmnt.childElementCount === 4){
+        elmnt.children[0].hidden = false;
+        elmnt.children[1].hidden = false;
+        elmnt.children[2].hidden = false;
+        elmnt.children[3].hidden = false;
+    }
+
+        // document.addEventListener('keydown', () => removeDown(elmnt), false);
+        // const referenceDiv = document.getElementById(`.${elmnt.id}`)
+        // document.addEventListener('keyup', (event) => removeUp(event, referenceDiv), false);       
 }
 
-function closeDragElement() {
-    /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
-}
-
-window.writing = function writing(event){
-    event.preventDefault();
-    console.log(Math. floor(Math. random() * 100))
-}
+// window.writing = function writing(event){
+//     event.preventDefault();
+//     console.log(Math. floor(Math. random() * 100))
+// }
 
 window.addEventListener("load", (e)=>{
     e.preventDefault();
