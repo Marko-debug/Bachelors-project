@@ -1,4 +1,5 @@
 const getBtnOfShapes = document.querySelector(".btn-process")
+const getBtnText = document.querySelector(".btn-text")
 const getBtnPhysFlow = document.querySelector(".btn-physically-flow")
 const getBtnInfoFlow = document.querySelector(".btn-information-flow")
 const getBtnInput = document.querySelector(".btn-input")
@@ -13,10 +14,9 @@ const getBtnRediraction = document.querySelector(".btn-rediraction")
 const getBtnEndOfTwoProcess = document.querySelector(".btn-end-of-two-process")
 const getBtnEndOfThreeProcess = document.querySelector(".btn-end-of-three-process")
 
-const getText = document.querySelector(".text")
-
 const getButtons = [
     {ref: getBtnOfShapes, shape: "btn-process", short: "pr"}, 
+    {ref: getBtnText, shape: "btn-text", short: "te"},
     {ref: getBtnPhysFlow, shape: "btn-physically-flow", short: "pf"}, 
     {ref: getBtnInfoFlow, shape: "btn-information-flow", short: 'if'}, 
     {ref: getBtnInput, shape: "btn-input", short: "in"}, 
@@ -30,7 +30,6 @@ const getButtons = [
     {ref: getBtnRediraction, shape: "btn-rediraction", short: "re"},
     {ref: getBtnEndOfTwoProcess, shape: "btn-end-of-two-process", short: "ep"},
     {ref: getBtnEndOfThreeProcess, shape: "btn-end-of-three-process", short: "eh"},
-    {ref: getText, shape: "text", short: "te"},
 ]
 
 const ShowUp = (getButton) => {
@@ -45,6 +44,9 @@ const CloseShow = (getButton) => {
 
 getBtnOfShapes.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short === "pr")))
 getBtnOfShapes.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "pr")))
+
+getBtnText.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "te")))
+getBtnText.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "te")))
 
 getBtnPhysFlow.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "pf")))
 getBtnPhysFlow.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "pf")))

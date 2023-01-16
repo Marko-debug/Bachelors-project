@@ -1,41 +1,20 @@
+import { dataForSelectDots } from "./selectActions/selectDots.js";
+
 const chooseElement = (element) => {
     // const process = document.querySelector(`.${element}`)
     // process.addEventListener("click", () => {
 
     const elements = document.querySelector(`.elements`)
-    const svg = document.createElement("svg");
+    const svg = document.querySelector(".svg");
     if(element === "btn-process"){
 
         const div = document.createElement("div")
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("process")
         elements.appendChild(div)
-        div.setAttribute("onclick","selectElement(document.getElementById(event.target.id));");
-        div.setAttribute("onmousedown","dragElement(document.getElementById(event.target.id));");
-        const image0 = document.createElement("img")
-        image0.classList.add("select-circle");
-        image0.setAttribute("src", "./src/images/circle.png")
-        image0.setAttribute("hidden", "true")
-        image0.setAttribute("style","top: -2px; left: 0px; cursor: nw-resize");
-        const image1 = document.createElement("img")
-        image1.classList.add("select-circle");
-        image1.setAttribute("src", "./src/images/circle.png")
-        image1.setAttribute("hidden", "true")
-        image1.setAttribute("style","top: 190px; left: 0px; cursor: sw-resize");
-        const image2 = document.createElement("img")
-        image2.classList.add("select-circle");
-        image2.setAttribute("src", "./src/images/circle.png")
-        image2.setAttribute("hidden", "true")
-        image2.setAttribute("style","top: -2px; left: 290px; cursor: ne-resize");
-        const image3 = document.createElement("img")
-        image3.classList.add("select-circle");
-        image3.setAttribute("src", "./src/images/circle.png")
-        image3.setAttribute("hidden", "true")
-        image3.setAttribute("style","top: 190px; left: 290px; cursor: se-resize");
-        div.appendChild(image0)
-        div.appendChild(image1)
-        div.appendChild(image2)
-        div.appendChild(image3)
+        div.setAttribute("onclick","selectElement(event);");
+        div.setAttribute("onmousedown","dragElement(event);");
+        dataForSelectDots(div);
     //     const rect = document.createElement("rect");
     //     svg.setAttribute("id", "1");
     //     svg.setAttribute("width", "3000");
@@ -50,27 +29,54 @@ const chooseElement = (element) => {
     //     elements.appendChild(svg);        
     //     svg.appendChild(rect);        
     }
+    else if(element === "btn-text"){
+        const div = document.createElement("div")
+        div.setAttribute("id", Math. floor(Math. random() * 100))
+        div.classList.add("text")
+        elements.appendChild(div)
+        div.setAttribute("onclick","selectElement(document.getElementById(event.target.id));");
+        div.setAttribute("onmousedown","dragElement(event);");
+        div.setAttribute("contenteditable", "true");
+        div.innerHTML="Text";
+    }
+    // else if(element === "btn-physically-flow"){
+    //     const newg = document.createElement("g"); 
+    //     const newpath = document.createElement("path"); 
+    //     newg.setAttribute("id", "5");
+    //     newg.setAttribute("transform", "translate(0.5, 0.5)");
+    //     newg.setAttribute("style", "visibility: visible; cursor:move");
+    //     newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
+    //     newpath.setAttribute("stroke", "black");
+    //     newpath.setAttribute("fill", "blue");
+    //     newpath.setAttribute("stroke-width", "2");
+    //     svg.appendChild(newg);        
+    //     newg.appendChild(newpath);        
+    // }
     else if(element === "btn-input"){
-        const newpath = document.createElement("g","path"); 
-        newpath.setAttribute("id", "2");
+        const newg = document.createElement("g"); 
+        const newpath = document.createElement("path"); 
+        newg.setAttribute("id", "4");
+        newg.setAttribute("transform", "translate(0.5, 0.5)");
+        newg.setAttribute("style", "visibility: visible; cursor:move");
         newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
         newpath.setAttribute("stroke", "black");
-        newpath.setAttribute("fill", "transparent");
+        newpath.setAttribute("fill", "blue");
         newpath.setAttribute("stroke-width", "2");
-        elements.appendChild(svg);        
-        svg.appendChild(newpath);        
+        svg.appendChild(newg);        
+        newg.appendChild(newpath);        
     }
     else if(element === "btn-output"){
         const div = document.createElement("div")
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("output")
         elements.appendChild(div)
-        div.setAttribute("onclick","dragElement(event);");
-        const image0 = document.createElement("image")
+        div.setAttribute("onclick","selectElement(event);");
+        div.setAttribute("onmousedown","dragElement(event);");
+        const image0 = document.createElement("img")
         image0.classList.add("select-circle");
         image0.setAttribute("src", "./src/images/btn-rotate.png")
         image0.setAttribute("hidden", "true")
-        image0.setAttribute("style","top: -2px; left: 0px; cursor: crosshair");
+        image0.setAttribute("style","top: -18px; left: 200px; z-index: 4;cursor: crosshair");
         div.appendChild(image0)
     }
     else if(element === "btn-event-transition"){
@@ -78,26 +84,31 @@ const chooseElement = (element) => {
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("event-transition")
         elements.appendChild(div)
-        div.setAttribute("onclick","dragElement(event);");
-        const image0 = document.createElement("image")
+        div.setAttribute("onclick","selectElement(event);");
+        div.setAttribute("onmousedown","dragElement(event);");
+        const image0 = document.createElement("img")
         image0.classList.add("select-circle");
         image0.setAttribute("src", "./src/images/circle.png")
         image0.setAttribute("hidden", "true")
-        image0.setAttribute("style","top: -2px; left: 0px; cursor: nw-resize");
-        const image1 = document.createElement("image")
+        image0.setAttribute("onmousedown","dragElement(event);");
+        image0.setAttribute("style","top: -8px; left: -8px; cursor: nw-resize");
+        const image1 = document.createElement("img")
         image1.classList.add("select-circle");
         image1.setAttribute("src", "./src/images/circle.png")
         image1.setAttribute("hidden", "true")
-        image1.setAttribute("style","top: 50px; left: 0px; cursor: sw-resize");
-        const image2 = document.createElement("image")
+        image1.setAttribute("onmousedown","dragElement(event);");
+        image1.setAttribute("style","top: 50px; left: -8px; cursor: sw-resize");
+        const image2 = document.createElement("img")
         image2.classList.add("select-circle");
         image2.setAttribute("src", "./src/images/circle.png")
         image2.setAttribute("hidden", "true")
-        image2.setAttribute("style","top: -2px; left: 140px; cursor: ne-resize; z-index: 1;");
-        const image3 = document.createElement("image")
+        image2.setAttribute("onmousedown","dragElement(event);");
+        image2.setAttribute("style","top: -8px; left: 140px; cursor: ne-resize; z-index: 1;");
+        const image3 = document.createElement("img")
         image3.classList.add("select-circle");
         image3.setAttribute("src", "./src/images/circle.png")
         image3.setAttribute("hidden", "true")
+        image3.setAttribute("onmousedown","dragElement(event);");
         image3.setAttribute("style","top: 50px; left: 140px; cursor: se-resize");
         div.appendChild(image0)
         div.appendChild(image1)
@@ -109,38 +120,56 @@ const chooseElement = (element) => {
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("end-of-instance")
         elements.appendChild(div)
-        div.setAttribute("onclick","dragElement(event);");
+        div.setAttribute("onclick","selectElement(event);");
+        div.setAttribute("onmousedown","dragElement(event);");
     }
     else if(element === "btn-two-branches"){
         const div = document.createElement("div")
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("two-branching")
         elements.appendChild(div)
-        div.setAttribute("onclick","dragElement(event);");
+        div.setAttribute("onclick","selectElement(event);");
+        div.setAttribute("onmousedown","dragElement(event);");
     }
     else if(element === "btn-three-branches"){
         const div = document.createElement("div")
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("three-branching")
         elements.appendChild(div)
-        div.setAttribute("onclick","dragElement(event);");
+        div.setAttribute("onclick","selectElement(event);");
+        div.setAttribute("onmousedown","dragElement(event);");
     }
     else if(element === "btn-rediraction"){
         const div = document.createElement("div")
         div.setAttribute("id", Math. floor(Math. random() * 100))
         div.classList.add("rediraction")
-        div.setAttribute("onclick","dragElement(event);");
+        div.setAttribute("onclick","selectElement(event);");
+        div.setAttribute("onmousedown","dragElement(event);");
         const inner = document.createElement("div")
         inner.classList.add("inner")
         elements.appendChild(div)
         div.appendChild(inner)
     }
+    // else if(element === "btn-parallel"){
+    //     const div = document.createElement("div")
+    //     div.setAttribute("id", Math. floor(Math. random() * 100))
+    //     div.classList.add("parallel")
+    //     elements.appendChild(div)
+    //     div.setAttribute("onclick","selectElement(document.getElementById(event.target.id));");
+    //     div.setAttribute("onmousedown","dragElement(event);");
+    // }
     else if(element === "btn-parallel"){
-        const div = document.createElement("div")
-        div.setAttribute("id", Math. floor(Math. random() * 100))
-        div.classList.add("parallel")
-        elements.appendChild(div)
-        div.setAttribute("onclick","dragElement(event);");
+        const newg = document.createElement("g"); 
+        const newpath = document.createElement("path"); 
+        newg.setAttribute("id", "5");
+        newg.setAttribute("transform", "translate(0.5, 0.5)");
+        newg.setAttribute("style", "visibility: visible; cursor:move");
+        newpath.setAttribute("d", "M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 ");
+        newpath.setAttribute("stroke", "black");
+        newpath.setAttribute("fill", "blue");
+        newpath.setAttribute("stroke-width", "2");
+        svg.appendChild(newg);        
+        newg.appendChild(newpath);   
     }
     else{
         console.log('i do not know')

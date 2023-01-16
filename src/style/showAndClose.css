@@ -1,6 +1,6 @@
 /*SHOWING BLOCK*/
 
-.pr, .pf, .if, .in, .ou, .ei, .et, .wb, .hb, .sb, .pa, .re, .ep, .eh{
+.pr, .te, .pf, .if, .in, .ou, .ei, .et, .wb, .hb, .sb, .pa, .re, .ep, .eh{
     position: fixed;
     margin-left: 430px;
     background-color: rgb(255, 255, 255);

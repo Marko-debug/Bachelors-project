@@ -9,10 +9,14 @@ const divElements = document.querySelector('.elements')
 divElements.addEventListener('click', (event)=>removeSelect(event, select))
 
 // listener for removing elements by pressing keyboard key d 
-document.addEventListener("keypress", (event)=>removeElement(event, select))
+document.addEventListener("keydown", (event)=>removeElement(event, select))
 
 //function for showing resizing dots of object
-window.selectElement = function selectElement(elmnt){
+window.selectElement = function selectElement(event){
+    // console.log(event)
+    if(!event.target.id)return;
+    // console.log(event.target.id)
+    const elmnt = document.getElementById(event.target.id)
 
     if(select.length === 1){
 
