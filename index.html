@@ -171,6 +171,8 @@
       onclick="selectElement(event)"
       onmousedown="dragElement(event)"
     >
+      <div class="process-time" contenteditable="true"></div>
+      <div class="process-owner" contenteditable="true"></div>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: -8px; left: -8px; cursor: nw-resize" /></image>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: 190px; left: -8px; cursor: sw-resize"/></image>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: -8px; left: 286px; cursor: ne-resize"/></image>
@@ -273,7 +275,7 @@
       <!-- <g transform="translate(0.5, 0.5)" style="visibility: visible">
         <path d="M 500 90 L 500 150 L 540 190 L 600 190 L 640 150 L 640 90 L 600 50 L 540 50 L 500 90" stroke="black" fill="none" stroke-width="2"></path>
       </g> -->
-    </svg>
+    <!-- </svg> -->
   </div>
   <!-- <textarea class="text-area" hidden="true"></textarea> -->
   <script type="module" src="src/buttons/btnNavbar.js"></script>

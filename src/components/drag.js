@@ -14,10 +14,11 @@ window.dragElement = function dragElement(event) {
     //   const elmnt = document.getElementById(event.target.parentNode.id);
     //   dragMouseActions(elmnt);
     // }
-    else{
-      const elmnt = document.getElementById(event.target.id);
-      dragMouseActions(elmnt);
-    }
+  else if(event.target.className === "process-time" || event.target.className === "process-owner")return;
+  else{
+    const elmnt = document.getElementById(event.target.id);
+    dragMouseActions(elmnt);
+  }
     // console.log('is here')
 
     function dragMouseActions(elmnt) {

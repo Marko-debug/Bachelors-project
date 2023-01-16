@@ -14,6 +14,12 @@ const chooseElement = (element) => {
         elements.appendChild(div)
         div.setAttribute("onclick","selectElement(event);");
         div.setAttribute("onmousedown","dragElement(event);");
+        const timer = document.createElement("div")
+        const owner = document.createElement("div")
+        timer.classList.add("process-time")
+        owner.classList.add("process-owner")
+        div.appendChild(timer)
+        div.appendChild(owner)
         dataForSelectDots(div);
     //     const rect = document.createElement("rect");
     //     svg.setAttribute("id", "1");
