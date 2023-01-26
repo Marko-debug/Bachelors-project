@@ -14,9 +14,14 @@ document.addEventListener("keydown", (event)=>removeElement(event, select))
 
 //function for showing resizing dots of object
 window.selectElement = function selectElement(event){
+    // if(event.target.parentNode.id){
+    //     const elmnt = document.getElementById(event.target.parentNode.id);
+    //     select.push(elmnt);
+    // };
     if(!event.target.id)return;
-    // console.log(event.target.id)
+    
     const elmnt = document.getElementById(event.target.id)
+    console.log(elmnt)
     
     if(select.length === 1){
         

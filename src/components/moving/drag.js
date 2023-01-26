@@ -1,25 +1,20 @@
-import {resizeElement} from './resize.js';
+import {resizeElement} from '../scaling/resize.js';
+import {svgMoving} from './svgMoving.js';
 
 window.dragElement = function dragElement(event) {
-  event.preventDefault();
-  if(event.target.className === "select-circle"){
-      const elmnt = document.getElementById(event.target.parentNode.id);
+    event.preventDefault();
+    if(event.target.className === "select-circle"){
+        const elmnt = document.getElementById(event.target.parentNode.id);
+        dragMouseActions(elmnt);
+      }
+    else if(event.target.className === "process-time" || event.target.className === "process-owner")return;
+    else if(event.target.parentNode.className.baseVal === "svg-parallel")svgMoving(event);
+    else if(event.target.parentNode.className.baseVal === "svg-information-flow")svgMoving(event);
+    else if(event.target.parentNode.className.baseVal === "svg-information-flow-broken")svgMoving(event);
+    else{
+      const elmnt = document.getElementById(event.target.id);
       dragMouseActions(elmnt);
     }
-    // else if(event.target.className === "process"){
-    //   const elmnt = document.getElementById(event.target.id);
-    //   dragMouseActions(elmnt);
-    // }
-    // else{
-    //   const elmnt = document.getElementById(event.target.parentNode.id);
-    //   dragMouseActions(elmnt);
-    // }
-  else if(event.target.className === "process-time" || event.target.className === "process-owner")return;
-  else{
-    const elmnt = document.getElementById(event.target.id);
-    dragMouseActions(elmnt);
-  }
-    // console.log('is here')
 
     function dragMouseActions(elmnt) {
       let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -47,7 +42,6 @@ window.dragElement = function dragElement(event) {
           pos4 = e.clientY;
 
           if(event.target.className === "select-circle")resizeElement(event, pos1, pos2);
-
           if(!event.target.id)return;
           else{
             // set the element's new position:

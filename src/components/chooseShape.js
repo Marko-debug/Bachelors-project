@@ -1,4 +1,11 @@
-import { dataForSelectDots } from "./selectActions/selectDots.js";
+import { generateElements} from "./generating/generateElements.js";
+import Process from "./elements/divClasses/Process.js"
+import Output from "./elements/divClasses/Output.js"
+import EventTransition from "./elements/divClasses/EventTransition.js"
+import EndOFInstance from "./elements/divClasses/EndOfInstance.js";
+import TwoBranching from "./elements/divClasses/TwoBranching.js";
+import { generateSVG} from "./generating/generateSVG.js";
+import { make } from "./generating/make.js";
 
 const chooseElement = (element) => {
     // const process = document.querySelector(`.${element}`)
@@ -8,19 +15,10 @@ const chooseElement = (element) => {
     const svg = document.querySelector(".svg");
     if(element === "btn-process"){
 
-        const div = document.createElement("div")
-        div.setAttribute("id", Math. floor(Math. random() * 100))
-        div.classList.add("process")
-        elements.appendChild(div)
-        div.setAttribute("onclick","selectElement(event);");
-        div.setAttribute("onmousedown","dragElement(event);");
-        const timer = document.createElement("div")
-        const owner = document.createElement("div")
-        timer.classList.add("process-time")
-        owner.classList.add("process-owner")
-        div.appendChild(timer)
-        div.appendChild(owner)
-        dataForSelectDots(div);
+        const name = "process"
+        const id = Math. floor(Math. random() * 100);
+        const object = new Process(id, name, "300px", "200px", "60px", "500px");
+        generateElements(elements, name, object)
     //     const rect = document.createElement("rect");
     //     svg.setAttribute("id", "1");
     //     svg.setAttribute("width", "3000");
@@ -45,7 +43,9 @@ const chooseElement = (element) => {
         div.setAttribute("contenteditable", "true");
         div.innerHTML="Text";
     }
-    // else if(element === "btn-physically-flow"){
+    else if(element === "btn-physically-flow"){
+        const className = "svg-physically-flow";
+        make(className);
     //     const newg = document.createElement("g"); 
     //     const newpath = document.createElement("path"); 
     //     newg.setAttribute("id", "5");
@@ -57,93 +57,68 @@ const chooseElement = (element) => {
     //     newpath.setAttribute("stroke-width", "2");
     //     svg.appendChild(newg);        
     //     newg.appendChild(newpath);        
-    // }
+    }
+    else if(element === "btn-physically-flow-broken"){
+        console.log("hello")
+    //     const newg = document.createElement("g"); 
+    //     const newpath = document.createElement("path"); 
+    //     newg.setAttribute("id", "5");
+    //     newg.setAttribute("transform", "translate(0.5, 0.5)");
+    //     newg.setAttribute("style", "visibility: visible; cursor:move");
+    //     newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
+    //     newpath.setAttribute("stroke", "black");
+    //     newpath.setAttribute("fill", "blue");
+    //     newpath.setAttribute("stroke-width", "2");
+    //     svg.appendChild(newg);        
+    //     newg.appendChild(newpath);        
+    }
     else if(element === "btn-input"){
-        const newg = document.createElement("g"); 
-        const newpath = document.createElement("path"); 
-        newg.setAttribute("id", "4");
-        newg.setAttribute("transform", "translate(0.5, 0.5)");
-        newg.setAttribute("style", "visibility: visible; cursor:move");
-        newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
-        newpath.setAttribute("stroke", "black");
-        newpath.setAttribute("fill", "blue");
-        newpath.setAttribute("stroke-width", "2");
-        svg.appendChild(newg);        
-        newg.appendChild(newpath);        
+        // const newg = document.createElement("g"); 
+        // const newpath = document.createElement("path"); 
+        // newg.setAttribute("id", "4");
+        // newg.setAttribute("transform", "translate(0.5, 0.5)");
+        // newg.setAttribute("style", "visibility: visible; cursor:move");
+        // newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
+        // newpath.setAttribute("stroke", "black");
+        // newpath.setAttribute("fill", "blue");
+        // newpath.setAttribute("stroke-width", "2");
+        // svg.appendChild(newg);        
+        // newg.appendChild(newpath);        
     }
     else if(element === "btn-output"){
-        const div = document.createElement("div")
-        div.setAttribute("id", Math. floor(Math. random() * 100))
-        div.classList.add("output")
-        elements.appendChild(div)
-        div.setAttribute("onclick","selectElement(event);");
-        div.setAttribute("onmousedown","dragElement(event);");
-        const image0 = document.createElement("img")
-        image0.classList.add("select-circle");
-        image0.setAttribute("src", "./src/images/btn-rotate.png")
-        image0.setAttribute("hidden", "true")
-        image0.setAttribute("style","top: -18px; left: 200px; z-index: 4;cursor: crosshair");
-        div.appendChild(image0)
+
+        const name = "output"
+        const id = Math. floor(Math. random() * 100);
+        const object = new Output(id, name, "60px", "500px");
+        generateElements(elements, name, object)
     }
     else if(element === "btn-event-transition"){
-        const div = document.createElement("div")
-        div.setAttribute("id", Math. floor(Math. random() * 100))
-        div.classList.add("event-transition")
-        elements.appendChild(div)
-        div.setAttribute("onclick","selectElement(event);");
-        div.setAttribute("onmousedown","dragElement(event);");
-        const image0 = document.createElement("img")
-        image0.classList.add("select-circle");
-        image0.setAttribute("src", "./src/images/circle.png")
-        image0.setAttribute("hidden", "true")
-        image0.setAttribute("onmousedown","dragElement(event);");
-        image0.setAttribute("style","top: -8px; left: -8px; cursor: nw-resize");
-        const image1 = document.createElement("img")
-        image1.classList.add("select-circle");
-        image1.setAttribute("src", "./src/images/circle.png")
-        image1.setAttribute("hidden", "true")
-        image1.setAttribute("onmousedown","dragElement(event);");
-        image1.setAttribute("style","top: 50px; left: -8px; cursor: sw-resize");
-        const image2 = document.createElement("img")
-        image2.classList.add("select-circle");
-        image2.setAttribute("src", "./src/images/circle.png")
-        image2.setAttribute("hidden", "true")
-        image2.setAttribute("onmousedown","dragElement(event);");
-        image2.setAttribute("style","top: -8px; left: 140px; cursor: ne-resize; z-index: 1;");
-        const image3 = document.createElement("img")
-        image3.classList.add("select-circle");
-        image3.setAttribute("src", "./src/images/circle.png")
-        image3.setAttribute("hidden", "true")
-        image3.setAttribute("onmousedown","dragElement(event);");
-        image3.setAttribute("style","top: 50px; left: 140px; cursor: se-resize");
-        div.appendChild(image0)
-        div.appendChild(image1)
-        div.appendChild(image2)
-        div.appendChild(image3)
+
+        const name = "event-transition"
+        const id = Math. floor(Math. random() * 100);
+        const object = new EventTransition(id, name, "150px", "60px", "60px", "500px");
+        generateElements(elements, name, object)
+
     }
     else if(element === "btn-end-of-instance"){
-        const div = document.createElement("div")
-        div.setAttribute("id", Math. floor(Math. random() * 100))
-        div.classList.add("end-of-instance")
-        elements.appendChild(div)
-        div.setAttribute("onclick","selectElement(event);");
-        div.setAttribute("onmousedown","dragElement(event);");
+
+        const name = "end-of-instance"
+        const id = Math. floor(Math. random() * 100);
+        const object = new EndOFInstance(id, name, "60px", "500px");
+        generateElements(elements, name, object)
     }
     else if(element === "btn-two-branches"){
-        const div = document.createElement("div")
-        div.setAttribute("id", Math. floor(Math. random() * 100))
-        div.classList.add("two-branching")
-        elements.appendChild(div)
-        div.setAttribute("onclick","selectElement(event);");
-        div.setAttribute("onmousedown","dragElement(event);");
+
+        const name = "two-branching"
+        const id = Math. floor(Math. random() * 100);
+        const object = new TwoBranching(id, name, "60px", "550px");
+        generateElements(elements, name, object)
     }
     else if(element === "btn-three-branches"){
-        const div = document.createElement("div")
-        div.setAttribute("id", Math. floor(Math. random() * 100))
-        div.classList.add("three-branching")
-        elements.appendChild(div)
-        div.setAttribute("onclick","selectElement(event);");
-        div.setAttribute("onmousedown","dragElement(event);");
+        const name = "three-branching"
+        const id = Math. floor(Math. random() * 100);
+        const object = new TwoBranching(id, name, "60px", "550px");
+        generateElements(elements, name, object)
     }
     else if(element === "btn-rediraction"){
         const div = document.createElement("div")
@@ -165,17 +140,20 @@ const chooseElement = (element) => {
     //     div.setAttribute("onmousedown","dragElement(event);");
     // }
     else if(element === "btn-parallel"){
-        const newg = document.createElement("g"); 
-        const newpath = document.createElement("path"); 
-        newg.setAttribute("id", "5");
-        newg.setAttribute("transform", "translate(0.5, 0.5)");
-        newg.setAttribute("style", "visibility: visible; cursor:move");
-        newpath.setAttribute("d", "M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 ");
-        newpath.setAttribute("stroke", "black");
-        newpath.setAttribute("fill", "blue");
-        newpath.setAttribute("stroke-width", "2");
-        svg.appendChild(newg);        
-        newg.appendChild(newpath);   
+        const className = "svg-parallel";
+        generateSVG(className);
+        // const newg = document.createElementNS('http://www.w3.org/2000/svg', "g"); 
+        // const newpath = document.createElement("path"); 
+        // newg.setAttribute("id", "5");
+        // newg.setAttribute("transform", "translate(0.5, 0.5)");
+        // newg.setAttribute("style", "visibility: visible; cursor:move;");
+        // newpath.setAttribute("d", "M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 ");
+        // newpath.setAttribute("stroke", "black");
+        // newpath.setAttribute("fill", "blue");
+        // newpath.setAttribute("stroke-width", "2");
+        // newg.classList.add("svg-parallel")
+        // newg.appendChild(newpath);   
+        // svg.appendChild(newg);        
     }
     else{
         console.log('i do not know')

@@ -11,7 +11,9 @@
 <body>
   <script type="module" src="./src/index.js"></script>
   <script type="module" src="./src/components/selectActions/select.js"></script>
-  <script type="module" src="./src/components/drag.js"></script>
+  <script type="module" src="./src/components/moving/drag.js"></script>
+  <script type="module" src="./src/components/scaling/scaleSVG.js"></script>
+  <script type="module" src="./src/components/dotsSVG.js"></script>
 
   <!-- Dynamic Bar -->
   <div class="navbar" style="width: 400px; height: 500px">
@@ -24,7 +26,15 @@
       <div class="shapes">
         <button class="btn-process">Process</button>
         <button class="btn-text">Text</button>
-        <button class="btn-physically-flow">Physically flow</button>
+
+        <button class="btn-physically">Physically flow</button>
+        <div class="wrapper-flows">
+          <button class="btn-physically-flow">Physically flow</button>
+          <button class="btn-physically-flow-broken">
+            Physically flow broken
+        </div>
+        </button>
+
         <button class="btn-information-flow">Information flow</button>
         <button class="btn-input">Input</button>
         <button class="btn-output">Output</button>
@@ -58,6 +68,7 @@
     <image width="200" height="150" src="./src/images/text.png"></image>
     <div class="show-name">Text</div>
   </div>
+
   <div class="pf" hidden="true" style="margin-top: 100px">
     <image
       width="200"
@@ -66,6 +77,15 @@
     ></image>
     <div class="show-name">Physically flow</div>
   </div>
+  <div class="pfb" hidden="true" style="margin-top: 100px">
+    <image
+      width="200"
+      height="150"
+      src="./src/images/physically-flow.png"
+    ></image>
+    <div class="show-name">Physically flow broken</div>
+  </div>
+
   <div class="if" hidden="true" style="margin-top: 100px">
     <image width="200" height="150"></image>
     <div class="show-name">Information flow</div>
@@ -165,19 +185,19 @@
 
   <!--Elements in div/svg-->
   <div class="elements">
-    <div
+    <!-- <div
       id="0"
       class="process"
       onclick="selectElement(event)"
       onmousedown="dragElement(event)"
     >
-      <div class="process-time" contenteditable="true"></div>
-      <div class="process-owner" contenteditable="true"></div>
+      <div class="process-time" contenteditable="true">--Time--</div>
+      <div class="process-owner" contenteditable="true">--Owner--</div>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: -8px; left: -8px; cursor: nw-resize" /></image>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: 190px; left: -8px; cursor: sw-resize"/></image>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: -8px; left: 286px; cursor: ne-resize"/></image>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: 190px; left: 290px; cursor: se-resize"/></image>
-    </div>
+    </div> -->
     <!-- <div
       id="1"
       class="text"
@@ -217,23 +237,26 @@
       </g>
     </svg> -->
 
-    <!-- <svg
-      class="svg"
+    <svg
+      class="svg-elements"
       style="
         left: 0px;
         top: 0px;
         width: 100%;
         height: 100%;
-        display: block;
         min-width: 5288px;
         min-height: 2695px;
       "
-    > -->
-      <!-- <g
+    >
+      <g
+        id="7"
+        class="svg-information-flow"
         transform="translate(0.5,0.5)"
+        onmousedown="dragElement(event)"
         style="visibility: visible; cursor: pointer"
       >
         <path
+          class="line"
           d="M 500 180 L 790 180"
           fill="none"
           stroke="rgb(0, 0, 0)"
@@ -241,7 +264,58 @@
           pointer-events="stroke"
         ></path>
         <path
+          class="arrow"
           d="M 790 180 L 783 183 L 785 180 L 783 176 Z"
+          fill="rgb(0, 0, 0)"
+          stroke="rgb(0, 0, 0)"
+          stroke-miterlimit="10"
+          pointer-events="stroke"
+        ></path>
+        <circle
+          class="dot1"
+          onmousedown="scaleSVG(event)"
+          cx="790"
+          cy="180"
+          r="7"
+          fill="red"
+          style="visibility: visible; cursor: ew-resize; z-index: 1"
+        ></circle>
+        <circle
+          class="dot2"
+          onmousedown="scaleSVG(event)"
+          cx="500"
+          cy="180"
+          r="7"
+          fill="red"
+          style="visibility: visible; cursor: ew-resize; z-index: 1"
+        ></circle>
+      </g>
+      <!-- <g
+        id="8"
+        class="svg-information-flow-broken"
+        onmousedown="dragElement(event)"
+        transform="translate(0.5,0.5)"
+        style="visibility: visible; cursor: pointer"
+      >
+        <path
+          class="line1"
+          d="M 500 180 L 600 180"
+          fill="none"
+          stroke="rgb(0, 0, 0)"
+          stroke-miterlimit="10"
+          pointer-events="stroke"
+        ></path>
+        <path
+          class="line2"
+          d="M 600 180 L 600 280"
+          fill="none"
+          stroke="rgb(0, 0, 0)"
+          stroke-miterlimit="10"
+          pointer-events="stroke"
+        ></path>
+        <path
+          class="arrow"
+          d="M 600 280 L 603 273 L 597 273 L 597 273 Z"
           fill="rgb(0, 0, 0)"
           stroke="rgb(0, 0, 0)"
           stroke-miterlimit="10"
@@ -260,8 +334,11 @@
           stroke-width="2"
         ></path>
       </g> -->
-      <!-- <g
+      <g
         id="6"
+        class="svg-parallel"
+        onclick="selectElement(event)"
+        onmousedown="dragElement(event)"
         transform="translate(0.5, 0.5)"
         style="visibility: visible; cursor: move"
       >
@@ -271,11 +348,11 @@
           fill="transparent"
           stroke-width="2"
         ></path>
-      </g> -->
+      </g>
       <!-- <g transform="translate(0.5, 0.5)" style="visibility: visible">
         <path d="M 500 90 L 500 150 L 540 190 L 600 190 L 640 150 L 640 90 L 600 50 L 540 50 L 500 90" stroke="black" fill="none" stroke-width="2"></path>
       </g> -->
-    <!-- </svg> -->
+    </svg>
   </div>
   <!-- <textarea class="text-area" hidden="true"></textarea> -->
   <script type="module" src="src/buttons/btnNavbar.js"></script>

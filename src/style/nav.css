@@ -36,3 +36,29 @@
 .save, .open-file{
     float: right;
 }
+
+.wrapper-flows{
+    position: fixed;
+    top: 122px;
+    height: 42px;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    width: 258px;
+    left: 98px;
+}
+
+.btn-physically-flow{
+    z-index: 2;
+    position: fixed;
+    top: 125px;
+    height: 40px;
+    left: 100px;
+}
+
+.btn-physically-flow-broken{
+    z-index: 2;
+    position: fixed;
+    top: 125px;
+    height: 40px;
+    left: 210px;
+}

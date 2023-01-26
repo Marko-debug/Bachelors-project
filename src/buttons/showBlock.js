@@ -1,6 +1,8 @@
 const getBtnOfShapes = document.querySelector(".btn-process")
 const getBtnText = document.querySelector(".btn-text")
+const getBtnPhys = document.querySelector(".btn-physically")
 const getBtnPhysFlow = document.querySelector(".btn-physically-flow")
+const getBtnPhysFlowBroken = document.querySelector(".btn-physically-flow-broken")
 const getBtnInfoFlow = document.querySelector(".btn-information-flow")
 const getBtnInput = document.querySelector(".btn-input")
 const getBtnOutput = document.querySelector(".btn-output")
@@ -17,7 +19,9 @@ const getBtnEndOfThreeProcess = document.querySelector(".btn-end-of-three-proces
 const getButtons = [
     {ref: getBtnOfShapes, shape: "btn-process", short: "pr"}, 
     {ref: getBtnText, shape: "btn-text", short: "te"},
+    {ref: getBtnPhys, shape: "btn-physically", short: "wrapper-flows"}, 
     {ref: getBtnPhysFlow, shape: "btn-physically-flow", short: "pf"}, 
+    {ref: getBtnPhysFlowBroken, shape: "btn-physically-flow", short: "pfb"}, 
     {ref: getBtnInfoFlow, shape: "btn-information-flow", short: 'if'}, 
     {ref: getBtnInput, shape: "btn-input", short: "in"}, 
     {ref: getBtnOutput, shape: "btn-output", short: "ou"}, 
@@ -42,6 +46,9 @@ const CloseShow = (getButton) => {
     getShowing.hidden = true;
 }
 
+// getBtnPhys.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "wrapper-flows")))
+// getBtnPhys.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "wrapper-flows")))
+
 getBtnOfShapes.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short === "pr")))
 getBtnOfShapes.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "pr")))
 
@@ -50,6 +57,9 @@ getBtnText.addEventListener("mouseout", () => CloseShow(getButtons.find(getButto
 
 getBtnPhysFlow.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "pf")))
 getBtnPhysFlow.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "pf")))
+
+getBtnPhysFlow.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "pfb")))
+getBtnPhysFlow.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "pfb")))
 
 getBtnInfoFlow .addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "if")))
 getBtnInfoFlow .addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "if")))

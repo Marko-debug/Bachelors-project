@@ -1,5 +1,5 @@
 export function removeSelect(event, select){
-    if(event.target.className === "elements"){
+    if(event.target.className.baseVal === "svg"){
         
         if(select.length === 0)return;
         else{

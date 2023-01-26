@@ -1,4 +1,4 @@
-import {getButtons} from './components/showBlock.js';
+import {getButtons} from './buttons/showBlock.js';
 import {chooseElement} from './components/chooseShape.js';
 
 //to create function for moving object by keyboard key

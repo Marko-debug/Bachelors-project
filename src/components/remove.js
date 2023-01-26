@@ -1,4 +1,5 @@
   export function removeElement(event, select){
+    console.log(select)
     const elmnt = select[0];
     if(!elmnt.parentNode)return;
     if(event.key === 'Delete' && elmnt){
