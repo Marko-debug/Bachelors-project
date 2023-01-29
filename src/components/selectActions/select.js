@@ -21,7 +21,6 @@ window.selectElement = function selectElement(event){
     if(!event.target.id)return;
     
     const elmnt = document.getElementById(event.target.id)
-    console.log(elmnt)
     
     if(select.length === 1){
         

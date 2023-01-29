@@ -12,6 +12,7 @@
   <script type="module" src="./src/index.js"></script>
   <script type="module" src="./src/components/selectActions/select.js"></script>
   <script type="module" src="./src/components/moving/drag.js"></script>
+  <script type="module" src="./src/components/moving/svgMoving.js"></script>
   <script type="module" src="./src/components/scaling/scaleSVG.js"></script>
   <script type="module" src="./src/components/dotsSVG.js"></script>
 
@@ -190,8 +191,9 @@
       class="process"
       onclick="selectElement(event)"
       onmousedown="dragElement(event)"
-    >
-      <div class="process-time" contenteditable="true">--Time--</div>
+    > -->
+      <!-- <div style="font-size: 1.4rem; text-align: center; min-width: 3rem; text-decoration: none;" contenteditable="true">Entity</div> -->
+      <!-- <div class="process-time" contenteditable="true">--Time--</div>
       <div class="process-owner" contenteditable="true">--Owner--</div>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: -8px; left: -8px; cursor: nw-resize" /></image>
       <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: 190px; left: -8px; cursor: sw-resize"/></image>
@@ -250,9 +252,9 @@
     >
       <g
         id="7"
-        class="svg-information-flow"
+        class="svg-physically-flow"
         transform="translate(0.5,0.5)"
-        onmousedown="dragElement(event)"
+        onclick="showDots(event)"
         style="visibility: visible; cursor: pointer"
       >
         <path
@@ -278,7 +280,7 @@
           cy="180"
           r="7"
           fill="red"
-          style="visibility: visible; cursor: ew-resize; z-index: 1"
+          style="visibility: hidden; cursor: ew-resize; z-index: 2"
         ></circle>
         <circle
           class="dot2"
@@ -287,7 +289,7 @@
           cy="180"
           r="7"
           fill="red"
-          style="visibility: visible; cursor: ew-resize; z-index: 1"
+          style="visibility: hidden; cursor: ew-resize; z-index: 2"
         ></circle>
       </g>
       <!-- <g
@@ -336,9 +338,25 @@
       </g> -->
       <g
         id="6"
+        class="svg-rediraction"
+        onclick="selectElement(event)"
+        onmousedown="svgMoving(event)"
+        transform="translate(0.5, 0.5)"
+        style="visibility: visible; cursor: move"
+      >
+      <div style="font-size: 1.4rem; text-align: center; min-width: 3rem; text-decoration: none;" contenteditable="true">Relationship</div>
+        <path
+          d="M 700 80 L 660 110 L 660 160 L 700 190 L 750 190 L 790 160 L 790 110 L 750 80 L 700 80"
+          stroke="black"
+          fill="transparent"
+          stroke-width="2"
+        ></path>
+      </g>
+      <!-- <g
+        id="6"
         class="svg-parallel"
         onclick="selectElement(event)"
-        onmousedown="dragElement(event)"
+        onmousedown="svgMoving(event)"
         transform="translate(0.5, 0.5)"
         style="visibility: visible; cursor: move"
       >
@@ -348,7 +366,7 @@
           fill="transparent"
           stroke-width="2"
         ></path>
-      </g>
+      </g> -->
       <!-- <g transform="translate(0.5, 0.5)" style="visibility: visible">
         <path d="M 500 90 L 500 150 L 540 190 L 600 190 L 640 150 L 640 90 L 600 50 L 540 50 L 500 90" stroke="black" fill="none" stroke-width="2"></path>
       </g> -->

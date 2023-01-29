@@ -1,22 +1,24 @@
-export function make(className){
+export function make(id, className){
 
     function makeSVGEl(tag, attrs) {
-        var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-        for (var k in attrs) {
+        let el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        for (let k in attrs) {
           el.setAttribute(k, attrs[k]);
         }
         return el;
     }
 
-    var dataset = [
+    let dataset = [
         { class: "dot1", x: 790, y: 180},
         { class: "dot2", x: 500, y: 180}
-      ];
+    ];
     
-    var svg = document.querySelector(".svg-elements");
-    var g = makeSVGEl("g", { 
-        id: `${Math. floor(Math. random() * 100)}`,
+    let svg = document.querySelector(".svg-elements");
+    let g = makeSVGEl("g", { 
+        id: `${id}`,
         class: className,
+        onmousedown: "svgMoving(event)",
+        style: "visibility: visible; cursor: pointer;"
     });
     svg.appendChild(g);
     
@@ -39,9 +41,10 @@ export function make(className){
             class: coords.class,
             cx: coords.x,
             cy: coords.y,
+            onmousedown: "scaleSVG(event)",
             r: 7,
             fill: "red",
-            style: "visibility: visible; cursor: move;"
+            style: "visibility: visible; cursor: ew-resize;"
         }));
     });
 }

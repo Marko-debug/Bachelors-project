@@ -1,16 +1,18 @@
 import {resizeElement} from '../scaling/resize.js';
-import {svgMoving} from './svgMoving.js';
+import {allElements} from '../chooseShape.js'
+// import {svgMoving} from './svgMoving.js';
 
 window.dragElement = function dragElement(event) {
     event.preventDefault();
+
+    let objIndex = allElements.findIndex(obj => obj.id == event.target.id);
+    console.log(allElements)
+
     if(event.target.className === "select-circle"){
         const elmnt = document.getElementById(event.target.parentNode.id);
         dragMouseActions(elmnt);
-      }
+    }
     else if(event.target.className === "process-time" || event.target.className === "process-owner")return;
-    else if(event.target.parentNode.className.baseVal === "svg-parallel")svgMoving(event);
-    else if(event.target.parentNode.className.baseVal === "svg-information-flow")svgMoving(event);
-    else if(event.target.parentNode.className.baseVal === "svg-information-flow-broken")svgMoving(event);
     else{
       const elmnt = document.getElementById(event.target.id);
       dragMouseActions(elmnt);
@@ -47,6 +49,10 @@ window.dragElement = function dragElement(event) {
             // set the element's new position:
             elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+            //update instance
+            allElements[objIndex].top = (elmnt.offsetTop - pos2) + "px";
+            allElements[objIndex].left = (elmnt.offsetLeft - pos1) + "px";
           }
         }
       

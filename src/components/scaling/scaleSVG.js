@@ -2,7 +2,7 @@ window.scaleSVG = function scaleSVG(event) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     // elmnt.onmousedown = dragMouseDown;
     let path = event.target;
-    console.log("hello")
+    console.log(event)
     dragMouseDown()
 
     function dragMouseDown(e) {
@@ -15,7 +15,7 @@ window.scaleSVG = function scaleSVG(event) {
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
-        
+    
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
@@ -26,8 +26,10 @@ window.scaleSVG = function scaleSVG(event) {
         pos4 = e.pageY;
         let valueX = 650 - (e.pageX);
         let valueY = 80 - (e.pageY);
-
+        
+        
         if(event.target.className.baseVal === "dot1"){
+            console.log(e.target.parentNode)
             const linePath = event.target.parentNode.children[0];
             linePath.setAttribute("d", `M 500 180 L ${790 - valueX} ${180 - valueY}`); 
             const arrowPath = event.target.parentNode.children[1];
