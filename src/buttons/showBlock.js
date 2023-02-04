@@ -13,8 +13,8 @@ const getBtnThreeBranch = document.querySelector(".btn-three-branches")
 const getBtnSplitBranch = document.querySelector(".btn-split-branches")
 const getBtnParallel = document.querySelector(".btn-parallel")
 const getBtnRediraction = document.querySelector(".btn-rediraction")
-const getBtnEndOfTwoProcess = document.querySelector(".btn-end-of-two-process")
-const getBtnEndOfThreeProcess = document.querySelector(".btn-end-of-three-process")
+const getBtnEndOfTwoProcess = document.querySelector(".btn-end-of-two-processes")
+const getBtnEndOfThreeProcess = document.querySelector(".btn-end-of-three-processes")
 
 const getButtons = [
     {ref: getBtnOfShapes, shape: "btn-process", short: "pr"}, 
@@ -32,8 +32,8 @@ const getButtons = [
     {ref: getBtnSplitBranch, shape: "btn-split-branches", short: "sb"},
     {ref: getBtnParallel, shape: "btn-parallel", short: "pa"},
     {ref: getBtnRediraction, shape: "btn-rediraction", short: "re"},
-    {ref: getBtnEndOfTwoProcess, shape: "btn-end-of-two-process", short: "ep"},
-    {ref: getBtnEndOfThreeProcess, shape: "btn-end-of-three-process", short: "eh"},
+    {ref: getBtnEndOfTwoProcess, shape: "btn-end-of-two-processes", short: "ep"},
+    {ref: getBtnEndOfThreeProcess, shape: "btn-end-of-three-processes", short: "eh"},
 ]
 
 const ShowUp = (getButton) => {

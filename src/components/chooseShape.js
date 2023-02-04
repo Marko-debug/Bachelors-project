@@ -12,6 +12,8 @@ import { Rediraction } from "./elements/svgClasses/Rediraction.js";
 
 import { generateSVG} from "./generating/generateSVG.js";
 import { make } from "./generating/make.js";
+import { EndOfTwoProcess } from "./elements/svgClasses/EndOfTwoProcess.js";
+import { EndOfThreeProcess } from "./elements/svgClasses/EndOfThreeProcess.js";
 
 const allElements = [];
 
@@ -28,19 +30,6 @@ const chooseElement = (element) => {
         const object = new Process(id, name, "300px", "200px", "60px", "500px", "-8px", "190px", "-8px", "190px", "-8px", "-8px", "286px", "290px");
         allElements.push(object);
         generateElements(elements, name, object)
-    //     const rect = document.createElement("rect");
-    //     svg.setAttribute("id", "1");
-    //     svg.setAttribute("width", "3000");
-    //     svg.setAttribute("height", "1500");
-    //     rect.setAttribute("x", "800");
-    //     rect.setAttribute("y", "60");
-    //     rect.setAttribute("width", "100");
-    //     rect.setAttribute("height", "100");
-    //     rect.setAttribute("stroke", "black");
-    //     rect.setAttribute("fill", "red");
-    //     rect.setAttribute("stroke-width", "2");    
-    //     elements.appendChild(svg);        
-    //     svg.appendChild(rect);        
     }
     else if(element === "btn-text"){
         const div = document.createElement("div")
@@ -56,20 +45,9 @@ const chooseElement = (element) => {
         const className = "svg-physically-flow";
         const id = Math. floor(Math. random() * 100);
         const path = [{name: "line", xMove: 500, yMove: 180, xLine1: 790, yLine1: 180},{name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 183, xLine2: 785, yLine2: 180, xLine3: 783, yLine3: 176}, {name: "dot1", x: 790, y: 180}, {name: "dot2", x: 500, y: 180}];
-        const object = new PhysicallyFlow(id, className, path)
+        const object = new PhysicallyFlow(id, className, path, 0, 0)
         allElements.push(object);
-        make(className);
-    //     const newg = document.createElement("g"); 
-    //     const newpath = document.createElement("path"); 
-    //     newg.setAttribute("id", "5");
-    //     newg.setAttribute("transform", "translate(0.5, 0.5)");
-    //     newg.setAttribute("style", "visibility: visible; cursor:move");
-    //     newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
-    //     newpath.setAttribute("stroke", "black");
-    //     newpath.setAttribute("fill", "blue");
-    //     newpath.setAttribute("stroke-width", "2");
-    //     svg.appendChild(newg);        
-    //     newg.appendChild(newpath);        
+        make(id, className);
     }
     else if(element === "btn-physically-flow-broken"){
         const className = "svg-physically-flow-broken";
@@ -77,44 +55,22 @@ const chooseElement = (element) => {
         const path = [{name: "line1", xMove: 500, yMove: 180, xLine1: 600, yLine1: 180},{name: "line2", xMove: 600, yMove: 180, xLine1: 600, yLine1: 280},{name: "arrow", xMove: 600, yMove: 280, xLine1: 603, yLine1: 273, xLine2: 597, yLine2: 273, xLine3: 597, yLine3: 273}, {name: "dot1", x: 600, y: 280}, {name: "dot2", x: 500, y: 180}];
         const object = new PhysicallyFlowBroken(id, className, path)
         allElements.push(object);
-        make(className);
-    //     const newg = document.createElement("g"); 
-    //     const newpath = document.createElement("path"); 
-    //     newg.setAttribute("id", "5");
-    //     newg.setAttribute("transform", "translate(0.5, 0.5)");
-    //     newg.setAttribute("style", "visibility: visible; cursor:move");
-    //     newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
-    //     newpath.setAttribute("stroke", "black");
-    //     newpath.setAttribute("fill", "blue");
-    //     newpath.setAttribute("stroke-width", "2");
-    //     svg.appendChild(newg);        
-    //     newg.appendChild(newpath);        
+        make(id, className);
     }
     else if(element === "btn-input"){
         const className = "svg-input";
         const id = Math. floor(Math. random() * 100);
         const object = new Input(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60)
         allElements.push(object);
-        generateSVG(id, className);
-        // const newg = document.createElement("g"); 
-        // const newpath = document.createElement("path"); 
-        // newg.setAttribute("id", "4");
-        // newg.setAttribute("transform", "translate(0.5, 0.5)");
-        // newg.setAttribute("style", "visibility: visible; cursor:move");
-        // newpath.setAttribute("d", "M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60");
-        // newpath.setAttribute("stroke", "black");
-        // newpath.setAttribute("fill", "blue");
-        // newpath.setAttribute("stroke-width", "2");
-        // svg.appendChild(newg);        
-        // newg.appendChild(newpath);        
+        generateSVG(id, className);  
     }
     else if(element === "btn-output"){
 
         const name = "output";
         const id = Math. floor(Math. random() * 100);
         const object = new Output(id, name, "60px", "500px");
-        generateElements(elements, name, object)
         allElements.push(object);
+        generateElements(elements, name, object)
     }
     else if(element === "btn-event-transition"){
 
@@ -123,7 +79,6 @@ const chooseElement = (element) => {
         const object = new EventTransition(id, name, "150px", "60px", "60px", "500px", "-8px", "50px", "-8px", "50px", "-8px", "-8px", "140px", "140px");
         allElements.push(object);
         generateElements(elements, name, object)
-
     }
     else if(element === "btn-end-of-instance"){
 
@@ -154,43 +109,28 @@ const chooseElement = (element) => {
         const object = new Rediraction(id, className, 700, 80, 660, 110, 660, 160, 700, 190, 750, 190, 790, 160, 790, 110, 750, 80, 700, 80)
         allElements.push(object);
         generateSVG(id, className);
-        // const div = document.createElement("div")
-        // div.setAttribute("id", Math. floor(Math. random() * 100))
-        // div.classList.add("rediraction")
-        // div.setAttribute("onclick","selectElement(event);");
-        // div.setAttribute("onmousedown","dragElement(event);");
-        // const inner = document.createElement("div")
-        // inner.classList.add("inner")
-        // elements.appendChild(div)
-        // div.appendChild(inner)
     }
-    // else if(element === "btn-parallel"){
-    //     const div = document.createElement("div")
-    //     div.setAttribute("id", Math. floor(Math. random() * 100))
-    //     div.classList.add("parallel")
-    //     elements.appendChild(div)
-    //     div.setAttribute("onclick","selectElement(document.getElementById(event.target.id));");
-    //     div.setAttribute("onmousedown","dragElement(event);");
-    // }
     else if(element === "btn-parallel"){
         const className = "svg-parallel";
         const id = Math. floor(Math. random() * 100);
         const object = new Parallel(id, className, 650, 80, 630, 60, 500, 60, 500, 150, 650, 150, 650, 80, 630, 80, 630, 60, 0, 0)
         allElements.push(object);
         generateSVG(id, className);
-        // const newg = document.createElementNS('http://www.w3.org/2000/svg', "g"); 
-        // const newpath = document.createElement("path"); 
-        // newg.setAttribute("id", "5");
-        // newg.setAttribute("transform", "translate(0.5, 0.5)");
-        // newg.setAttribute("style", "visibility: visible; cursor:move;");
-        // newpath.setAttribute("d", "M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 ");
-        // newpath.setAttribute("stroke", "black");
-        // newpath.setAttribute("fill", "blue");
-        // newpath.setAttribute("stroke-width", "2");
-        // newg.classList.add("svg-parallel")
-        // newg.appendChild(newpath);   
-        // svg.appendChild(newg);        
     }
+    else if(element === "btn-end-of-two-processes"){
+        const className = "svg-end-of-two-processes";
+        const id = Math. floor(Math. random() * 100);
+        const object = new EndOfTwoProcess(id, className, 600, 100, 580, 55, 580, 145, 620, 55, 620, 145, 0, 0)
+        allElements.push(object);
+        generateSVG(id, className);
+    }
+    else if(element === "btn-end-of-three-processes"){
+        const className = "svg-end-of-three-processes";
+        const id = Math. floor(Math. random() * 100);
+        const object = new EndOfThreeProcess(id, className, 600, 100, 575, 56, 575, 144, 600, 50, 600, 150, 625, 56, 625, 144, 0, 0)
+        allElements.push(object);
+        generateSVG(id, className);
+    }    
     else{
         console.log('i do not know')
 

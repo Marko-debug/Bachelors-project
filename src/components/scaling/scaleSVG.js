@@ -1,8 +1,12 @@
+import { allElements } from "../chooseShape.js"
+
 window.scaleSVG = function scaleSVG(event) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+    let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);
+    const svg = allElements[objIndex];
     // elmnt.onmousedown = dragMouseDown;
     let path = event.target;
-    console.log(event)
     dragMouseDown()
 
     function dragMouseDown(e) {
@@ -24,28 +28,60 @@ window.scaleSVG = function scaleSVG(event) {
         pos2 = pos4 - e.pageY;
         pos3 = e.pageX;
         pos4 = e.pageY;
-        let valueX = 650 - (e.pageX);
-        let valueY = 80 - (e.pageY);
         
         
         if(event.target.className.baseVal === "dot1"){
-            console.log(e.target.parentNode)
+            let valueX = svg.objects[0].xLine1 - (e.pageX);
+            let valueY = svg.objects[0].yLine1 - (e.pageY);
+    
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+
             const linePath = event.target.parentNode.children[0];
-            linePath.setAttribute("d", `M 500 180 L ${790 - valueX} ${180 - valueY}`); 
+            linePath.setAttribute("d", svg.getPathLine1); 
             const arrowPath = event.target.parentNode.children[1];
-            arrowPath.setAttribute("d", `M ${790 - valueX} ${180 - valueY} L ${783 - valueX} ${183 - valueY} L ${785 - valueX} ${180 - valueY} L ${783 - valueX} ${176 - valueY} Z`); 
+            arrowPath.setAttribute("d", svg.getPathArrow1); 
 
             const circle = event.target.parentNode.children[2];
-            circle.setAttribute("cx", `${790 - valueX}`)
-            circle.setAttribute("cy", `${180 - valueY}`)
+            console.log(circle)
+            console.log(svg.getPathDot1X)
+            circle.setAttribute("cx", svg.getPathDot1X)
+            circle.setAttribute("cy", svg.getPathDot1Y)
+
+            svg.objects[0].xLine1 = svg.objects[0].xLine1 - svg.valueX;
+            svg.objects[0].yLine1 = svg.objects[0].yLine1 - svg.valueY;
+            svg.objects[1].xMove = svg.objects[1].xMove - svg.valueX;
+            svg.objects[1].yMove = svg.objects[1].yMove - svg.valueY;
+            svg.objects[1].xLine1 = svg.objects[1].xLine1 - svg.valueX;
+            svg.objects[1].yLine1 = svg.objects[1].yLine1 - svg.valueY;
+            svg.objects[1].xLine2 = svg.objects[1].xLine2 - svg.valueX;
+            svg.objects[1].yLine2 = svg.objects[1].yLine2 - svg.valueY;
+            svg.objects[1].xLine3 = svg.objects[1].xLine3 - svg.valueX;
+            svg.objects[1].yLine3 = svg.objects[1].yLine3 - svg.valueY;
+            svg.objects[2].x = svg.objects[2].x - svg.valueX;
+            svg.objects[2].y = svg.objects[2].y - svg.valueY;
+
         }
         if(event.target.className.baseVal === "dot2"){
+
+            let valueX = svg.objects[0].xMove - (e.pageX);
+            let valueY = svg.objects[0].yMove - (e.pageY);
+    
+            svg.valueX = valueX;
+            svg.valueY = valueY;
+
             const linePath = event.target.parentNode.children[0];
-            linePath.setAttribute("d", `M ${500 - valueX} ${180 - valueY} L 790 180`); 
+            linePath.setAttribute("d", svg.getPathLine2); 
             const circle = event.target.parentNode.children[3];
-            circle.setAttribute("cx", `${500 - valueX}`)
-            circle.setAttribute("cy", `${180 - valueY}`)
+            circle.setAttribute("cx", svg.getPathDot2X)
+            circle.setAttribute("cy", svg.getPathDot2Y)
+
+            svg.objects[0].xMove = svg.objects[0].xMove - svg.valueX;
+            svg.objects[0].yMove = svg.objects[0].yMove - svg.valueY;
+            svg.objects[3].x = svg.objects[3].x - svg.valueX;
+            svg.objects[3].y = svg.objects[3].y - svg.valueY;
         }
+
         // set the element's new position:
         // elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         // elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
