@@ -33,7 +33,7 @@
     font-size: 23px;
 }
 
-.save, .open-file{
+.save, .open-file, .download{
     float: right;
 }
 

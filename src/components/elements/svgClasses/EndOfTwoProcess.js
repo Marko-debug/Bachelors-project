@@ -18,7 +18,6 @@ export class EndOfTwoProcess{
 
 
     get getCX(){
-        console.log("hello")
         return `${this.cx - this.valueX}`; 
     }
 

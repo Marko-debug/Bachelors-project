@@ -1,13 +1,15 @@
 import { allElements } from "../chooseShape.js"
+import { textMoving } from "./textMoving.js"
 
 window.svgMoving = function svgMoving(event){
+    if(event.target.className === "svg-text"){textMoving(event);return;}
     if(event.target.parentNode.className.baseVal === "svg-physically-flow")return;
-
+    if(event.target.parentNode.className.baseVal === "svg-physically-flow-broken")return;
+    
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);
     const svg = allElements[objIndex];
-    
     let path = event.target;
     dragMouseDown()
 
@@ -92,7 +94,6 @@ window.svgMoving = function svgMoving(event){
             path.setAttribute("d", svg.getPath); 
         }
 
-        console.log(svg.xMove)
         svg.xMove = svg.xMove - svg.valueX;
         svg.yMove = svg.yMove - svg.valueY;
         svg.xLine1 = svg.xLine1 - svg.valueX;

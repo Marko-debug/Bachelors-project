@@ -11,10 +11,14 @@
 <body>
   <script type="module" src="./src/index.js"></script>
   <script type="module" src="./src/components/selectActions/select.js"></script>
+  <script type="module" src="./src/components/selectActions/svgSelect.js"></script>
   <script type="module" src="./src/components/moving/drag.js"></script>
   <script type="module" src="./src/components/moving/svgMoving.js"></script>
-  <script type="module" src="./src/components/scaling/scaleSVG.js"></script>
+  <script type="module" src="./src/components/scaling/scaleSVGArrows.js"></script>
   <script type="module" src="./src/components/dotsSVG.js"></script>
+  <script type="module" src="./src/components/editText.js"></script>
+  <script type="module" src="./src/components/serialANDdeserial/serialize.js"></script>
+  <script type="module" src="./src/components/serialANDdeserial/deserialize.js"></script>
 
   <!-- Dynamic Bar -->
   <div class="navbar" style="width: 400px; height: 500px">
@@ -54,103 +58,114 @@
         <button class="btn-end-of-three-processes">End of three processes</button>
       </div>
       <button class="grid">Grid</button>
-      <button class="text">Text</button>
       <button class="save">Save</button>
       <button class="open-file">Open file</button>
+      <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
+
+        <fieldset>
+           <input type='file' id='fileinput'>
+           <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+        </fieldset>
+      </form>
+      <p>
+        <a class="download" href="" id="link" download="image.png">Download</a>
+      </p>
     </div>
   </div>
 
   <!--Showing blockes-->
-  <div class="pr" hidden="true" style="margin-top: 100px">
-    <image width="200" height="150" src="./src/images/process.png"></image>
-    <div class="show-name">Process</div>
-  </div>
-  <div class="te" hidden="true" style="margin-top: 100px">
-    <image width="200" height="150" src="./src/images/text.png"></image>
-    <div class="show-name">Text</div>
-  </div>
+  <div class="showing-blocks">
+    <div class="pr" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150" src="./src/images/process.png"></image>
+      <div class="show-name">Process</div>
+    </div>
+    <div class="te" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150" src="./src/images/text.png"></image>
+      <div class="show-name">Text</div>
+    </div>
 
-  <div class="pf" hidden="true" style="margin-top: 100px">
-    <image
-      width="200"
-      height="150"
-      src="./src/images/physically-flow.png"
-    ></image>
-    <div class="show-name">Physically flow</div>
-  </div>
-  <div class="pfb" hidden="true" style="margin-top: 100px">
-    <image
-      width="200"
-      height="150"
-      src="./src/images/physically-flow.png"
-    ></image>
-    <div class="show-name">Physically flow broken</div>
-  </div>
+    <div class="pf" hidden="true" style="margin-top: 100px">
+      <image
+        width="200"
+        height="150"
+        src="./src/images/physically-flow.png"
+      ></image>
+      <div class="show-name">Physically flow</div>
+    </div>
+    <div class="pfb" hidden="true" style="margin-top: 100px">
+      <image
+        width="200"
+        height="150"
+        src="./src/images/physically-flow.png"
+      ></image>
+      <div class="show-name">Physically flow broken</div>
+    </div>
 
-  <div class="if" hidden="true" style="margin-top: 100px">
-    <image width="200" height="150"></image>
-    <div class="show-name">Information flow</div>
-  </div>
-  <div class="in" hidden="true" style="margin-top: 100px">
-    <image width="200" height="150" src="./src/images/input.png"></image>
-    <div class="show-name">Input</div>
-  </div>
-  <div class="ou" hidden="true" style="margin-top: 150px">
-    <image width="200" height="150" src="./src/images/output.png"></image>
-    <div class="show-name">Output</div>
-  </div>
-  <div class="ei" hidden="true" style="margin-top: 150px">
-    <image
-      width="200"
-      height="150"
-      src="./src/images/end-of-instance.png"
-    ></image>
-    <div class="show-name">End of instance</div>
-  </div>
-  <div class="et" hidden="true" style="margin-top: 150px">
-    <image
-      width="200"
-      height="150"
-      src="./src/images/event-transition.png"
-    ></image>
-    <div class="show-name">Event transition</div>
-  </div>
-  <div class="wb" hidden="true" style="margin-top: 150px">
-    <image
-      width="200"
-      height="150"
-      src="./src/images/two-branching-with-positive-and-negative-branch.png"
-    ></image>
-    <div class="show-name">Two-branching with positive and negative branch</div>
-  </div>
-  <div class="hb" hidden="true" style="margin-top: 200px">
-    <image
-      width="200"
-      height="150"
-      src="./src/images/three-branching-with-connected-value-branches.png"
-    ></image>
-    <div class="show-name">Three-branching with connected value branches</div>
-  </div>
-  <div class="sb" hidden="true" style="margin-top: 200px">
-    <image width="200" height="150"></image>
-    <div class="show-name">Split braches</div>
-  </div>
-  <div class="pa" hidden="true" style="margin-top: 200px">
-    <image width="200" height="150"></image>
-    <div class="show-name">Parallel</div>
-  </div>
-  <div class="re" hidden="true" style="margin-top: 200px">
-    <image width="200" height="150"></image>
-    <div class="show-name">Redirection symbol</div>
-  </div>
-  <div class="ep" hidden="true" style="margin-top: 250px">
-    <image width="200" height="150"></image>
-    <div class="show-name">End of two processes</div>
-  </div>
-  <div class="eh" hidden="true" style="margin-top: 250px">
-    <image width="200" height="150"></image>
-    <div class="show-name">End of three processes</div>
-  </div>
+    <div class="if" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150"></image>
+      <div class="show-name">Information flow</div>
+    </div>
+    <div class="in" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150" src="./src/images/input.png"></image>
+      <div class="show-name">Input</div>
+    </div>
+    <div class="ou" hidden="true" style="margin-top: 150px">
+      <image width="200" height="150" src="./src/images/output.png"></image>
+      <div class="show-name">Output</div>
+    </div>
+    <div class="ei" hidden="true" style="margin-top: 150px">
+      <image
+        width="200"
+        height="150"
+        src="./src/images/end-of-instance.png"
+      ></image>
+      <div class="show-name">End of instance</div>
+    </div>
+    <div class="et" hidden="true" style="margin-top: 150px">
+      <image
+        width="200"
+        height="150"
+        src="./src/images/event-transition.png"
+      ></image>
+      <div class="show-name">Event transition</div>
+    </div>
+    <div class="wb" hidden="true" style="margin-top: 150px">
+      <image
+        width="200"
+        height="150"
+        src="./src/images/two-branching-with-positive-and-negative-branch.png"
+      ></image>
+      <div class="show-name">Two-branching with positive and negative branch</div>
+    </div>
+    <div class="hb" hidden="true" style="margin-top: 200px">
+      <image
+        width="200"
+        height="150"
+        src="./src/images/three-branching-with-connected-value-branches.png"
+      ></image>
+      <div class="show-name">Three-branching with connected value branches</div>
+    </div>
+    <div class="sb" hidden="true" style="margin-top: 200px">
+      <image width="200" height="150"></image>
+      <div class="show-name">Split braches</div>
+    </div>
+    <div class="pa" hidden="true" style="margin-top: 200px">
+      <image width="200" height="150"></image>
+      <div class="show-name">Parallel</div>
+    </div>
+    <div class="re" hidden="true" style="margin-top: 200px">
+      <image width="200" height="150"></image>
+      <div class="show-name">Redirection symbol</div>
+    </div>
+    <div class="ep" hidden="true" style="margin-top: 250px">
+      <image width="200" height="150"></image>
+      <div class="show-name">End of two processes</div>
+    </div>
+    <div class="eh" hidden="true" style="margin-top: 250px">
+      <image width="200" height="150"></image>
+      <div class="show-name">End of three processes</div>
+    </div>
+</div>
 
   <!-- Grid -->
   <div class="grid-canvas" hidden="true" style="width: 3000px; height: 1500px">
@@ -186,173 +201,33 @@
 
   <!--Elements in div/svg-->
   <div class="elements">
-    <!-- <div
-      id="0"
-      class="process"
-      onclick="selectElement(event)"
-      onmousedown="dragElement(event)"
-    > -->
-      <!-- <div style="font-size: 1.4rem; text-align: center; min-width: 3rem; text-decoration: none;" contenteditable="true">Entity</div> -->
-      <!-- <div class="process-time" contenteditable="true">--Time--</div>
-      <div class="process-owner" contenteditable="true">--Owner--</div>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: -8px; left: -8px; cursor: nw-resize" /></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: 190px; left: -8px; cursor: sw-resize"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: -8px; left: 286px; cursor: ne-resize"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" onmousedown="dragElement(event)" style="top: 190px; left: 290px; cursor: se-resize"/></image>
+    <!-- <div id="36" onclick="selectElement(event)" onmousedown="dragElement(event);" style="width: 300px; height: 200px; top: 60px; left: 500px" class="process">
+      <div class="process-time" onclick="selectElement(event)" style="width: 150px; height: 60px; top: -2px; left: 148px; z-index: 4;">Timer
+      </div>
+      <div class="process-owner" style="width: 180px; height: 60px; top: 138px; left: -2px; z-index: 4;" contenteditable="true">Owner
+      </div>
+      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: -8px; cursor: nw-resize" class="select-circle">
+      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: -8px; cursor: sw-resize" class="select-circle">
+      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: 286px; cursor: ne-resize" class="select-circle">
+      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: 290px; cursor: se-resize" class="select-circle">
     </div> -->
-    <!-- <div
-      id="1"
-      class="text"
-      onclick="selectElement(document.getElementById(event.target.id))"
-      onmousedown=" dragElement(document.getElementById(event.target.id))"
-      contenteditable="true"
-      >
-        --Text--
-    </div> -->
-    <!-- <div id="1" class="input"></div> -->
-    <!-- <div id="2" class="event-transition"
-      onclick="dragElement(event)"
-      ondblclick="writing(event)"
-      style="left: 500px; top: 60px">
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: -2px; left: 0px; cursor: nw-resize" /></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: 50px; left: 0px; cursor: sw-resize"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: -2px; left: 140px; cursor: ne-resize"/></image>
-      <image class="select-circle" src="./src/images/circle.png" hidden="true" style="top: 50px; left: 140px; cursor: se-resize"/></image>
-    </div> -->
-    <!-- <div id="3" class="end-of-instance" onclick="dragElement(event)"></div> -->
-    <!-- <div id="4" class="output" onclick="dragElement(event)" onmousedown="dragMouseDown(event)">
-      <image class="select-circle" src="./src/images/btn-rotate.png" hidden="true" style="top: 20px;left: 220px; cursor: crosshair" /></image>
-    </image></div> -->
-    <!-- <div id="2" class="two-branching" onclick="dragElement(event)"></div> -->
-    <!-- <div id="2" class="three-branching"></div> -->
-    <!-- <div id="2" class="parallel" onclick="dragElement(event)"></div> -->
-    <!-- <div id="2" class="rediraction" onclick="dragElement(event)">
-      <div class="inner"></div>
-    </div> -->
-    <!-- <div id="2" class="split"></div> -->
+    <!-- <div style="top: 400px; left: 100px" contenteditable="true">Entity</div> -->
+    <!-- <p class='item_content' contenteditable='true' onclick='$(this).focus();'>hello</p> -->
 
-    <!-- <svg id="0" width="3000" height="1500">
-      <g stroke="black" fill="transparent" stroke-width="2">
-        <rect x="500" y="60" rx="10" ry="10" width="300" height="200" />
-        <rect x="650" y="60" rx="10" ry="10" width="150" height="50" />
-        <rect x="500" y="210" rx="10" ry="10" width="150" height="50" />
-      </g>
-    </svg> -->
-
+    <!-- <div id="20" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" hidden="false" style="top:60px; left: 500px; width: 60px;" >Entity</div>
+    <div id="21" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
     <svg
       class="svg-elements"
       style="
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        min-width: 5288px;
-        min-height: 2695px;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      min-width: 5288px;
+      min-height: 2695px;
       "
     >
-      <!-- <g
-        id="7"
-        class="svg-physically-flow"
-        transform="translate(0.5,0.5)"
-        onclick="showDots(event)"
-        style="visibility: visible; cursor: pointer"
-      >
-        <path
-          class="line"
-          d="M 500 180 L 790 180"
-          fill="none"
-          stroke="rgb(0, 0, 0)"
-          stroke-miterlimit="10"
-          pointer-events="stroke"
-        ></path>
-        <path
-          class="arrow"
-          d="M 790 180 L 783 183 L 785 180 L 783 176 Z"
-          fill="rgb(0, 0, 0)"
-          stroke="rgb(0, 0, 0)"
-          stroke-miterlimit="10"
-          pointer-events="stroke"
-        ></path>
-        <circle
-          class="dot1"
-          onmousedown="scaleSVG(event)"
-          cx="790"
-          cy="180"
-          r="7"
-          fill="red"
-          style="visibility: hidden; cursor: ew-resize; z-index: 2"
-        ></circle>
-        <circle
-          class="dot2"
-          onmousedown="scaleSVG(event)"
-          cx="500"
-          cy="180"
-          r="7"
-          fill="red"
-          style="visibility: hidden; cursor: ew-resize; z-index: 2"
-        ></circle>
-      </g> -->
-      <!-- <g
-        id="8"
-        class="svg-information-flow-broken"
-        onmousedown="dragElement(event)"
-        transform="translate(0.5,0.5)"
-        style="visibility: visible; cursor: pointer"
-      >
-        <path
-          class="line1"
-          d="M 500 180 L 600 180"
-          fill="none"
-          stroke="rgb(0, 0, 0)"
-          stroke-miterlimit="10"
-          pointer-events="stroke"
-        ></path>
-        <path
-          class="line2"
-          d="M 600 180 L 600 280"
-          fill="none"
-          stroke="rgb(0, 0, 0)"
-          stroke-miterlimit="10"
-          pointer-events="stroke"
-        ></path>
-        <path
-          class="arrow"
-          d="M 600 280 L 603 273 L 597 273 L 597 273 Z"
-          fill="rgb(0, 0, 0)"
-          stroke="rgb(0, 0, 0)"
-          stroke-miterlimit="10"
-          pointer-events="all"
-        ></path>
-      </g> -->
-      <!-- <g
-        id="3"
-        transform="translate(0.5, 0.5)"
-        style="visibility: visible; cursor: move"
-      >
-        <path
-          d="M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60"
-          stroke="black"
-          fill="none"
-          stroke-width="2"
-        ></path>
-      </g> -->
-      <!-- <g
-        id="6"
-        class="svg-rediraction"
-        onclick="selectElement(event)"
-        onmousedown="svgMoving(event)"
-        transform="translate(0.5, 0.5)"
-        style="visibility: visible; cursor: move"
-      >
-      <div style="font-size: 1.4rem; text-align: center; min-width: 3rem; text-decoration: none;" contenteditable="true">Relationship</div>
-        <path
-          d="M 700 80 L 660 110 L 660 160 L 700 190 L 750 190 L 790 160 L 790 110 L 750 80 L 700 80"
-          stroke="black"
-          fill="transparent"
-          stroke-width="2"
-        ></path>
-      </g> -->
-      <!-- <g
+    <!-- <g
         id="6"
         class="svg-parallel"
         onclick="selectElement(event)"
@@ -367,80 +242,74 @@
           stroke-width="2"
         ></path>
       </g> -->
-      <!-- <g transform="translate(0.5, 0.5)" style="visibility: visible">
-        <path d="M 500 90 L 500 150 L 540 190 L 600 190 L 640 150 L 640 90 L 600 50 L 540 50 L 500 90" stroke="black" fill="none" stroke-width="2"></path>
-      </g> -->
+          <!-- <foreignObject width="800px" height="200px" style="top: 100px; left: 600px; position: relative"> -->
+            <!-- <div class="text" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
+          <!-- </foreignObject> -->
+    <!-- <g style="cursor: move; visibility: visible;">
+      <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
+        <div style="display: flex; width: 68px; padding-top: 214px; margin-left: 1000px;">
+          <div id=30 class="svg-text" ondblclick=selectElement(event) style="display: inline-block; color: rgb(0, 0, 0); pointer-events: all;">
+            Fero
+          </div>
+        </div>
+      </foreignObject>
+    </g>
+
+    <g style="cursor: move; visibility: visible;">
+      <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
+        <div style="display: flex; width: 68px; padding-top: 214px; margin-left: 1100px;">
+          <div id=31 class="svg-text" ondblclick=selectElement(event) style="display: inline-block; color: rgb(0, 0, 0); pointer-events: all;">
+            Fero
+          </div>
+        </div>
+      </foreignObject>
+    </g> -->
+    <!-- <g style="cursor: move; visibility: visible;">
+      <g>
+        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
+          <div style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 214px; margin-left: 1055px;">
+            <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <div ondblclick=selectElement(event) style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                Marek
+              </div>
+            </div>
+          </div>
+        </foreignObject>
+      </g>
+    </g> -->
+
+    <!-- <g style="cursor: crosshair;"></g><image x="690" y="40" width="20" height="20" src="./src/images/btn-rotate.png" preserveAspectRatio="none"></image></g> -->
     </svg>
   </div>
+  <!-- <div>
+
+    <svg
+      class="svg-elements"
+      id="svg"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+    </svg>
+  </div> -->
   <!-- <textarea class="text-area" hidden="true"></textarea> -->
   <script type="module" src="src/buttons/btnNavbar.js"></script>
   <script type="module" src="src/buttons/btnGrid.js"></script>
 </body>
 
-<!-- <svg width="3000" height="1500">
-      <defs>
-        <marker
-          id="head"
-          orient="auto"
-          markerWidth="3"
-          markerHeight="4"
-          refX="0.1"
-          refY="2"
-        >
-          <path d="M0,0 V4 L2,2 Z" fill="black" />
-        </marker>
-      </defs>
-
-      <path
-        id="arrow-line"
-        marker-end="url(#head)"
-        stroke-width="3"
-        fill="none"
-        stroke="black"
-        d="M 500 60 700 60,120"
-      />
-    </svg> -->
-
-<!-- <svg id="0" width="3000" height="1500">
-      <path
-        d="M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60"
-        stroke="black"
-        fill="transparent"
-        stroke-width="2"
-      />
-    </svg> -->
-
-<!-- <svg id="0" width="3000" height="1500">
-      <path
-        d="M 500 60 L 500 110 L 650 110 L 650 140 L 700 85 L 650 30 L 650 60 L 500 60"
-        stroke="black"
-        fill="black"
-        stroke-width="2"
-      />
-    </svg> -->
-
-<!-- <svg id="0" width="3000" height="1500">
-      <text x="545" y="85">E</text>
-      <circle
-        cx="550"
-        cy="80"
-        r="50"
-        stroke="black"
-        fill="transparent"
-        stroke-width="2"
-      />
-    </svg> -->
-
-<!-- <svg id="0" width="3000" height="1500">
-      <rect
-        x="500"
-        y="60"
-        rx="25"
-        ry="25"
-        width="180"
-        height="50"
-        stroke="black"
-        fill="transparent"
-        stroke-width="2"
-      />
-    </svg> -->
+<!-- <g
+        id="6"
+        class="svg-parallel"
+        onclick="selectElement(event)"
+        onmousedown="svgMoving(event)"
+        transform="translate(0.5, 0.5)"
+        style="visibility: visible; cursor: move"
+      >
+        <path
+          d="M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 "
+          stroke="black"
+          fill="transparent"
+          stroke-width="2"
+        ></path>
+          <foreignObject width="40px" height="40px" style="top: 100px; left: 600px; position: relative">
+            <div contenteditable="true">Marek</div>
+          </foreignObject>
+      </g> -->

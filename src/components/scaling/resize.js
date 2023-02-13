@@ -140,12 +140,19 @@ export function resizeElement(event, pos1, pos2) {
             elmnt.style.width = (elmnt.clientWidth + pos1) + "px";
             elmnt.style.top = (elmnt.offsetTop- pos2) + "px";
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            // elmnt.children[1].style.top =  (elmnt.children[1].offsetTop - pos2) + "px";
+            // console.log(`top: ${elmnt.style.top}, topO: ${elmnt.children[1].style.top}`)
 
             //update instance
             allElements[objIndex].height = (elmnt.clientHeight + pos2) + "px";
             allElements[objIndex].width = (elmnt.clientWidth - pos1) + "px";
             allElements[objIndex].top = (elmnt.offsetTop - pos2) + "px";
             allElements[objIndex].left = (elmnt.offsetLeft - pos1) + "px";
+            // console.log(elmnt.children[1].offsetTop)
+            // allElements[objIndex].topT = (elmnt.offsetTop - pos2) + "px";
+            // allElements[objIndex].leftT = (elmnt.offsetLeft - pos1) + "px";
+            // allElements[objIndex].topO = (elmnt.offsetTop - pos2) + "px";
+            // allElements[objIndex].leftO = (elmnt.offsetLeft - pos1) + "px";
         }
     }
 

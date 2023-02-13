@@ -21,7 +21,7 @@ const getButtons = [
     {ref: getBtnText, shape: "btn-text", short: "te"},
     {ref: getBtnPhys, shape: "btn-physically", short: "wrapper-flows"}, 
     {ref: getBtnPhysFlow, shape: "btn-physically-flow", short: "pf"}, 
-    {ref: getBtnPhysFlowBroken, shape: "btn-physically-flow", short: "pfb"}, 
+    {ref: getBtnPhysFlowBroken, shape: "btn-physically-flow-broken", short: "pfb"}, 
     {ref: getBtnInfoFlow, shape: "btn-information-flow", short: 'if'}, 
     {ref: getBtnInput, shape: "btn-input", short: "in"}, 
     {ref: getBtnOutput, shape: "btn-output", short: "ou"}, 

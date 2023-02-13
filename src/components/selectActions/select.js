@@ -4,8 +4,12 @@ import { removeElement} from '../remove.js';
 //array select save final clicked element
 let select = [];
 
+//array edit save div text, which eas hidden
+let edit = [];
+
 //remove resizing dots of object when is clicked outside of element
-const divElements = document.querySelector('.elements') 
+const divElements = document.querySelector('.elements'); 
+const svgElements = document.querySelector('.svg-elements'); 
 
 divElements.addEventListener('click', (event)=>removeSelect(event, select))
 
@@ -14,14 +18,26 @@ document.addEventListener("keydown", (event)=>removeElement(event, select))
 
 //function for showing resizing dots of object
 window.selectElement = function selectElement(event){
-    // if(event.target.parentNode.id){
-    //     const elmnt = document.getElementById(event.target.parentNode.id);
-    //     select.push(elmnt);
-    // };
+    event.preventDefault();
     if(!event.target.id)return;
     
-    const elmnt = document.getElementById(event.target.id)
-    
+    console.log("selected...");
+    const elmnt = document.getElementById(event.target.id);
+
+    if(edit.length === 1){
+        const popped = edit.pop();
+        console.log(popped.innerHTML)
+        popped.removeAttribute("contenteditable");
+        popped.setAttribute("onmousedown", "svgMoving(event)")
+    }
+
+    if(elmnt.className === "svg-text"){
+        elmnt.removeAttribute("onmousedown")
+        elmnt.setAttribute("contenteditable", "true");
+        edit.push(elmnt)
+        return;
+    }
+
     if(select.length === 1){
         
         const popped = select.pop()

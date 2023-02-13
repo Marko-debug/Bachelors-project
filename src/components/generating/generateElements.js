@@ -2,6 +2,18 @@ import { dataForSelectDots } from "../selectActions/selectDots.js";
 
 export function generateElements(elements, name, object){
     
+    if(name === "text"){
+        const div = document.createElement("div")
+        div.setAttribute("id", object.getId)
+        div.classList.add("text")
+        elements.appendChild(div)
+        div.setAttribute("onmousedown","dragElement(event);");
+        div.setAttribute("style", object.getStyle);
+        div.setAttribute("contenteditable", "true");
+        div.innerHTML="Text";
+        return;
+    }
+
     elements.appendChild(generate( "div", {
         id: object.getId,
         onclick: "selectElement(event)",
@@ -26,7 +38,13 @@ export function generateElements(elements, name, object){
         const timer = document.createElement("div")
         const owner = document.createElement("div")
         timer.classList.add("process-time")
+        timer.setAttribute("style" ,object.getTimerStyle) 
+        timer.setAttribute("contenteditable", "true") 
+        timer.innerHTML = "Timer";
         owner.classList.add("process-owner") 
+        owner.setAttribute("style" ,object.getOwnerStyle) 
+        owner.setAttribute("contenteditable", "true") 
+        owner.innerHTML = "Owner";
         div.appendChild(timer)
         div.appendChild(owner)
         dataForSelectDots(div, "process");

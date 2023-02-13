@@ -6,7 +6,6 @@ window.dragElement = function dragElement(event) {
     event.preventDefault();
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.id);
-    console.log(allElements)
 
     if(event.target.className === "select-circle"){
         const elmnt = document.getElementById(event.target.parentNode.id);
