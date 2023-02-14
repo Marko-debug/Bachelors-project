@@ -34,7 +34,103 @@ window.svgMoving = function svgMoving(event){
         pos4 = e.pageY;
         
         calculateChanges(e);
-        
+
+        if(event.target.parentNode.className.baseVal === "svg-process"){
+
+            //main shape
+            path.setAttribute("x", svg.getX); 
+            path.setAttribute("y", svg.getY); 
+             //timer
+            path.parentNode.children[1].setAttribute("x", svg.getXT); 
+            path.parentNode.children[1].setAttribute("y", svg.getYT); 
+            //owner
+            path.parentNode.children[2].setAttribute("x", svg.getXO); 
+            path.parentNode.children[2].setAttribute("y", svg.getYO); 
+            //manipulable dots
+            path.parentNode.children[3].setAttribute("cx", svg.getCX1); 
+            path.parentNode.children[3].setAttribute("cy", svg.getCY1);
+            path.parentNode.children[4].setAttribute("cx", svg.getCX2); 
+            path.parentNode.children[4].setAttribute("cy", svg.getCY2);
+            path.parentNode.children[5].setAttribute("cx", svg.getCX3); 
+            path.parentNode.children[5].setAttribute("cy", svg.getCY3); 
+            path.parentNode.children[6].setAttribute("cx", svg.getCX4); 
+            path.parentNode.children[6].setAttribute("cy", svg.getCY4); 
+
+            //main shape
+            svg.x = svg.x - svg.valueX;
+            svg.y = svg.y - svg.valueY;
+            //timer
+            svg.xT = svg.xT - svg.valueX;
+            svg.yT = svg.yT - svg.valueY;
+            //owner
+            svg.xO = svg.xO - svg.valueX;
+            svg.yO = svg.yO - svg.valueY;
+            //manipulable dots
+            svg.cx1 = svg.cx1 - svg.valueX;
+            svg.cy1 = svg.cy1 - svg.valueY;
+            svg.cx2 = svg.cx2 - svg.valueX;
+            svg.cy2 = svg.cy2 - svg.valueY;
+            svg.cx3 = svg.cx3 - svg.valueX;
+            svg.cy3 = svg.cy3 - svg.valueY;
+            svg.cx4 = svg.cx4 - svg.valueX;
+            svg.cy4 = svg.cy4 - svg.valueY;
+            return;
+        }
+        if(event.target.parentNode.className.baseVal === "svg-event-transition"){
+
+            //main shape
+            path.setAttribute("x", svg.getX); 
+            path.setAttribute("y", svg.getY); 
+            //manipulable dots
+            path.parentNode.children[1].setAttribute("cx", svg.getCX1); 
+            path.parentNode.children[1].setAttribute("cy", svg.getCY1);
+            path.parentNode.children[2].setAttribute("cx", svg.getCX2); 
+            path.parentNode.children[2].setAttribute("cy", svg.getCY2);
+            path.parentNode.children[3].setAttribute("cx", svg.getCX3); 
+            path.parentNode.children[3].setAttribute("cy", svg.getCY3); 
+            path.parentNode.children[4].setAttribute("cx", svg.getCX4); 
+            path.parentNode.children[4].setAttribute("cy", svg.getCY4); 
+
+            //main shape
+            svg.x = svg.x - svg.valueX;
+            svg.y = svg.y - svg.valueY;
+            //manipulable dots
+            svg.cx1 = svg.cx1 - svg.valueX;
+            svg.cy1 = svg.cy1 - svg.valueY;
+            svg.cx2 = svg.cx2 - svg.valueX;
+            svg.cy2 = svg.cy2 - svg.valueY;
+            svg.cx3 = svg.cx3 - svg.valueX;
+            svg.cy3 = svg.cy3 - svg.valueY;
+            svg.cx4 = svg.cx4 - svg.valueX;
+            svg.cy4 = svg.cy4 - svg.valueY;
+            return;
+        }
+        if(event.target.parentNode.className.baseVal === "svg-end-of-instance"){
+
+            //main shape
+            path.setAttribute("cx", svg.getCX); 
+            path.setAttribute("cy", svg.getCY); 
+            path.parentNode.children[1].setAttribute("x", svg.getX); 
+            path.parentNode.children[1].setAttribute("y", svg.getY); 
+
+            //main shape
+            svg.cx = svg.cx - svg.valueX;
+            svg.cy = svg.cy - svg.valueY;
+            svg.x = svg.x - svg.valueX;
+            svg.y = svg.y - svg.valueY;
+            return;
+        }
+        if(event.target.parentNode.className.baseVal === "svg-two-branching" || event.target.parentNode.className.baseVal === "svg-three-branching"){
+
+            //main shape
+            path.setAttribute("x", svg.getX); 
+            path.setAttribute("y", svg.getY); 
+            
+            //main shape
+            svg.x = svg.x - svg.valueX;
+            svg.y = svg.y - svg.valueY;
+            return;
+        }
         if(event.target.parentNode.className.baseVal === "svg-parallel"){
 
             //set and changed coordinations
@@ -47,7 +143,7 @@ window.svgMoving = function svgMoving(event){
             svg.yLine8 = svg.yLine8 - svg.valueY;
         }
         if(event.target.parentNode.className.baseVal === "svg-end-of-two-processes"){
-
+            (console.log(svg.valueX))
             //set and changed coordinations
             path.setAttribute("cx", svg.getCX);
             path.setAttribute("cy", svg.getCY);
@@ -64,33 +160,12 @@ window.svgMoving = function svgMoving(event){
             svg.yMove2 = svg.yMove2 - svg.valueY;
             svg.xLine2 = svg.xLine2 - svg.valueX;
             svg.yLine2 = svg.yLine2 - svg.valueY;
-            return; 
-        }
-        if(event.target.parentNode.className.baseVal === "svg-end-of-three-processes"){
-
-            //set and changed coordinations
-            path.setAttribute("cx", svg.getCX);
-            path.setAttribute("cy", svg.getCY);
-            const lines = path.parentNode.children[1];
-            lines.setAttribute("d", svg.getPath); 
-            
-            svg.cx = svg.cx - svg.valueX;
-            svg.cy = svg.cy - svg.valueY;
-            svg.xMove1 = svg.xMove1 - svg.valueX;
-            svg.yMove1 = svg.yMove1 - svg.valueY;
-            svg.xLine1 = svg.xLine1 - svg.valueX;
-            svg.yLine1 = svg.yLine1 - svg.valueY;
-            svg.xMove2 = svg.xMove2 - svg.valueX;
-            svg.yMove2 = svg.yMove2 - svg.valueY;
-            svg.xLine2 = svg.xLine2 - svg.valueX;
-            svg.yLine2 = svg.yLine2 - svg.valueY;
-            svg.xMove3 = svg.xMove3 - svg.valueX;
-            svg.yMove3 = svg.yMove3 - svg.valueY;
-            svg.xLine3 = svg.xLine3 - svg.valueX;
-            svg.yLine3 = svg.yLine3 - svg.valueY;
             return; 
         }
         if(event.target.parentNode.className.baseVal === "svg-input"){
+            path.setAttribute("d", svg.getPath); 
+        }
+        if(event.target.parentNode.className.baseVal === "svg-output"){
             path.setAttribute("d", svg.getPath); 
         }
 
@@ -124,6 +199,25 @@ window.svgMoving = function svgMoving(event){
             let valueX = svg.cx - (e.pageX);
             let valueY = svg.cy - (e.pageY);
 
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-process" || svg.name == "svg-event-transition"){
+            let valueX = (svg.x + (svg.width / 2)) - (e.pageX);
+            let valueY = (svg.y + (svg.height / 2)) - (e.pageY);
+
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-end-of-instance"){
+            let valueX = (svg.cx) - (e.pageX);
+            let valueY = (svg.cy) - (e.pageY);
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-two-branching" || svg.name == "svg-three-branching"){
+            let valueX = (svg.x + (svg.width / 2)) - (e.pageX);
+            let valueY = (svg.y + (svg.height / 2)) - (e.pageY);
             svg.valueX = valueX;
             svg.valueY = valueY; 
         }

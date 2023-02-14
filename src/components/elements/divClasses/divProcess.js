@@ -1,4 +1,4 @@
-export default class Process{
+export class Process{
     
     constructor(id, name, width, height, top, left, widthT, heightT, topT, leftT, widthO, heightO, topO, leftO, dotTop1, dotTop2, dotTop3, dotTop4, dotLeft1, dotLeft2, dotLeft3, dotLeft4){
         this.id = id;

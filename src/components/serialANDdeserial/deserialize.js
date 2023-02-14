@@ -1,12 +1,13 @@
 import { generateElements} from "../generating/generateElements.js";
-import Process from "../elements/divClasses/Process.js"
+import { Process} from "../elements/svgClasses/Process.js";
 import {PhysicallyFlow} from "../elements/svgClasses/PhysicallyFlow.js";
 import { PhysicallyFlowBroken } from "../elements/svgClasses/PhysicallyFlowBroken.js";
 import {Input} from "../elements/svgClasses/Input.js";
-import Output from "../elements/divClasses/Output.js"
-import EventTransition from "../elements/divClasses/EventTransition.js"
-import EndOFInstance from "../elements/divClasses/EndOfInstance.js";
-import TwoBranching from "../elements/divClasses/TwoBranching.js";
+import {Output}  from "../elements/svgClasses/Output.js"
+import {EventTransition} from "../elements/svgClasses/EventTransition.js"
+import {EndOfInstance} from "../elements/svgClasses/EndOfInstance.js";
+import {TwoBranching} from "../elements/svgClasses/TwoBranching.js";
+import {ThreeBranching} from "../elements/svgClasses/ThreeBranching.js";
 import { Parallel } from "../elements/svgClasses/Parallel.js";
 import { Rediraction } from "../elements/svgClasses/Rediraction.js";
 

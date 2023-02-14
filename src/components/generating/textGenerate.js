@@ -27,7 +27,7 @@ export function textGenerate(id, className, object){
     div.setAttribute("class", className);
     div.setAttribute("ondblclick", "selectElement(event)");
     div.setAttribute("onmousedown", "svgMoving(event)");
-    div.setAttribute("style", `display: inline-block; color: rgb(0, 0, 0); pointer-events: all;`);
+    div.setAttribute("style", `display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;`);
     div.innerHTML = object.content
 
     svg.appendChild(g);

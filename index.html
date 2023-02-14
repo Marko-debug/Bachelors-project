@@ -12,12 +12,15 @@
   <script type="module" src="./src/index.js"></script>
   <script type="module" src="./src/components/selectActions/select.js"></script>
   <script type="module" src="./src/components/selectActions/svgSelect.js"></script>
-  <script type="module" src="./src/components/moving/drag.js"></script>
   <script type="module" src="./src/components/moving/svgMoving.js"></script>
   <script type="module" src="./src/components/scaling/scaleSVGArrows.js"></script>
   <script type="module" src="./src/components/dotsSVG.js"></script>
   <script type="module" src="./src/components/editText.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/serialize.js"></script>
+  <script type="module" src="./src/components/scaling/resize1.js"></script>
+  <script type="module" src="./src/components/scaling/resize2.js"></script>
+  <script type="module" src="./src/components/scaling/resize3.js"></script>
+  <script type="module" src="./src/components/scaling/resize4.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/deserialize.js"></script>
 
   <!-- Dynamic Bar -->
@@ -245,25 +248,7 @@
           <!-- <foreignObject width="800px" height="200px" style="top: 100px; left: 600px; position: relative"> -->
             <!-- <div class="text" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
           <!-- </foreignObject> -->
-    <!-- <g style="cursor: move; visibility: visible;">
-      <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-        <div style="display: flex; width: 68px; padding-top: 214px; margin-left: 1000px;">
-          <div id=30 class="svg-text" ondblclick=selectElement(event) style="display: inline-block; color: rgb(0, 0, 0); pointer-events: all;">
-            Fero
-          </div>
-        </div>
-      </foreignObject>
-    </g>
 
-    <g style="cursor: move; visibility: visible;">
-      <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-        <div style="display: flex; width: 68px; padding-top: 214px; margin-left: 1100px;">
-          <div id=31 class="svg-text" ondblclick=selectElement(event) style="display: inline-block; color: rgb(0, 0, 0); pointer-events: all;">
-            Fero
-          </div>
-        </div>
-      </foreignObject>
-    </g> -->
     <!-- <g style="cursor: move; visibility: visible;">
       <g>
         <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
@@ -276,6 +261,19 @@
           </div>
         </foreignObject>
       </g>
+    </g> -->
+
+    <!-- <g id="98" class="svg-process" onclick="selectElement(event)" transform="translate(0.5, 0.5)" style="visibility: visible; cursor: move;">
+      <rect onmousedown="svgMoving(event)" x="500" y="100" width="350" height="200" rx="15" stroke="black" fill="transparent"></rect>
+      <rect class="timer" x="680" y="100" width="170" height="50" rx="15" stroke="black" fill="transparent"></rect>
+      <rect class="owner" x="500" y="250" width="170" height="50" rx="15" stroke="black" fill="transparent"></rect>
+      
+      <circle class="dot1" cx="505" cy="105" onmousedown="resize1(event)" r="7" fill="red" style="visibility: visible; cursor: nw-resize;"></circle>
+      <circle class="dot2" cx="845" cy="105" onmousedown="resize2(event)" r="7" fill="red" style="visibility: visible; cursor: sw-resize;"></circle>
+      <circle class="dot3" cx="505" cy="295" r="7" onmousedown="resize3(event)" fill="red" style="visibility: visible; cursor: ne-resize"></circle>
+      <circle class="dot4" cx="845" cy="295" r="7" onmousedown="resize4(event)" fill="red" style="visibility: visible; cursor: se-resize">
+
+      </circle>
     </g> -->
 
     <!-- <g style="cursor: crosshair;"></g><image x="690" y="40" width="20" height="20" src="./src/images/btn-rotate.png" preserveAspectRatio="none"></image></g> -->
