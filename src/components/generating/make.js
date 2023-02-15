@@ -17,7 +17,7 @@ export function make(id, className, object){
     let g = makeSVGEl("g", { 
         id: `${id}`,
         class: className,
-        onclick: "svgSelect(event)",
+        onclick: "selectElement(event)",
         style: "visibility: visible; cursor: pointer;"
     });
     svg.appendChild(g);

@@ -1,3 +1,5 @@
+import { textGenerateInside } from "./textGenerate.js";
+
 export function processGenerate(id, className, object){
 
     function makeSVGEl(tag, attrs) {
@@ -52,6 +54,13 @@ export function processGenerate(id, className, object){
         stroke: "black",
         fill: "transparent",
       }));
+      //timer text
+      textGenerateInside(object.idTimer, object.contentTimer, object.topTimer, object.leftTimer, object);
+      //owner text
+      textGenerateInside(object.idOwner, object.contentOwner, object.topOwner, object.leftOwner, object);
+      //process text
+      textGenerateInside(object.idProcess, object.contentProcess, object.topProcess, object.leftProcess, object);
+
       //dot1 (left-up)
       g.appendChild(makeSVGEl("circle", {
         class: "dot1",
@@ -60,7 +69,7 @@ export function processGenerate(id, className, object){
         cy: `${object.cy1}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: nw-resize"
+        style: "visibility: hidden; cursor: nw-resize"
       }));
       //dot2 (right-up)
       g.appendChild(makeSVGEl("circle", {
@@ -70,7 +79,7 @@ export function processGenerate(id, className, object){
         cy: `${object.cy2}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: sw-resize"
+        style: "visibility: hidden; cursor: sw-resize"
       }));
       //dot3 (left-down)
       g.appendChild(makeSVGEl("circle", {
@@ -80,7 +89,7 @@ export function processGenerate(id, className, object){
         cy: `${object.cy3}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: ne-resize"
+        style: "visibility: hidden; cursor: ne-resize"
       }));
       //dot4 (right-down)
       g.appendChild(makeSVGEl("circle", {
@@ -90,9 +99,11 @@ export function processGenerate(id, className, object){
         cy: `${object.cy4}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: se-resize"
+        style: "visibility: hidden; cursor: se-resize"
       }));
     }
+
+
     if(className === "svg-event-transition"){  
       //main shape    
       g.appendChild(makeSVGEl("rect", {
@@ -101,7 +112,7 @@ export function processGenerate(id, className, object){
         y: `${object.y}`,
         width: `${object.width}`,
         height: `${object.height}`,
-        rx: "15",
+        rx: "40",
         stroke: "black",
         fill: "transparent",
       }));
@@ -114,7 +125,7 @@ export function processGenerate(id, className, object){
         cy: `${object.cy1}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: nw-resize"
+        style: "visibility: hidden; cursor: nw-resize"
       }));
       //dot2 (right-up)
       g.appendChild(makeSVGEl("circle", {
@@ -124,7 +135,7 @@ export function processGenerate(id, className, object){
         cy: `${object.cy2}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: sw-resize"
+        style: "visibility: hidden; cursor: sw-resize"
       }));
       //dot3 (left-down)
       g.appendChild(makeSVGEl("circle", {
@@ -134,7 +145,7 @@ export function processGenerate(id, className, object){
         cy: `${object.cy3}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: ne-resize"
+        style: "visibility: hidden; cursor: ne-resize"
       }));
       //dot4 (right-down)
       g.appendChild(makeSVGEl("circle", {
@@ -144,7 +155,7 @@ export function processGenerate(id, className, object){
         cy: `${object.cy4}`,
         r: "7",
         fill: "red",
-        style: "visibility: visible; cursor: se-resize"
+        style: "visibility: hidden; cursor: se-resize"
       }));
     }
 }

@@ -37,25 +37,40 @@ window.svgMoving = function svgMoving(event){
 
         if(event.target.parentNode.className.baseVal === "svg-process"){
 
+            
+            const textTimerStyle = path.parentNode.children[3].children[0].children[0].style;
+            const textOwnerStyle = path.parentNode.children[4].children[0].children[0].style;
+            const textProcessStyle = path.parentNode.children[5].children[0].children[0].style;
+            
             //main shape
             path.setAttribute("x", svg.getX); 
             path.setAttribute("y", svg.getY); 
-             //timer
+            //timer
             path.parentNode.children[1].setAttribute("x", svg.getXT); 
             path.parentNode.children[1].setAttribute("y", svg.getYT); 
             //owner
             path.parentNode.children[2].setAttribute("x", svg.getXO); 
             path.parentNode.children[2].setAttribute("y", svg.getYO); 
+            //timer text
+            textTimerStyle.paddingTop = (svg.getTextTimerTop) + "px";
+            textTimerStyle.marginLeft = (svg.getTextTimerLeft) + "px";
+            //owner text
+            textOwnerStyle.paddingTop = (svg.getTextOwnerTop) + "px";
+            textOwnerStyle.marginLeft = (svg.getTextOwnerLeft) + "px";
+            //process text
+            textProcessStyle.paddingTop = (svg.getTextProcessTop) + "px";
+            textProcessStyle.marginLeft = (svg.getTextProcessLeft) + "px";
             //manipulable dots
-            path.parentNode.children[3].setAttribute("cx", svg.getCX1); 
-            path.parentNode.children[3].setAttribute("cy", svg.getCY1);
-            path.parentNode.children[4].setAttribute("cx", svg.getCX2); 
-            path.parentNode.children[4].setAttribute("cy", svg.getCY2);
-            path.parentNode.children[5].setAttribute("cx", svg.getCX3); 
-            path.parentNode.children[5].setAttribute("cy", svg.getCY3); 
-            path.parentNode.children[6].setAttribute("cx", svg.getCX4); 
-            path.parentNode.children[6].setAttribute("cy", svg.getCY4); 
+            path.parentNode.children[6].setAttribute("cx", svg.getCX1); 
+            path.parentNode.children[6].setAttribute("cy", svg.getCY1);
+            path.parentNode.children[7].setAttribute("cx", svg.getCX2); 
+            path.parentNode.children[7].setAttribute("cy", svg.getCY2);
+            path.parentNode.children[8].setAttribute("cx", svg.getCX3); 
+            path.parentNode.children[8].setAttribute("cy", svg.getCY3); 
+            path.parentNode.children[9].setAttribute("cx", svg.getCX4); 
+            path.parentNode.children[9].setAttribute("cy", svg.getCY4); 
 
+            //UPDATE INSTANCE
             //main shape
             svg.x = svg.x - svg.valueX;
             svg.y = svg.y - svg.valueY;
@@ -65,6 +80,15 @@ window.svgMoving = function svgMoving(event){
             //owner
             svg.xO = svg.xO - svg.valueX;
             svg.yO = svg.yO - svg.valueY;
+            //timer text
+            svg.topTimer = svg.getTextTimerTop;
+            svg.leftTimer = svg.getTextTimerLeft;
+            //owner text
+            svg.topOwner = svg.getTextOwnerTop;
+            svg.leftOwner = svg.getTextOwnerLeft;
+            //process text
+            svg.topProcess = svg.getTextProcessTop;
+            svg.leftProcess = svg.getTextProcessLeft;
             //manipulable dots
             svg.cx1 = svg.cx1 - svg.valueX;
             svg.cy1 = svg.cy1 - svg.valueY;
@@ -143,7 +167,6 @@ window.svgMoving = function svgMoving(event){
             svg.yLine8 = svg.yLine8 - svg.valueY;
         }
         if(event.target.parentNode.className.baseVal === "svg-end-of-two-processes"){
-            (console.log(svg.valueX))
             //set and changed coordinations
             path.setAttribute("cx", svg.getCX);
             path.setAttribute("cy", svg.getCY);
@@ -160,6 +183,29 @@ window.svgMoving = function svgMoving(event){
             svg.yMove2 = svg.yMove2 - svg.valueY;
             svg.xLine2 = svg.xLine2 - svg.valueX;
             svg.yLine2 = svg.yLine2 - svg.valueY;
+            return; 
+        }
+        if(event.target.parentNode.className.baseVal === "svg-end-of-three-processes"){
+            //set and changed coordinations
+            path.setAttribute("cx", svg.getCX);
+            path.setAttribute("cy", svg.getCY);
+            const lines = path.parentNode.children[1];
+            lines.setAttribute("d", svg.getPath); 
+            
+            svg.cx = svg.cx - svg.valueX;
+            svg.cy = svg.cy - svg.valueY;
+            svg.xMove1 = svg.xMove1 - svg.valueX;
+            svg.yMove1 = svg.yMove1 - svg.valueY;
+            svg.xLine1 = svg.xLine1 - svg.valueX;
+            svg.yLine1 = svg.yLine1 - svg.valueY;
+            svg.xMove2 = svg.xMove2 - svg.valueX;
+            svg.yMove2 = svg.yMove2 - svg.valueY;
+            svg.xLine2 = svg.xLine2 - svg.valueX;
+            svg.yLine2 = svg.yLine2 - svg.valueY;
+            svg.xMove3 = svg.xMove3 - svg.valueX;
+            svg.yMove3 = svg.yMove3 - svg.valueY;
+            svg.xLine3 = svg.xLine3 - svg.valueX;
+            svg.yLine3 = svg.yLine3 - svg.valueY;
             return; 
         }
         if(event.target.parentNode.className.baseVal === "svg-input"){

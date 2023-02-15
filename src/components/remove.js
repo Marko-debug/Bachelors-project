@@ -1,11 +1,14 @@
-  export function removeElement(event, select){
-    // console.log(select)
-    // const elmnt = select[0];
-    // if(!elmnt.parentNode)return;
-    // if(event.key === 'Delete' && elmnt){
-    //   console.log(elmnt)
-    //   console.log(elmnt.parentNode) // i dont understand, why elmnt does not have a parentNode when I press 2 times Delete 
-    //   elmnt.parentNode.removeChild(elmnt)
-    //   console.log("removed object")
-    // }
+  import {select} from "./selectActions/select.js";
+
+  export function removeElement(event){
+    if(select.length === 0) return;
+    const popped = select.pop();
+    console.log(popped.id)
+    const element = document.getElementById(popped.id) 
+    if(event.key === 'Delete' && element){
+      console.log(element)
+      console.log(element.parentNode)
+      element.parentNode.removeChild(element)
+      console.log("removed object")
+    }
   }

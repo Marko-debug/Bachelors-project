@@ -1,6 +1,6 @@
 export class Process{
     
-    constructor(id, name, x, y, width, height, xT, yT, widthT, heightT, xO, yO, widthO, heightO, cx1, cy1, cx2, cy2, cx3, cy3, cx4, cy4, valueX, valueY){
+    constructor(id, name, x, y, width, height, xT, yT, widthT, heightT, xO, yO, widthO, heightO, idTimer, contentTimer, topTimer, leftTimer, idOwner, contentOwner, topOwner, leftOwner, idProcess, contentProcess, topProcess, leftProcess,cx1, cy1, cx2, cy2, cx3, cy3, cx4, cy4, valueX, valueY){
         this.id = id;
         this.name = name;
         this.x = x;
@@ -15,6 +15,22 @@ export class Process{
         this.yO = yO;
         this.widthO = widthO;
         this.heightO = heightO;
+
+        this.idTimer = idTimer;
+        this.contentTimer = contentTimer;
+        this.topTimer = topTimer;
+        this.leftTimer = leftTimer;
+
+        this.idOwner = idOwner;
+        this.contentOwner = contentOwner;
+        this.topOwner = topOwner;
+        this.leftOwner = leftOwner;
+
+        this.idProcess = idProcess;
+        this.contentProcess = contentProcess;
+        this.topProcess = topProcess;
+        this.leftProcess = leftProcess;
+
         this.cx1 = cx1;
         this.cy1 = cy1;
         this.cx2 = cx2;
@@ -54,6 +70,30 @@ export class Process{
     }
     get getYO(){
         return `${this.yO - this.valueY}`;
+    }
+
+    //text timer
+    get getTextTimerTop(){
+        return `${this.topTimer - this.valueY}`;
+    }
+    get getTextTimerLeft(){
+        return `${this.leftTimer - this.valueX}`;
+    }
+
+    //text owner
+    get getTextOwnerTop(){
+        return `${this.topOwner - this.valueY}`;
+    }
+    get getTextOwnerLeft(){
+        return `${this.leftOwner - this.valueX}`;
+    }
+
+    //text process
+    get getTextProcessTop(){
+        return `${this.topProcess - this.valueY}`;
+    }
+    get getTextProcessLeft(){
+        return `${this.leftProcess - this.valueX}`;
     }
 
     //manipulable dots

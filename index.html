@@ -11,7 +11,6 @@
 <body>
   <script type="module" src="./src/index.js"></script>
   <script type="module" src="./src/components/selectActions/select.js"></script>
-  <script type="module" src="./src/components/selectActions/svgSelect.js"></script>
   <script type="module" src="./src/components/moving/svgMoving.js"></script>
   <script type="module" src="./src/components/scaling/scaleSVGArrows.js"></script>
   <script type="module" src="./src/components/dotsSVG.js"></script>
@@ -254,8 +253,8 @@
         <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
           <div style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 214px; margin-left: 1055px;">
             <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
-              <div ondblclick=selectElement(event) style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                Marek
+              <div ondblclick=selectElement(event) style="display: inline-block; font-size: 20px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                Text
               </div>
             </div>
           </div>
@@ -263,15 +262,48 @@
       </g>
     </g> -->
 
-    <!-- <g id="98" class="svg-process" onclick="selectElement(event)" transform="translate(0.5, 0.5)" style="visibility: visible; cursor: move;">
-      <rect onmousedown="svgMoving(event)" x="500" y="100" width="350" height="200" rx="15" stroke="black" fill="transparent"></rect>
-      <rect class="timer" x="680" y="100" width="170" height="50" rx="15" stroke="black" fill="transparent"></rect>
-      <rect class="owner" x="500" y="250" width="170" height="50" rx="15" stroke="black" fill="transparent"></rect>
-      
-      <circle class="dot1" cx="505" cy="105" onmousedown="resize1(event)" r="7" fill="red" style="visibility: visible; cursor: nw-resize;"></circle>
-      <circle class="dot2" cx="845" cy="105" onmousedown="resize2(event)" r="7" fill="red" style="visibility: visible; cursor: sw-resize;"></circle>
-      <circle class="dot3" cx="505" cy="295" r="7" onmousedown="resize3(event)" fill="red" style="visibility: visible; cursor: ne-resize"></circle>
-      <circle class="dot4" cx="845" cy="295" r="7" onmousedown="resize4(event)" fill="red" style="visibility: visible; cursor: se-resize">
+    <!-- <g style="visibility: visible; cursor: move;">
+      <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
+        <div style="display: flex; padding-top: 150px; margin-left: 600px;">
+          <div id="1d56" class="svg-text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; font-family: Georgia, serif; pointer-events: all;">Text
+          </div>
+        </div>
+      </foreignObject>
+    </g> -->
+
+    <!-- <g id="9832" class="svg-process" onclick="selectElement(event)" transform="translate(0.5, 0.5)" style="visibility: visible;">
+      <rect onmousedown="svgMoving(event)" x="500" y="100" width="350" height="200" rx="15" stroke="black" fill="transparent" style="cursor: move;"></rect>
+      <rect class="timer" x="680" y="100" width="170" height="50" rx="15" stroke="black" fill="transparent" style="cursor: text;"></rect>
+      <rect class="owner" x="500" y="250" width="170" height="50" rx="15" stroke="black" fill="transparent" style="cursor: text;"></rect>
+      <g style="visibility: visible; cursor: text;">
+        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
+          <div style="display: flex; padding-top: 115px; margin-left: 730px;">
+            <div id="a8b2" class="text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;">Time
+            </div>
+          </div>
+        </foreignObject>
+      </g>
+      <g style="visibility: visible; cursor: text;">
+        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
+          <div style="display: flex; padding-top: 265px; margin-left: 530px;">
+            <div id="c8d2" class="text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;">Owner
+            </div>
+          </div>
+        </foreignObject>
+      </g>
+      <g style="visibility: visible; cursor: text;">
+        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
+          <div style="display: flex; padding-top: 160px; margin-left: 530px;">
+            <div id="9fwd" class="text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;">Process
+            </div>
+          </div>
+        </foreignObject>
+      </g>
+
+      <circle class="dot1" cx="505" cy="105" onmousedown="resize1(event)" r="7" fill="red" style="visibility: hidden; cursor: nw-resize;"></circle>
+      <circle class="dot2" cx="845" cy="105" onmousedown="resize2(event)" r="7" fill="red" style="visibility: hidden; cursor: sw-resize;"></circle>
+      <circle class="dot3" cx="505" cy="295" r="7" onmousedown="resize3(event)" fill="red" style="visibility: hidden; cursor: ne-resize"></circle>
+      <circle class="dot4" cx="845" cy="295" r="7" onmousedown="resize4(event)" fill="red" style="visibility: hidden; cursor: se-resize">
 
       </circle>
     </g> -->

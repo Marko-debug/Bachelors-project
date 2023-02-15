@@ -29,7 +29,6 @@ export class EndOfThreeProcess{
     }
 
     get getPath(){
-        // console.log(this.xLine3)
         return `
         M ${this.xMove1 - this.valueX} ${this.yMove1 - this.valueY} 
         L ${this.xLine1 - this.valueX} ${this.yLine1 - this.valueY} 

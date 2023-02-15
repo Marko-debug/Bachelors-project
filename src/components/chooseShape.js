@@ -32,9 +32,11 @@ const allElements = [];
 // allElements.push(object2);
 // const object = new Process(36, "process", "300px", "200px", "60px", "500px","150px","60px", "-2px","148px","180px", "60px", "138px","-2px","-8px", "190px", "-8px", "190px", "-8px", "-8px", "286px", "290px");
 // allElements.push(object); 
-// const object = new Process(98, "svg-process", 500, 100, 350, 200, 680, 100, 170, 50, 500, 250, 170, 50, 505, 105, 845, 105, 505, 295, 845, 295, 0, 0);
+// const object = new Process(9642, "svg-process", 500, 100, 350, 200, 680, 100, 170, 50, 500, 250, 170, 50, 5637, "Timer", 115, 730, 3243, "Owner", 265, 530, 9884, "Process", 160, 530, 505, 105, 845, 105, 505, 295, 845, 295, 0, 0);
 // allElements.push(object);
-let s4 = () => {
+
+//function for generating id 
+const s4 = () => {
     return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
         .substring(1);
@@ -46,13 +48,14 @@ const chooseElement = (element) => {
     // let myuuid = uuidv4();
     // console.log('Your UUID is: ' + myuuid);
 
-    const elements = document.querySelector(`.elements`)
-    const svg = document.querySelector(".svg-elements");
     if(element === "btn-process"){
 
         const className = "svg-process";
         const id = s4();
-        const object = new Process(id, className, 500, 100, 350, 200, 680, 100, 170, 50, 500, 250, 170, 50, 505, 105, 845, 105, 505, 295, 845, 295, 0, 0);
+        const idTimer = s4();
+        const idOwner = s4();
+        const idProcess = s4();
+        const object = new Process(id, className, 500, 100, 350, 200, 680, 100, 170, 50, 500, 250, 170, 50, idTimer, "Timer", 115, 730, idOwner, "Owner", 265, 530, idProcess, "Process", 160, 530, 505, 105, 845, 105, 505, 295, 845, 295, 0, 0);
         allElements.push(object);
         processGenerate(id, className, object);
         // const className = "process";
@@ -123,7 +126,7 @@ const chooseElement = (element) => {
 
         const className = "svg-event-transition";
         const id = s4();
-        const object = new EventTransition(id, className, 500, 100, 170, 50, 505, 105, 665, 105, 505, 145, 665, 145, 0, 0);
+        const object = new EventTransition(id, className, 500, 100, 170, 60, 510, 110, 660, 110, 510, 150, 660, 150, 0, 0);
         allElements.push(object);
         processGenerate(id, className, object);  
     }
@@ -139,14 +142,14 @@ const chooseElement = (element) => {
 
         const className = "svg-two-branching"
         const id = s4();
-        const object = new TwoBranching(id, className, 500, 100, 100, 100);
+        const object = new TwoBranching(id, className, 500, 100, 100, 100, 0, 0);
         allElements.push(object);
         generateSVG(id, className, object)
     }
     else if(element === "btn-three-branches"){
         const className = "svg-three-branching"
         const id = s4();
-        const object = new ThreeBranching(id, className, 500, 100, 100, 100);
+        const object = new ThreeBranching(id, className, 500, 100, 100, 100, 0, 0);
         allElements.push(object);
         generateSVG(id, className, object)
     }
