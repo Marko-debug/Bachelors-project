@@ -5,10 +5,8 @@ const getBtnSerialize = document.querySelector(".save");
 
 getBtnSerialize.addEventListener("click", ()=> serializeData())
 
-//create array, where will be saved all JSON data
-const allData = [];
-
 function serializeData(){
+    console.log(allElements)
     const clone = JSON.stringify(allElements)
     // allElements.forEach((element)=>{
     //     const clone = JSON.stringify(element);

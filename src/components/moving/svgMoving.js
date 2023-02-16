@@ -10,6 +10,8 @@ window.svgMoving = function svgMoving(event){
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);
     const svg = allElements[objIndex];
+    console.log(allElements)
+    console.log(event.target.parentNode.id)
     const path = event.target;
     dragMouseDown()
 

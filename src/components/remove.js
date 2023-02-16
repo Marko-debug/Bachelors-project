@@ -1,13 +1,14 @@
   import {select} from "./selectActions/select.js";
+  import { allElements } from "./chooseShape.js";
 
   export function removeElement(event){
     if(select.length === 0) return;
     const popped = select.pop();
-    console.log(popped.id)
     const element = document.getElementById(popped.id) 
+    let objIndex = allElements.findIndex(obj => obj.id == popped.id);
+    // allElements.splice(objIndex, 1);
+    // console.log("it should not be here")
     if(event.key === 'Delete' && element){
-      console.log(element)
-      console.log(element.parentNode)
       element.parentNode.removeChild(element)
       console.log("removed object")
     }

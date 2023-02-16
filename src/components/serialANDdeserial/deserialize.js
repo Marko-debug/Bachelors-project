@@ -1,5 +1,6 @@
 import { generateElements} from "../generating/generateElements.js";
 import { Process} from "../elements/svgClasses/Process.js";
+import { Text } from "../elements/svgClasses/Text.js";
 import {PhysicallyFlow} from "../elements/svgClasses/PhysicallyFlow.js";
 import { PhysicallyFlowBroken } from "../elements/svgClasses/PhysicallyFlowBroken.js";
 import {Input} from "../elements/svgClasses/Input.js";
@@ -15,6 +16,7 @@ import { generateSVG} from "../generating/generateSVG.js";
 import { processGenerate} from "../generating/processGenerate.js";
 import { textGenerate} from "../generating/textGenerate.js";
 import { make } from "../generating/make.js";
+import { makeBroken } from "../generating/makeBroken.js";
 import { EndOfTwoProcess } from "../elements/svgClasses/EndOfTwoProcess.js";
 import { EndOfThreeProcess } from "../elements/svgClasses/EndOfThreeProcess.js";
 // import { allData } from "./serialize.js";
@@ -51,7 +53,6 @@ window.loadFile = function loadFile() {
   }
 
   function receivedText(e) {
-    console.log(e.target.result)
     let lines = e.target.result;
     var newArr = JSON.parse(lines); 
     console.log(newArr)
@@ -66,75 +67,89 @@ window.loadFile = function loadFile() {
 const recoverElement = (element) => {
     if(element.name === "svg-process"){
 
-        const object = new Process(element.id, element.name, element.x, element.y, element.width, element.height, element.xT, element.yT, element.widthT, element.heightT, element.xO, element.yO, element.widthO, element.heightO, element.cx1, element.cy1, element.cx2, element.cy2, element.cx3, element.cy3, element.cx4, element.cy4, element.valueX, element.valueY);
+        const object = new Process(element.id, element.name, element.x, element.y, element.width, element.height, element.xT, element.yT, element.widthT, element.heightT, element.xO, element.yO, element.widthO, element.heightO, element.idTimer, element.contentTimer, element.topTimer, element.leftTimer, element.idOwner, element.contentOwner, element.topOwner, element.leftOwner, element.idProcess, element.contentProcess, element.topProcess, element.leftProcess, element.cx1, element.cy1, element.cx2, element.cy2, element.cx3, element.cy3, element.cx4, element.cy4, 0, 0);
         allElements.push(object);
         processGenerate(element.id, element.name, object)
     }
-    else if(element.name === "text"){
-        const object = new Text(element.id, element.name, element.content, element.top, element.left, element.valueX, element.valueY)
+    else if(element.name === "svg-text"){
+        const object = new Text(element.id, element.name, element.content, element.top, element.left, 0, 0)
         allElements.push(object);
         textGenerate(element.id, element.name, object)
     }
-    else if(element.name === "physically-flow"){
-        const path = [{name: "line", xMove: 500, yMove: 180, xLine1: 790, yLine1: 180},{name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 183, xLine2: 785, yLine2: 180, xLine3: 783, yLine3: 176}, {name: "dot1", x: 790, y: 180}, {name: "dot2", x: 500, y: 180}];
-        const object = new PhysicallyFlow(id, className, path, 0, 0)
+    else if(element.name === "svg-physically-flow"){
+        const line = element.objects[0];
+        const arrow = element.objects[1];
+        const dot1 = element.objects[2];
+        const dot2 = element.objects[3];
+        const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3},
+                      {name: dot1.name, x: dot1.x, y: dot1.y}, 
+                      {name: dot2.name, x: dot2.x, y: dot2.y}];
+        const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
         allElements.push(object);
-        make(id, className);
+        make(element.id, element.name, object);
     }
-    else if(element.name === "physically-flow-broken"){
-        const path = [{name: "line1", xMove: 500, yMove: 180, xLine1: 600, yLine1: 180},{name: "line2", xMove: 600, yMove: 180, xLine1: 600, yLine1: 280},{name: "arrow", xMove: 600, yMove: 280, xLine1: 603, yLine1: 273, xLine2: 597, yLine2: 273, xLine3: 597, yLine3: 273}, {name: "dot1", x: 600, y: 280}, {name: "dot2", x: 500, y: 180}];
-        const object = new PhysicallyFlowBroken(id, className, path)
+    else if(element.name === "svg-physically-flow-broken"){
+        const line = element.objects[0];
+        const arrow = element.objects[1];
+        const dot1 = element.objects[2];
+        const dot2 = element.objects[3];
+        const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1, xLine2: line.xLine2, yLine2: line.yLine2},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3}, 
+                      {name: dot1.name, x: dot1.x, y: dot1.y}, 
+                      {name: dot2.name, x: dot2.x, y: dot2.y}];
+        const object = new PhysicallyFlowBroken(element.id, element.name, path)
         allElements.push(object);
-        make(id, className);
+        makeBroken(element.id, element.name, object);
     }
     else if(element.name === "svg-input"){
-        const object = new Input(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.valueX, element.valueY)
+        const object = new Input(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);  
     }
     else if(element.name === "svg-output"){
-        const object = new Output(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.valueX, element.valueY)
+        const object = new Output(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);  
     }
     else if(element.name === "svg-event-transition"){
         const object = new EventTransition(element.id, element.name, 
-        element.x, element.y, element.widht, element.height, element.cx1, element.cy1, element.cx2, element.cy2, element.cx3, element.cy3, element.cx4, element.cy4, element.valueX, element.valueY);
+        element.x, element.y, element.width, element.height, element.cx1, element.cy1, element.cx2, element.cy2, element.cx3, element.cy3, element.cx4, element.cy4, element.idText, element.contentText, element.topText, element.leftText, 0, 0);
         allElements.push(object);
         processGenerate(element.id, element.name, object);  
     }
-    else if(element.name === "end-of-instance"){
-        const object = new EndOfInstance(element.id, element.name, element.cx, element.cy, element.x, element.y, element.valueX, element.valueY);
+    else if(element.name === "svg-end-of-instance"){
+        const object = new EndOfInstance(element.id, element.name, element.cx, element.cy, element.x, element.y, 0, 0);
         allElements.push(object);
         generateSVG(element.id, element.name, object)
     }
-    else if(element.name === "two-branches"){
-        const object = new TwoBranching(element.id, element.name, element.x, element.y, element.width, element.height, element.valueX, element.valueY);
+    else if(element.name === "svg-two-branching"){
+        const object = new TwoBranching(element.id, element.name, element.x, element.y, element.width, element.height, element.idText, element.contentText, element.topText, element.leftText, 0, 0);
         allElements.push(object);
         generateSVG(element.id, element.name, object)
     }
-    else if(element.name === "three-branches"){
-        const object = new ThreeBranching(element.id, element.name, element.x, element.y, element.width, element.height, element.valueX, element.valueY);
+    else if(element.name === "svg-three-branching"){
+        const object = new ThreeBranching(element.id, element.name, element.x, element.y, element.width, element.height, element.idText, element.contentText, element.topText, element.leftText, 0, 0);
         allElements.push(object);
         generateSVG(element.id, element.name, object)
     }
     else if(element.name === "svg-rediraction"){
-        const object = new Rediraction(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5,element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.xLine8, element.yLine8, element.valueX, element.valueY)
+        const object = new Rediraction(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5,element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.xLine8, element.yLine8, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);
     }
     else if(element.name === "svg-parallel"){
-        const object = new Parallel(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.valueX, element.valueY)
+        const object = new Parallel(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);
     }
     else if(element.name === "svg-end-of-two-processes"){
-        const object = new EndOfTwoProcess(element.id, element.name, element.cx, element.cy, element.xMove1, element.yMove1, element.xLine1, element.yLine1, element.xMove2, element.yMove2, element.xLine2, element.yLine2, element.valueX, element.valueY)
+        const object = new EndOfTwoProcess(element.id, element.name, element.cx, element.cy, element.xMove1, element.yMove1, element.xLine1, element.yLine1, element.xMove2, element.yMove2, element.xLine2, element.yLine2, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);
     }
     else if(element.name === "svg-end-of-three-processes"){
-        const object = new EndOfThreeProcess(element.id, element.name, element.cx, element.cy, element.xMove1, element.yMove1, element.xLine1, element.yLine1, element.xMove2, element.yMove2, element.xLine2, element.yLine2, element.xMove3, element.yMove3, element.xLine3, element.yLine3, element.valueX, element.valueY)
+        const object = new EndOfThreeProcess(element.id, element.name, element.cx, element.cy, element.xMove1, element.yMove1, element.xLine1, element.yLine1, element.xMove2, element.yMove2, element.xLine2, element.yLine2, element.xMove3, element.yMove3, element.xLine3, element.yLine3, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);
     }    
