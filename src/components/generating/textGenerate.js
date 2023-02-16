@@ -65,7 +65,12 @@ export function textGenerateInside(id , content, top, left,object){
     div.setAttribute("id", id);
     div.setAttribute("class", "text");
     div.setAttribute("ondblclick", "selectText(event)");
-    div.setAttribute("style", `display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;`);
+    if(object.name == "svg-output"){
+        div.setAttribute("style", `display: inline-block; color: rgb(255, 255, 255); font-size: 20px; pointer-events: all;`);
+    }
+    else{
+        div.setAttribute("style", `display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;`);
+    }
     div.innerHTML = content
 
     svg.appendChild(g);

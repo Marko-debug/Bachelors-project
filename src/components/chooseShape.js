@@ -98,7 +98,8 @@ const chooseElement = (element) => {
     else if(element === "btn-input"){
         const className = "svg-input";
         const id = s4();
-        const object = new Input(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, 0, 0) // right
+        const idText = s4();
+        const object = new Input(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Input", 65, 510, 0, 0) // right
         // const object = new Input(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60, 0, 0)  // left
         // const object = new Input(id, className, 550, 250, 600, 250, 600, 100, 630, 100, 575, 50, 520, 100, 550, 100, 550, 250, 0, 0)  // upwards
         // const object = new Input(id, className, 550, 50, 600, 50, 600, 200, 630, 200, 575, 250, 520, 200, 550, 200, 550, 50, 0, 0)  // downwards
@@ -109,7 +110,8 @@ const chooseElement = (element) => {
 
         const className = "svg-output";
         const id = s4();
-        const object = new Output(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, 0, 0) // right
+        const idText = s4();
+        const object = new Output(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Output", 65, 510, 0, 0) // right
         // const object = new Output(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60, 0, 0)  // left
         // const object = new Output(id, className, 550, 250, 600, 250, 600, 100, 630, 100, 575, 50, 520, 100, 550, 100, 550, 250, 0, 0)  // upwards
         // const object = new Output(id, className, 550, 50, 600, 50, 600, 200, 630, 200, 575, 250, 520, 200, 550, 200, 550, 50, 0, 0)  // downwards
@@ -126,7 +128,8 @@ const chooseElement = (element) => {
 
         const className = "svg-event-transition";
         const id = s4();
-        const object = new EventTransition(id, className, 500, 100, 170, 60, 510, 110, 660, 110, 510, 150, 660, 150, 0, 0);
+        const idText = s4();
+        const object = new EventTransition(id, className, 500, 100, 170, 60, 510, 110, 660, 110, 510, 150, 660, 150, idText,"Event Name", 120, 510, 0, 0);
         allElements.push(object);
         processGenerate(id, className, object);  
     }
@@ -142,30 +145,34 @@ const chooseElement = (element) => {
 
         const className = "svg-two-branching"
         const id = s4();
-        const object = new TwoBranching(id, className, 500, 100, 100, 100, 0, 0);
+        const idText = s4();
+        const object = new TwoBranching(id, className, 500, 100, 100, 100, idText,"Question", 110, 510, 0, 0);
         allElements.push(object);
         generateSVG(id, className, object)
     }
     else if(element === "btn-three-branches"){
         const className = "svg-three-branching"
         const id = s4();
-        const object = new ThreeBranching(id, className, 500, 100, 100, 100, 0, 0);
+        const idText = s4();
+        const object = new ThreeBranching(id, className, 500, 100, 100, 100, idText,"Question", 110, 510, 0, 0);
         allElements.push(object);
         generateSVG(id, className, object)
     }
     else if(element === "btn-rediraction"){
         const className = "svg-rediraction";
         const id = s4();
-        const object = new Rediraction(id, className, 700, 80, 660, 110, 660, 160, 700, 190, 750, 190, 790, 160, 790, 110, 750, 80, 700, 80, 0, 0)
+        const idText = s4();
+        const object = new Rediraction(id, className, 700, 80, 660, 110, 660, 160, 700, 190, 750, 190, 790, 160, 790, 110, 750, 80, 700, 80, idText,"Connector <br> number", 110, 685,0, 0)
         allElements.push(object);
         generateSVG(id, className, object);
     }
     else if(element === "btn-parallel"){
         const className = "svg-parallel";
         const id = s4();
-        const object = new Parallel(id, className, 650, 80, 630, 60, 500, 60, 500, 150, 650, 150, 650, 80, 630, 80, 630, 60, 0, 0)
+        const idText = s4();
+        const object = new Parallel(id, className, 650, 80, 630, 60, 500, 60, 500, 150, 650, 150, 650, 80, 630, 80, 630, 60, idText,"Message", 80, 510, 0, 0)
         allElements.push(object);
-        generateSVG(id, className, object, object);
+        generateSVG(id, className, object);
     }
     else if(element === "btn-end-of-two-processes"){
         const className = "svg-end-of-two-processes";

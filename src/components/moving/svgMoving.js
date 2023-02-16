@@ -10,7 +10,7 @@ window.svgMoving = function svgMoving(event){
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);
     const svg = allElements[objIndex];
-    let path = event.target;
+    const path = event.target;
     dragMouseDown()
 
     function dragMouseDown(e) {
@@ -37,7 +37,6 @@ window.svgMoving = function svgMoving(event){
 
         if(event.target.parentNode.className.baseVal === "svg-process"){
 
-            
             const textTimerStyle = path.parentNode.children[3].children[0].children[0].style;
             const textOwnerStyle = path.parentNode.children[4].children[0].children[0].style;
             const textProcessStyle = path.parentNode.children[5].children[0].children[0].style;
@@ -102,18 +101,22 @@ window.svgMoving = function svgMoving(event){
         }
         if(event.target.parentNode.className.baseVal === "svg-event-transition"){
 
+            const textStyle = path.parentNode.children[1].children[0].children[0].style;
             //main shape
             path.setAttribute("x", svg.getX); 
             path.setAttribute("y", svg.getY); 
+            //text
+            textStyle.paddingTop = (svg.getTextTop) + "px";
+            textStyle.marginLeft = (svg.getTextLeft) + "px";
             //manipulable dots
-            path.parentNode.children[1].setAttribute("cx", svg.getCX1); 
-            path.parentNode.children[1].setAttribute("cy", svg.getCY1);
-            path.parentNode.children[2].setAttribute("cx", svg.getCX2); 
-            path.parentNode.children[2].setAttribute("cy", svg.getCY2);
-            path.parentNode.children[3].setAttribute("cx", svg.getCX3); 
-            path.parentNode.children[3].setAttribute("cy", svg.getCY3); 
-            path.parentNode.children[4].setAttribute("cx", svg.getCX4); 
-            path.parentNode.children[4].setAttribute("cy", svg.getCY4); 
+            path.parentNode.children[2].setAttribute("cx", svg.getCX1); 
+            path.parentNode.children[2].setAttribute("cy", svg.getCY1);
+            path.parentNode.children[3].setAttribute("cx", svg.getCX2); 
+            path.parentNode.children[3].setAttribute("cy", svg.getCY2);
+            path.parentNode.children[4].setAttribute("cx", svg.getCX3); 
+            path.parentNode.children[4].setAttribute("cy", svg.getCY3); 
+            path.parentNode.children[5].setAttribute("cx", svg.getCX4); 
+            path.parentNode.children[5].setAttribute("cy", svg.getCY4); 
 
             //main shape
             svg.x = svg.x - svg.valueX;
@@ -127,6 +130,8 @@ window.svgMoving = function svgMoving(event){
             svg.cy3 = svg.cy3 - svg.valueY;
             svg.cx4 = svg.cx4 - svg.valueX;
             svg.cy4 = svg.cy4 - svg.valueY;
+            svg.topText = svg.topText - svg.valueY;
+            svg.leftText = svg.leftText - svg.valueX;
             return;
         }
         if(event.target.parentNode.className.baseVal === "svg-end-of-instance"){
@@ -146,22 +151,37 @@ window.svgMoving = function svgMoving(event){
         }
         if(event.target.parentNode.className.baseVal === "svg-two-branching" || event.target.parentNode.className.baseVal === "svg-three-branching"){
 
+            const textStyle = path.parentNode.children[1].children[0].children[0].style;
             //main shape
             path.setAttribute("x", svg.getX); 
-            path.setAttribute("y", svg.getY); 
+            path.setAttribute("y", svg.getY);
+            //text
+            textStyle.paddingTop = (svg.getTextTop) + "px";
+            textStyle.marginLeft = (svg.getTextLeft) + "px";
             
             //main shape
             svg.x = svg.x - svg.valueX;
             svg.y = svg.y - svg.valueY;
+            svg.topText = svg.topText - svg.valueY;
+            svg.leftText = svg.leftText - svg.valueX;
             return;
         }
         if(event.target.parentNode.className.baseVal === "svg-parallel"){
 
+            const textStyle = path.parentNode.children[1].children[0].children[0].style;
             //set and changed coordinations
             path.setAttribute("d", svg.getPath); 
+            //text
+            textStyle.paddingTop = (svg.getTextTop) + "px";
+            textStyle.marginLeft = (svg.getTextLeft) + "px";
         }
         if(event.target.parentNode.className.baseVal === "svg-rediraction"){
+            
+            const textStyle = path.parentNode.children[1].children[0].children[0].style;
             path.setAttribute("d", svg.getPath); 
+            //text
+            textStyle.paddingTop = (svg.getTextTop) + "px";
+            textStyle.marginLeft = (svg.getTextLeft) + "px";
             
             svg.xLine8 = svg.xLine8 - svg.valueX;
             svg.yLine8 = svg.yLine8 - svg.valueY;
@@ -209,10 +229,18 @@ window.svgMoving = function svgMoving(event){
             return; 
         }
         if(event.target.parentNode.className.baseVal === "svg-input"){
+            const textStyle = path.parentNode.children[1].children[0].children[0].style;
             path.setAttribute("d", svg.getPath); 
+            //text
+            textStyle.paddingTop = (svg.getTextTop) + "px";
+            textStyle.marginLeft = (svg.getTextLeft) + "px";
         }
         if(event.target.parentNode.className.baseVal === "svg-output"){
+            const textStyle = path.parentNode.children[1].children[0].children[0].style;
             path.setAttribute("d", svg.getPath); 
+            //text
+            textStyle.paddingTop = (svg.getTextTop) + "px";
+            textStyle.marginLeft = (svg.getTextLeft) + "px";
         }
 
         svg.xMove = svg.xMove - svg.valueX;
@@ -231,6 +259,8 @@ window.svgMoving = function svgMoving(event){
         svg.yLine6 = svg.yLine6 - svg.valueY;
         svg.xLine7 = svg.xLine7 - svg.valueX;
         svg.yLine7 = svg.yLine7 - svg.valueY;
+        svg.topText = svg.topText - svg.valueY;
+        svg.leftText = svg.leftText - svg.valueX;
         return;
     }
       

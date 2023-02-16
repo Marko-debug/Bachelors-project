@@ -1,5 +1,5 @@
 export class Rediraction{
-    constructor(id, name, xMove, yMove, xLine1, yLine1, xLine2, yLine2, xLine3, yLine3, xLine4, yLine4, xLine5, yLine5, xLine6, yLine6, xLine7, yLine7, xLine8, yLine8, valueX, valueY){
+    constructor(id, name, xMove, yMove, xLine1, yLine1, xLine2, yLine2, xLine3, yLine3, xLine4, yLine4, xLine5, yLine5, xLine6, yLine6, xLine7, yLine7, xLine8, yLine8, idText, contentText, topText, leftText,valueX, valueY){
         this.id = id;
         this.name = name;
         this.xMove = xMove;
@@ -20,6 +20,10 @@ export class Rediraction{
         this.yLine7 = yLine7;
         this.xLine8 = xLine8;
         this.yLine8 = yLine8;
+        this.idText = idText;
+        this.contentText = contentText;
+        this.topText = topText;
+        this.leftText = leftText;
         this.valueX = valueX;
         this.valueY = valueY;
     }
@@ -35,5 +39,13 @@ export class Rediraction{
         L ${this.xLine6 - this.valueX} ${this.yLine6 - this.valueY} 
         L ${this.xLine7 - this.valueX} ${this.yLine7 - this.valueY} 
         L ${this.xLine8 - this.valueX} ${this.yLine8 - this.valueY}`;
+    }
+
+    //text
+    get getTextTop(){
+        return `${this.topText - this.valueY}`;
+    }
+    get getTextLeft(){
+        return `${this.leftText - this.valueX}`;
     }
 }

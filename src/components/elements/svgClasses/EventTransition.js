@@ -1,6 +1,6 @@
 export class EventTransition{
     
-    constructor(id, name, x, y, width, height, cx1, cy1, cx2, cy2, cx3, cy3, cx4, cy4, valueX, valueY){
+    constructor(id, name, x, y, width, height, cx1, cy1, cx2, cy2, cx3, cy3, cx4, cy4, idText, contentText, topText, leftText, valueX, valueY){
         this.id = id;
         this.name = name;
         this.x = x;
@@ -15,6 +15,10 @@ export class EventTransition{
         this.cy3 = cy3;
         this.cx4 = cx4;
         this.cy4 = cy4;
+        this.idText = idText;
+        this.contentText = contentText;
+        this.topText = topText;
+        this.leftText = leftText;
         this.valueX = valueX;
         this.valueY = valueY;
     }
@@ -85,5 +89,13 @@ export class EventTransition{
     }
     get getHeight4(){
         return `${this.height - this.valueY}`;
+    }
+
+    //text
+    get getTextTop(){
+        return `${this.topText - this.valueY}`;
+    }
+    get getTextLeft(){
+        return `${this.leftText - this.valueX}`;
     }
 }

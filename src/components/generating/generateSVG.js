@@ -1,3 +1,5 @@
+import { textGenerateInside } from "./textGenerate.js";
+
 export function generateSVG(id, className, object){
 
     function makeSVGEl(tag, attrs) {
@@ -13,7 +15,6 @@ export function generateSVG(id, className, object){
         id: `${id}`,
         class: className,
         onclick: "selectElement(event)",
-        onmousedown: "svgMoving(event)",
         transform: "translate(0.5, 0.5)",
         style: "visibility: visible; cursor: move;"
     });
@@ -21,19 +22,24 @@ export function generateSVG(id, className, object){
 
     if(className === "svg-input"){      
       g.appendChild(makeSVGEl("path", {
+        onmousedown: "svgMoving(event)",
         d: object.getPath,
         stroke: "black",
         fill: "transparent",
       }));
+      textGenerateInside(object.idText, object.contentText, object.topText, object.leftText, object);
     }
     if(className === "svg-output"){      
       g.appendChild(makeSVGEl("path", {
+        onmousedown: "svgMoving(event)",
         d: object.getPath,
         fill: "black",
       }));
+      textGenerateInside(object.idText, object.contentText, object.topText, object.leftText, object);
     }
     if(className === "svg-end-of-instance"){   
       g.appendChild(makeSVGEl("circle", {
+        onmousedown: "svgMoving(event)",
         cx: object.getCX,
         cy: object.getCY,
         r: 50,
@@ -51,6 +57,7 @@ export function generateSVG(id, className, object){
     }
     if(className === "svg-two-branching" || className === "svg-three-branching" ){      
       g.appendChild(makeSVGEl("rect", {
+        onmousedown: "svgMoving(event)",
         x: `${object.x}`,
         y: `${object.y}`,
         width: `${object.width}`,
@@ -59,23 +66,29 @@ export function generateSVG(id, className, object){
         stroke: "black",
         fill: "transparent",
       }));
+      textGenerateInside(object.idText, object.contentText, object.topText, object.leftText, object);
     }
     if(className === "svg-parallel"){   
       g.appendChild(makeSVGEl("path", {
+        onmousedown: "svgMoving(event)",
         d: object.getPath,
         stroke: "black",
         fill: "transparent",
       }));
+      textGenerateInside(object.idText, object.contentText, object.topText, object.leftText, object);
     }
     if(className === "svg-rediraction"){      
       g.appendChild(makeSVGEl("path", {
+        onmousedown: "svgMoving(event)",
         d: object.getPath,
         stroke: "black",
         fill: "transparent",
       }));
+      textGenerateInside(object.idText, object.contentText, object.topText, object.leftText, object);
     }
     if(className === "svg-end-of-two-processes"){   
       g.appendChild(makeSVGEl("circle", {
+        onmousedown: "svgMoving(event)",
         cx: object.getCX,
         cy: object.getCY,
         r: 50,
@@ -91,6 +104,7 @@ export function generateSVG(id, className, object){
     }
     if(className === "svg-end-of-three-processes"){   
       g.appendChild(makeSVGEl("circle", {
+        onmousedown: "svgMoving(event)",
         cx: object.getCX,
         cy: object.getCY,
         r: 50,

@@ -36,6 +36,9 @@ window.resize4 = function resize4(event){
 
         if(event.target.parentNode.className.baseVal === "svg-process"){
 
+            const textTimerStyle = path.parentNode.children[3].children[0].children[0].style;
+            const textOwnerStyle = path.parentNode.children[4].children[0].children[0].style;
+
              //main shape
              path.parentNode.children[0].setAttribute("width", svg.getWidth4); 
              path.parentNode.children[0].setAttribute("height", svg.getHeight4); 
@@ -43,11 +46,15 @@ window.resize4 = function resize4(event){
              path.parentNode.children[1].setAttribute("x", svg.getXT); 
              //owner
              path.parentNode.children[2].setAttribute("y", svg.getYO); 
+             //timer text
+             textTimerStyle.marginLeft = (svg.getTextTimerLeft) + "px";
+             //owner text
+             textOwnerStyle.paddingTop = (svg.getTextOwnerTop) + "px";
              //manipulable dots
-             path.parentNode.children[4].setAttribute("cx", svg.getCX2); 
-             path.parentNode.children[5].setAttribute("cy", svg.getCY3); 
-             path.parentNode.children[6].setAttribute("cx", svg.getCX4); 
-             path.parentNode.children[6].setAttribute("cy", svg.getCY4); 
+             path.parentNode.children[7].setAttribute("cx", svg.getCX2); 
+             path.parentNode.children[8].setAttribute("cy", svg.getCY3); 
+             path.parentNode.children[9].setAttribute("cx", svg.getCX4); 
+             path.parentNode.children[9].setAttribute("cy", svg.getCY4); 
  
              //main shape
              svg.width = svg.width - svg.valueX;
@@ -56,6 +63,10 @@ window.resize4 = function resize4(event){
              svg.xT = svg.xT - svg.valueX;
              //owner
              svg.yO = svg.yO - svg.valueY;
+             //timer text
+            svg.leftTimer = svg.getTextTimerLeft;
+            //owner text
+            svg.topOwner = svg.getTextOwnerTop;
              //manipulable dots
              svg.cx2 = svg.cx2 - svg.valueX;
              svg.cy3 = svg.cy3 - svg.valueY;
@@ -68,10 +79,10 @@ window.resize4 = function resize4(event){
              path.parentNode.children[0].setAttribute("width", svg.getWidth4); 
              path.parentNode.children[0].setAttribute("height", svg.getHeight4); 
              //manipulable dots
-             path.parentNode.children[2].setAttribute("cx", svg.getCX2); 
-             path.parentNode.children[3].setAttribute("cy", svg.getCY3); 
-             path.parentNode.children[4].setAttribute("cx", svg.getCX4); 
-             path.parentNode.children[4].setAttribute("cy", svg.getCY4); 
+             path.parentNode.children[3].setAttribute("cx", svg.getCX2); 
+             path.parentNode.children[4].setAttribute("cy", svg.getCY3); 
+             path.parentNode.children[5].setAttribute("cx", svg.getCX4); 
+             path.parentNode.children[5].setAttribute("cy", svg.getCY4); 
  
              //main shape
              svg.width = svg.width - svg.valueX;

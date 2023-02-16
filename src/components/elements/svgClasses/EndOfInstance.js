@@ -1,6 +1,6 @@
 export class EndOfInstance{
     
-    constructor(id, name, cx, cy, x, y,valueX, valueY){
+    constructor(id, name, cx, cy, x, y, valueX, valueY){
         this.id = id;
         this.name = name;
         this.cx = cx;

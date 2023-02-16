@@ -117,6 +117,8 @@ export function processGenerate(id, className, object){
         fill: "transparent",
       }));
 
+      textGenerateInside(object.idText, object.contentText, object.topText, object.leftText, object);
+
       //dot1 (left-up)
       g.appendChild(makeSVGEl("circle", {
         class: "dot1",

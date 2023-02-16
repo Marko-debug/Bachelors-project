@@ -36,18 +36,26 @@ window.resize2 = function resize2(event){
 
         if(event.target.parentNode.className.baseVal === "svg-process"){
 
+            const textTimerStyle = path.parentNode.children[3].children[0].children[0].style;
+            const textProcessStyle = path.parentNode.children[5].children[0].children[0].style;
+
             //main shape
             path.parentNode.children[0].setAttribute("y", svg.getY); 
             path.parentNode.children[0].setAttribute("width", svg.getWidth2); 
             path.parentNode.children[0].setAttribute("height", svg.getHeight2); 
-            // timer
+            //timer
             path.parentNode.children[1].setAttribute("x", svg.getXT); 
             path.parentNode.children[1].setAttribute("y", svg.getYT); 
+            //timer text
+            textTimerStyle.paddingTop = (svg.getTextTimerTop) + "px";
+            textTimerStyle.marginLeft = (svg.getTextTimerLeft) + "px";
+            //process text
+            textProcessStyle.paddingTop = (svg.getTextProcessTop) + "px";
             //manipulable dots
-            path.parentNode.children[3].setAttribute("cy", svg.getCY1);
-            path.parentNode.children[4].setAttribute("cx", svg.getCX2);
-            path.parentNode.children[4].setAttribute("cy", svg.getCY2);
-            path.parentNode.children[6].setAttribute("cx", svg.getCX4); 
+            path.parentNode.children[6].setAttribute("cy", svg.getCY1);
+            path.parentNode.children[7].setAttribute("cx", svg.getCX2);
+            path.parentNode.children[7].setAttribute("cy", svg.getCY2);
+            path.parentNode.children[9].setAttribute("cx", svg.getCX4); 
 
             //main shape
             svg.y = svg.y - svg.valueY;
@@ -56,6 +64,11 @@ window.resize2 = function resize2(event){
             //timer
             svg.xT = svg.xT - svg.valueX;
             svg.yT = svg.yT - svg.valueY;
+            //timer text
+            svg.topTimer = svg.getTextTimerTop;
+            svg.leftTimer = svg.getTextTimerLeft;
+            //process text
+            svg.topProcess = svg.getTextProcessTop;
             //manipulable dots
             svg.cy1 = svg.cy1 - svg.valueY;
             svg.cx2 = svg.cx2 - svg.valueX;
@@ -64,20 +77,25 @@ window.resize2 = function resize2(event){
         }
         if(event.target.parentNode.className.baseVal === "svg-event-transition"){
 
+            const textStyle = path.parentNode.children[1].children[0].children[0].style;
             //main shape
             path.parentNode.children[0].setAttribute("y", svg.getY); 
             path.parentNode.children[0].setAttribute("width", svg.getWidth2); 
             path.parentNode.children[0].setAttribute("height", svg.getHeight2); 
+            //text
+            textStyle.paddingTop = (svg.getTextTop) + "px";
             //manipulable dots
-            path.parentNode.children[1].setAttribute("cy", svg.getCY1);
-            path.parentNode.children[2].setAttribute("cx", svg.getCX2);
-            path.parentNode.children[2].setAttribute("cy", svg.getCY2);
-            path.parentNode.children[4].setAttribute("cx", svg.getCX4); 
+            path.parentNode.children[2].setAttribute("cy", svg.getCY1);
+            path.parentNode.children[3].setAttribute("cx", svg.getCX2);
+            path.parentNode.children[3].setAttribute("cy", svg.getCY2);
+            path.parentNode.children[5].setAttribute("cx", svg.getCX4); 
 
             //main shape
             svg.y = svg.y - svg.valueY;
             svg.width = svg.width - svg.valueX;
             svg.height = svg.height + svg.valueY;
+            //text
+            svg.topText = svg.getTextTop;
             //manipulable dots
             svg.cy1 = svg.cy1 - svg.valueY;
             svg.cx2 = svg.cx2 - svg.valueX;
