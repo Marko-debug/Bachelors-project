@@ -1,4 +1,4 @@
-import { dataForSelectDots } from "../selectActions/selectDots.js";
+// import { dataForSelectDots } from "../selectActions/selectDots.js";
 
 export function generateElements(elements, name, object){
     

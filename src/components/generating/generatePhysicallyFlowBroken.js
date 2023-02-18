@@ -1,4 +1,4 @@
-export function make(id, className, object){
+export function generatePhysicallyFlowBroken(id, className, object){
 
     function makeSVGEl(tag, attrs) {
         let el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -44,7 +44,7 @@ export function make(id, className, object){
             onmousedown: "scaleSVG(event)",
             r: 7,
             fill: "red",
-            style: "visibility: hidden; cursor: ew-resize;"
+            style: "visibility: hidden; cursor: ns-resize;"
         }));
     });
 }

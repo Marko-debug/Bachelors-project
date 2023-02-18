@@ -17,10 +17,10 @@
 // }
 
 export class Text{
-    constructor(id, name, content, top, left,valueX, valueY) {
+    constructor(id, name, contentText, top, left,valueX, valueY) {
         this.id = id;
         this.name = name;
-        this.content = content;
+        this.contentText = contentText;
         this.top = top;
         this.left = left;
         this.valueX = valueX;

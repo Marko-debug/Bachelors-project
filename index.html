@@ -13,14 +13,13 @@
   <script type="module" src="./src/components/selectActions/select.js"></script>
   <script type="module" src="./src/components/moving/svgMoving.js"></script>
   <script type="module" src="./src/components/scaling/scaleSVGArrows.js"></script>
-  <script type="module" src="./src/components/dotsSVG.js"></script>
-  <script type="module" src="./src/components/editText.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/serialize.js"></script>
   <script type="module" src="./src/components/scaling/resize1.js"></script>
   <script type="module" src="./src/components/scaling/resize2.js"></script>
   <script type="module" src="./src/components/scaling/resize3.js"></script>
   <script type="module" src="./src/components/scaling/resize4.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/deserialize.js"></script>
+  <script type="module" src="./src/components/screenshot/createPNG.js"></script>
 
   <!-- Dynamic Bar -->
   <div class="navbar" style="width: 400px; height: 500px">
@@ -62,16 +61,17 @@
       <button class="grid">Grid</button>
       <button class="save">Save</button>
       <button class="open-file">Open file</button>
+      <button class="download">Download</button>
       <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
-
+        
         <fieldset>
-           <input type='file' id='fileinput'>
-           <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+          <input type='file' id='fileinput'>
+          <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
         </fieldset>
       </form>
-      <p>
+      <!-- <p>
         <a class="download" href="" id="link" download="image.png">Download</a>
-      </p>
+      </p> -->
     </div>
   </div>
 
@@ -230,110 +230,6 @@
       min-height: 3000px;
       "
     >
-    <!-- <g
-        id="6"
-        class="svg-parallel"
-        onclick="selectElement(event)"
-        onmousedown="svgMoving(event)"
-        transform="translate(0.5, 0.5)"
-        style="visibility: visible; cursor: move"
-      >
-        <path
-          d="M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 "
-          stroke="black"
-          fill="transparent"
-          stroke-width="2"
-        ></path>
-      </g> -->
-          <!-- <foreignObject width="800px" height="200px" style="top: 100px; left: 600px; position: relative"> -->
-            <!-- <div class="text" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
-          <!-- </foreignObject> -->
-
-    <!-- <g style="cursor: move; visibility: visible;">
-      <g>
-        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-          <div style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 214px; margin-left: 1055px;">
-            <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
-              <div ondblclick=selectElement(event) style="display: inline-block; font-size: 20px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                Text
-              </div>
-            </div>
-          </div>
-        </foreignObject>
-      </g>
-    </g> -->
-
-    <!-- <g style="visibility: visible; cursor: move;">
-      <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-        <div style="display: flex; padding-top: 150px; margin-left: 600px;">
-          <div id="1d56" class="svg-text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; font-family: Georgia, serif; pointer-events: all;">Text
-          </div>
-        </div>
-      </foreignObject>
-    </g> -->
-
-    <!-- <g id="9832" class="svg-process" onclick="selectElement(event)" transform="translate(0.5, 0.5)" style="visibility: visible;">
-      <rect onmousedown="svgMoving(event)" x="500" y="100" width="350" height="200" rx="15" stroke="black" fill="transparent" style="cursor: move;"></rect>
-      <rect class="timer" x="680" y="100" width="170" height="50" rx="15" stroke="black" fill="transparent" style="cursor: text;"></rect>
-      <rect class="owner" x="500" y="250" width="170" height="50" rx="15" stroke="black" fill="transparent" style="cursor: text;"></rect>
-      <g style="visibility: visible; cursor: text;">
-        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-          <div style="display: flex; padding-top: 115px; margin-left: 730px;">
-            <div id="a8b2" class="text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;">Time
-            </div>
-          </div>
-        </foreignObject>
-      </g>
-      <g style="visibility: visible; cursor: text;">
-        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-          <div style="display: flex; padding-top: 265px; margin-left: 530px;">
-            <div id="c8d2" class="text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;">Owner
-            </div>
-          </div>
-        </foreignObject>
-      </g>
-      <g style="visibility: visible; cursor: text;">
-        <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-          <div style="display: flex; padding-top: 160px; margin-left: 530px;">
-            <div id="9fwd" class="text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;">Process
-            </div>
-          </div>
-        </foreignObject>
-      </g>
-
-      <circle class="dot1" cx="505" cy="105" onmousedown="resize1(event)" r="7" fill="red" style="visibility: hidden; cursor: nw-resize;"></circle>
-      <circle class="dot2" cx="845" cy="105" onmousedown="resize2(event)" r="7" fill="red" style="visibility: hidden; cursor: sw-resize;"></circle>
-      <circle class="dot3" cx="505" cy="295" r="7" onmousedown="resize3(event)" fill="red" style="visibility: hidden; cursor: ne-resize"></circle>
-      <circle class="dot4" cx="845" cy="295" r="7" onmousedown="resize4(event)" fill="red" style="visibility: hidden; cursor: se-resize">
-
-      </circle>
-    </g> -->
-
-    <!-- <g
-        id="6"
-        class="svg-parallel"
-        onclick="selectElement(event)"
-        transform="translate(0.5, 0.5)"
-        style="visibility: visible; cursor: move"
-      >
-        <path
-          onmousedown="svgMoving(event)"
-          d="M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 "
-          stroke="black"
-          fill="transparent"
-          stroke-width="2"
-        ></path>
-        <g style="visibility: visible; cursor: text;">
-          <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-            <div style="display: flex; padding-top: 80px; margin-left: 510px;">
-              <div id="9fwd" class="text" ondblclick="selectText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; pointer-events: all;">Parallel
-              </div>
-            </div>
-          </foreignObject>
-        </g>
-    </g> -->
-
-    <!-- <g style="cursor: crosshair;"></g><image x="690" y="40" width="20" height="20" src="./src/images/btn-rotate.png" preserveAspectRatio="none"></image></g> -->
     </svg>
   </div>
   <!-- <div>
@@ -349,6 +245,23 @@
   <script type="module" src="src/buttons/btnNavbar.js"></script>
   <script type="module" src="src/buttons/btnGrid.js"></script>
 </body>
+
+<!-- <div id="36" onclick="selectElement(event)" onmousedown="dragElement(event);" style="width: 300px; height: 200px; top: 60px; left: 500px" class="process">
+      <div class="process-time" onclick="selectElement(event)" style="width: 150px; height: 60px; top: -2px; left: 148px; z-index: 4;">Timer
+      </div>
+      <div class="process-owner" style="width: 180px; height: 60px; top: 138px; left: -2px; z-index: 4;" contenteditable="true">Owner
+      </div>
+      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: -8px; cursor: nw-resize" class="select-circle">
+      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: -8px; cursor: sw-resize" class="select-circle">
+      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: 286px; cursor: ne-resize" class="select-circle">
+      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: 290px; cursor: se-resize" class="select-circle">
+    </div> -->
+    <!-- <div style="top: 400px; left: 100px" contenteditable="true">Entity</div> -->
+    <!-- <p class='item_content' contenteditable='true' onclick='$(this).focus();'>hello</p> -->
+
+    <!-- <div id="20" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" hidden="false" style="top:60px; left: 500px; width: 60px;" >Entity</div>
+    <div id="21" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
+
 
 <!-- <g
         id="6"

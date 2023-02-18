@@ -17,8 +17,8 @@ import { Rediraction } from "./elements/svgClasses/Rediraction.js";
 import { generateSVG} from "./generating/generateSVG.js";
 import { processGenerate} from "./generating/processGenerate.js";
 import { textGenerate} from "./generating/textGenerate.js";
-import { make } from "./generating/make.js";
-import { makeBroken } from "./generating/makeBroken.js";
+import { generatePhysicallyFlow } from "./generating/generatePhysicallyFlow.js";
+import { generatePhysicallyFlowBroken } from "./generating/generatePhysicallyFlowBroken.js";
 import { EndOfTwoProcess } from "./elements/svgClasses/EndOfTwoProcess.js";
 import { EndOfThreeProcess } from "./elements/svgClasses/EndOfThreeProcess.js";
 
@@ -55,7 +55,7 @@ const chooseElement = (element) => {
         const idTimer = s4();
         const idOwner = s4();
         const idProcess = s4();
-        const object = new Process(id, className, 500, 100, 350, 200, 680, 100, 170, 50, 500, 250, 170, 50, idTimer, "Timer", 115, 730, idOwner, "Owner", 265, 530, idProcess, "Process", 160, 530, 505, 105, 845, 105, 505, 295, 845, 295, 0, 0);
+        const object = new Process(id, className, 500, 100, 350, 200, 680, 100, 170, 50, 500, 250, 170, 50, `timer-${idTimer}`, "Timer", 115, 730, `owner-${idOwner}`, "Owner", 265, 530, `process-${idProcess}`, "Process", 160, 530, 505, 105, 845, 105, 505, 295, 845, 295, 0, 0);
         allElements.push(object);
         processGenerate(id, className, object);
         // const className = "process";
@@ -81,7 +81,7 @@ const chooseElement = (element) => {
             {name: "dot2", x: 500, y: 180}];
         const object = new PhysicallyFlow(id, className, path, 0, 0)
         allElements.push(object);
-        make(id, className, object);
+        generatePhysicallyFlow(id, className, object);
     }
     else if(element === "btn-physically-flow-broken"){
         const className = "svg-physically-flow-broken";
@@ -93,7 +93,7 @@ const chooseElement = (element) => {
             {name: "dot2", x: 500, y: 180}];
         const object = new PhysicallyFlowBroken(id, className, path)
         allElements.push(object);
-        makeBroken(id, className, object);
+        generatePhysicallyFlowBroken(id, className, object);
     }
     else if(element === "btn-input"){
         const className = "svg-input";

@@ -10,8 +10,6 @@ window.svgMoving = function svgMoving(event){
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);
     const svg = allElements[objIndex];
-    console.log(allElements)
-    console.log(event.target.parentNode.id)
     const path = event.target;
     dragMouseDown()
 
@@ -280,16 +278,51 @@ window.svgMoving = function svgMoving(event){
             svg.valueX = valueX;
             svg.valueY = valueY; 
         }
-        else if(svg.name == "svg-process" || svg.name == "svg-event-transition"){
+        else if(svg.name == "svg-process"){
             let valueX = (svg.x + (svg.width / 2)) - (e.pageX);
             let valueY = (svg.y + (svg.height / 2)) - (e.pageY);
 
             svg.valueX = valueX;
             svg.valueY = valueY; 
         }
+        else if(svg.name == "svg-event-transition"){
+            let valueX = (svg.x + (svg.width / 2)) - (e.pageX);
+            let valueY = (svg.y + (svg.height / 2)-10) - (e.pageY);
+
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
         else if(svg.name == "svg-end-of-instance"){
             let valueX = (svg.cx) - (e.pageX);
-            let valueY = (svg.cy) - (e.pageY);
+            let valueY = (svg.cy - 30) - (e.pageY);
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-input"){
+            let valueX = svg.xMove - (e.pageX - 180);
+            let valueY = svg.yMove - (e.pageY - 30);
+    
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-output"){
+            let valueX = svg.xMove - (e.pageX - 180);
+            let valueY = svg.yMove - (e.pageY - 30);
+    
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-parallel"){
+            let valueX = svg.xMove - (e.pageX + 75);
+            let valueY = svg.yMove - (e.pageY);
+    
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-rediraction"){
+            let valueX = svg.xMove - (e.pageX - 35);
+            let valueY = svg.yMove - (e.pageY - 30);
+    
             svg.valueX = valueX;
             svg.valueY = valueY; 
         }

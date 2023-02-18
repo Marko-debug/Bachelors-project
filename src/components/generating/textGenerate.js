@@ -4,13 +4,15 @@ export function textGenerate(id, className, object){
         var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
         for (var k in attrs) {
           el.setAttribute(k, attrs[k]);
+          
         }
         return el;
     }
 
     var svg = document.querySelector(".svg-elements");
     var g = makeSVGEl("g", { 
-        style: "visibility: visible; cursor: move;"
+        style: "visibility: visible; cursor: move;",
+        onclick: "selectElement(event)",
     });
     
     const foreignObject = document.createElementNS('http://www.w3.org/2000/svg', "foreignObject")
@@ -25,11 +27,11 @@ export function textGenerate(id, className, object){
     const div = document.createElement("div");
     div.setAttribute("id", id);
     div.setAttribute("class", className);
-    div.setAttribute("ondblclick", "selectText(event)");
+    div.setAttribute("ondblclick", "writingText(event)");
     div.setAttribute("onmousedown", "svgMoving(event)");
     div.setAttribute("style", `display: inline-block; color: rgb(0, 0, 0); font-size: 20px; 
     font-family: Georgia, serif; pointer-events: all;`);
-    div.innerHTML = object.content
+    div.innerHTML = object.contentText;
 
     svg.appendChild(g);
     g.appendChild(foreignObject);
@@ -37,7 +39,7 @@ export function textGenerate(id, className, object){
     positionDiv.appendChild(div);
 }
 
-export function textGenerateInside(id , content, top, left,object){
+export function textGenerateInside(id ,content, top, left,object){
 
     function makeSVGEl(tag, attrs) {
         var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -63,8 +65,8 @@ export function textGenerateInside(id , content, top, left,object){
 
     const div = document.createElement("div");
     div.setAttribute("id", id);
-    div.setAttribute("class", "text");
-    div.setAttribute("ondblclick", "selectText(event)");
+    div.setAttribute("class", "text" );
+    div.setAttribute("ondblclick", "writingText(event)");
     if(object.name == "svg-output"){
         div.setAttribute("style", `display: inline-block; color: rgb(255, 255, 255); font-size: 20px; pointer-events: all;`);
     }

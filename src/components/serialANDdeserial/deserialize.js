@@ -15,8 +15,8 @@ import { Rediraction } from "../elements/svgClasses/Rediraction.js";
 import { generateSVG} from "../generating/generateSVG.js";
 import { processGenerate} from "../generating/processGenerate.js";
 import { textGenerate} from "../generating/textGenerate.js";
-import { make } from "../generating/make.js";
-import { makeBroken } from "../generating/makeBroken.js";
+import { generatePhysicallyFlow } from "../generating/generatePhysicallyFlow.js";
+import { generatePhysicallyFlowBroken } from "../generating/generatePhysicallyFlowBroken.js";
 import { EndOfTwoProcess } from "../elements/svgClasses/EndOfTwoProcess.js";
 import { EndOfThreeProcess } from "../elements/svgClasses/EndOfThreeProcess.js";
 // import { allData } from "./serialize.js";
@@ -55,7 +55,6 @@ window.loadFile = function loadFile() {
   function receivedText(e) {
     let lines = e.target.result;
     var newArr = JSON.parse(lines); 
-    console.log(newArr)
 
     newArr.forEach((element) =>{
         recoverElement(element);
@@ -72,7 +71,7 @@ const recoverElement = (element) => {
         processGenerate(element.id, element.name, object)
     }
     else if(element.name === "svg-text"){
-        const object = new Text(element.id, element.name, element.content, element.top, element.left, 0, 0)
+        const object = new Text(element.id, element.name, element.contentText, element.top, element.left, 0, 0)
         allElements.push(object);
         textGenerate(element.id, element.name, object)
     }
@@ -87,7 +86,7 @@ const recoverElement = (element) => {
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
         const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
         allElements.push(object);
-        make(element.id, element.name, object);
+        generatePhysicallyFlow(element.id, element.name, object);
     }
     else if(element.name === "svg-physically-flow-broken"){
         const line = element.objects[0];
@@ -100,7 +99,7 @@ const recoverElement = (element) => {
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
         const object = new PhysicallyFlowBroken(element.id, element.name, path)
         allElements.push(object);
-        makeBroken(element.id, element.name, object);
+        generatePhysicallyFlowBroken(element.id, element.name, object);
     }
     else if(element.name === "svg-input"){
         const object = new Input(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
