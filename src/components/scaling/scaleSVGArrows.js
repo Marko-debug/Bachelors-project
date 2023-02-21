@@ -1,4 +1,5 @@
 import { allElements } from "../chooseShape.js"
+import { rotationArrows1, rotationArrows2, rotationArrowsBroken1, rotationArrowsBroken2 } from "./rotationArrows.js"
 
 window.scaleSVG = function scaleSVG(event) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -31,41 +32,16 @@ window.scaleSVG = function scaleSVG(event) {
         
         if(event.target.className.baseVal === "dot1"){
             // update instance of physically-flow-broken
+            if(event.target.parentNode.className.baseVal === "svg-information-flow-broken"){
+                dot1Broken(e, event, svg)
+                return;
+            }
+            if(event.target.parentNode.className.baseVal === "svg-sequential-flow-broken"){
+                dot1Broken(e, event, svg)
+                return;
+            }
             if(event.target.parentNode.className.baseVal === "svg-physically-flow-broken"){
-                let valueX = svg.objects[0].xLine2 - (e.pageX);
-                let valueY = svg.objects[0].yLine2 - (e.pageY);
-        
-                svg.valueX = valueX;
-                svg.valueY = valueY; 
-                
-                const linePath = event.target.parentNode.children[0];
-                linePath.setAttribute("d", svg.getPathLine1); 
-                const arrowPath = event.target.parentNode.children[1];
-                arrowPath.setAttribute("d", svg.getPathArrow1); 
-    
-                const circle = event.target.parentNode.children[2];
-                circle.setAttribute("cx", svg.getPathDot1X)
-                circle.setAttribute("cy", svg.getPathDot1Y)
-
-                svg.objects[0].xLine1 = svg.objects[0].xLine1 - svg.valueX;
-
-                svg.objects[0].xLine2 = svg.objects[0].xLine2 - svg.valueX;
-                svg.objects[0].yLine2 = svg.objects[0].yLine2 - svg.valueY;
-
-                svg.objects[1].xMove = svg.objects[1].xMove - svg.valueX;
-                svg.objects[1].yMove = svg.objects[1].yMove - svg.valueY;
-
-                svg.objects[1].xLine1 = svg.objects[1].xLine1 - svg.valueX;
-                svg.objects[1].yLine1 = svg.objects[1].yLine1 - svg.valueY;
-
-                svg.objects[1].xLine2 = svg.objects[1].xLine2 - svg.valueX;
-                svg.objects[1].yLine2 = svg.objects[1].yLine2 - svg.valueY;
-
-                svg.objects[1].xLine3 = svg.objects[1].xLine3 - svg.valueX;
-                svg.objects[1].yLine3 = svg.objects[1].yLine3 - svg.valueY;
-
-                svg.objects[2].x = svg.objects[2].x - svg.valueX;
-                svg.objects[2].y = svg.objects[2].y - svg.valueY;
+                dot1Broken(e, event, svg)
                 return;
             }
             let valueX = svg.objects[0].xLine1 - (e.pageX);
@@ -76,8 +52,9 @@ window.scaleSVG = function scaleSVG(event) {
             
             const linePath = event.target.parentNode.children[0];
             linePath.setAttribute("d", svg.getPathLine1); 
+
             const arrowPath = event.target.parentNode.children[1];
-            arrowPath.setAttribute("d", svg.getPathArrow1); 
+            rotationArrows1(svg, arrowPath)
 
             const circle = event.target.parentNode.children[2];
             circle.setAttribute("cx", svg.getPathDot1X)
@@ -107,17 +84,24 @@ window.scaleSVG = function scaleSVG(event) {
 
             const linePath = event.target.parentNode.children[0];
             linePath.setAttribute("d", svg.getPathLine2); 
+            const arrowPath = event.target.parentNode.children[1];
+            rotationArrows2(svg, arrowPath)
+
             const circle = event.target.parentNode.children[3];
             circle.setAttribute("cx", svg.getPathDot2X)
             circle.setAttribute("cy", svg.getPathDot2Y)
 
             // update instance of physically-flow-broken
+            if(event.target.parentNode.className.baseVal === "svg-information-flow-broken"){
+                dot2Broken(svg, event)
+                return;
+            }
+            if(event.target.parentNode.className.baseVal === "svg-sequential-flow-broken"){
+                dot2Broken(svg, event)
+                return;
+            }
             if(event.target.parentNode.className.baseVal === "svg-physically-flow-broken"){
-                svg.objects[0].xMove = svg.objects[0].xMove - svg.valueX;
-                svg.objects[0].yMove = svg.objects[0].yMove - svg.valueY;
-                svg.objects[0].yLine1 = svg.objects[0].yLine1 - svg.valueY;
-                svg.objects[3].x = svg.objects[3].x - svg.valueX;
-                svg.objects[3].y = svg.objects[3].y - svg.valueY;
+                dot2Broken(svg, event)
                 return;
             }
 
@@ -138,4 +122,53 @@ window.scaleSVG = function scaleSVG(event) {
         document.onmouseup = null;
         document.onmousemove = null;
     }
+}
+
+function dot1Broken(e, event, svg){
+    let valueX = svg.objects[0].xLine2 - (e.pageX);
+    let valueY = svg.objects[0].yLine2 - (e.pageY);
+
+    svg.valueX = valueX;
+    svg.valueY = valueY; 
+    
+    const linePath = event.target.parentNode.children[0];
+    linePath.setAttribute("d", svg.getPathLine1); 
+    const arrowPath = event.target.parentNode.children[1];
+    rotationArrowsBroken1(svg, arrowPath)
+
+    const circle = event.target.parentNode.children[2];
+    circle.setAttribute("cx", svg.getPathDot1X)
+    circle.setAttribute("cy", svg.getPathDot1Y)
+
+    svg.objects[0].xLine1 = svg.objects[0].xLine1 - svg.valueX;
+
+    svg.objects[0].xLine2 = svg.objects[0].xLine2 - svg.valueX;
+    svg.objects[0].yLine2 = svg.objects[0].yLine2 - svg.valueY;
+
+    svg.objects[1].xMove = svg.objects[1].xMove - svg.valueX;
+    svg.objects[1].yMove = svg.objects[1].yMove - svg.valueY;
+
+    svg.objects[1].xLine1 = svg.objects[1].xLine1 - svg.valueX;
+    svg.objects[1].yLine1 = svg.objects[1].yLine1 - svg.valueY;
+
+    svg.objects[1].xLine2 = svg.objects[1].xLine2 - svg.valueX;
+    svg.objects[1].yLine2 = svg.objects[1].yLine2 - svg.valueY;
+
+    svg.objects[1].xLine3 = svg.objects[1].xLine3 - svg.valueX;
+    svg.objects[1].yLine3 = svg.objects[1].yLine3 - svg.valueY;
+
+    svg.objects[2].x = svg.objects[2].x - svg.valueX;
+    svg.objects[2].y = svg.objects[2].y - svg.valueY;
+}
+
+function dot2Broken(svg, event){
+
+    const arrowPath = event.target.parentNode.children[1];
+    rotationArrowsBroken2(svg, arrowPath)
+
+    svg.objects[0].xMove = svg.objects[0].xMove - svg.valueX;
+    svg.objects[0].yMove = svg.objects[0].yMove - svg.valueY;
+    svg.objects[0].yLine1 = svg.objects[0].yLine1 - svg.valueY;
+    svg.objects[3].x = svg.objects[3].x - svg.valueX;
+    svg.objects[3].y = svg.objects[3].y - svg.valueY;
 }

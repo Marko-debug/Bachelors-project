@@ -10,6 +10,7 @@ window.svgMoving = function svgMoving(event){
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);
     const svg = allElements[objIndex];
+    if(svg === undefined){console.log("please delete this element and create another"); return}
     const path = event.target;
     dragMouseDown()
 
@@ -228,14 +229,14 @@ window.svgMoving = function svgMoving(event){
             svg.yLine3 = svg.yLine3 - svg.valueY;
             return; 
         }
-        if(event.target.parentNode.className.baseVal === "svg-input"){
+        if(event.target.parentNode.className.baseVal === "svg-input-right" || event.target.parentNode.className.baseVal === "svg-input-left"){
             const textStyle = path.parentNode.children[1].children[0].children[0].style;
             path.setAttribute("d", svg.getPath); 
             //text
             textStyle.paddingTop = (svg.getTextTop) + "px";
             textStyle.marginLeft = (svg.getTextLeft) + "px";
         }
-        if(event.target.parentNode.className.baseVal === "svg-output"){
+        if(event.target.parentNode.className.baseVal === "svg-output-right" || event.target.parentNode.className.baseVal === "svg-output-left"){
             const textStyle = path.parentNode.children[1].children[0].children[0].style;
             path.setAttribute("d", svg.getPath); 
             //text
@@ -298,16 +299,30 @@ window.svgMoving = function svgMoving(event){
             svg.valueX = valueX;
             svg.valueY = valueY; 
         }
-        else if(svg.name == "svg-input"){
+        else if(svg.name == "svg-input-right"){
             let valueX = svg.xMove - (e.pageX - 180);
             let valueY = svg.yMove - (e.pageY - 30);
     
             svg.valueX = valueX;
             svg.valueY = valueY; 
         }
-        else if(svg.name == "svg-output"){
+        else if(svg.name == "svg-input-left"){
+            let valueX = (svg.xMove - 160) - (e.pageX);
+            let valueY = (svg.yMove + 30) - (e.pageY);
+    
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-output-right"){
             let valueX = svg.xMove - (e.pageX - 180);
             let valueY = svg.yMove - (e.pageY - 30);
+    
+            svg.valueX = valueX;
+            svg.valueY = valueY; 
+        }
+        else if(svg.name == "svg-output-left"){
+            let valueX = (svg.xMove - 160) - (e.pageX);
+            let valueY = (svg.yMove + 30) - (e.pageY);
     
             svg.valueX = valueX;
             svg.valueY = valueY; 

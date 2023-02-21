@@ -30,6 +30,8 @@ import { allElements } from "../chooseShape.js";
 window.loadFile = function loadFile() {
   var input, file, fr;
 
+    check();
+
   if (typeof window.FileReader !== 'function') {
     alert("The file API isn't supported on this browser yet.");
     return;
@@ -61,6 +63,15 @@ window.loadFile = function loadFile() {
         console.log('...deserialized...')
     })
   }
+}
+
+function check(){
+    let shapeSVG = document.querySelector(".svg-elements");
+    if(shapeSVG !== null){
+        while (shapeSVG.firstChild) {
+            shapeSVG.removeChild(shapeSVG.firstChild);
+        }
+    }
 }
 
 const recoverElement = (element) => {
@@ -101,12 +112,74 @@ const recoverElement = (element) => {
         allElements.push(object);
         generatePhysicallyFlowBroken(element.id, element.name, object);
     }
-    else if(element.name === "svg-input"){
+    else if(element.name === "svg-information-flow"){
+        const line = element.objects[0];
+        const arrow = element.objects[1];
+        const dot1 = element.objects[2];
+        const dot2 = element.objects[3];
+        const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3},
+                      {name: dot1.name, x: dot1.x, y: dot1.y}, 
+                      {name: dot2.name, x: dot2.x, y: dot2.y}];
+        const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
+        allElements.push(object);
+        generatePhysicallyFlow(element.id, element.name, object);
+    }
+    else if(element.name === "svg-information-flow-broken"){
+        const line = element.objects[0];
+        const arrow = element.objects[1];
+        const dot1 = element.objects[2];
+        const dot2 = element.objects[3];
+        const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1, xLine2: line.xLine2, yLine2: line.yLine2},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3}, 
+                      {name: dot1.name, x: dot1.x, y: dot1.y}, 
+                      {name: dot2.name, x: dot2.x, y: dot2.y}];
+        const object = new PhysicallyFlowBroken(element.id, element.name, path)
+        allElements.push(object);
+        generatePhysicallyFlowBroken(element.id, element.name, object);
+    }
+    else if(element.name === "svg-sequential-flow"){
+        const line = element.objects[0];
+        const arrow = element.objects[1];
+        const dot1 = element.objects[2];
+        const dot2 = element.objects[3];
+        const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3},
+                      {name: dot1.name, x: dot1.x, y: dot1.y}, 
+                      {name: dot2.name, x: dot2.x, y: dot2.y}];
+        const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
+        allElements.push(object);
+        generatePhysicallyFlow(element.id, element.name, object);
+    }
+    else if(element.name === "svg-sequential-flow-broken"){
+        const line = element.objects[0];
+        const arrow = element.objects[1];
+        const dot1 = element.objects[2];
+        const dot2 = element.objects[3];
+        const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1, xLine2: line.xLine2, yLine2: line.yLine2},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3}, 
+                      {name: dot1.name, x: dot1.x, y: dot1.y}, 
+                      {name: dot2.name, x: dot2.x, y: dot2.y}];
+        const object = new PhysicallyFlowBroken(element.id, element.name, path)
+        allElements.push(object);
+        generatePhysicallyFlowBroken(element.id, element.name, object);
+    }
+    else if(element.name === "svg-input-right"){
         const object = new Input(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);  
     }
-    else if(element.name === "svg-output"){
+    else if(element.name === "svg-output-right"){
+        const object = new Output(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
+        allElements.push(object);
+        generateSVG(element.id, element.name, object);  
+    }
+    else if(element.name === "svg-input-left"){
+        const object = new Input(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
+        allElements.push(object);
+        generateSVG(element.id, element.name, object);  
+    }
+    else if(element.name === "svg-output-left"){
         const object = new Output(element.id, element.name, element.xMove, element.yMove, element.xLine1, element.yLine1, element.xLine2, element.yLine2, element.xLine3, element.yLine3, element.xLine4, element.yLine4, element.xLine5, element.yLine5, element.xLine6, element.yLine6, element.xLine7, element.yLine7, element.idText, element.contentText, element.topText, element.leftText, 0, 0)
         allElements.push(object);
         generateSVG(element.id, element.name, object);  

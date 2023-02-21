@@ -6,6 +6,10 @@ const getBtnSerialize = document.querySelector(".save");
 getBtnSerialize.addEventListener("click", ()=> serializeData())
 
 function serializeData(){
+    if(allElements.length === 0){
+        alert("There is not element to serialize");
+        return;
+    }
     const clone = JSON.stringify(allElements)
     
     //remove all elements in both containers SVG and DIV

@@ -8,8 +8,12 @@
     border-style: solid;
 }
 
-.svg-process, .svg-physically-flow, .svg-physically-flow-broken,.svg-input, .svg-event-transition, .svg-end-of-instance, .svg-two-branching, .svg-three-branching, .svg-rediraction, .svg-parallel, .svg-end-of-two-processes, .svg-end-of-three-processes{
+.svg-process, .svg-input-right, .svg-input-left,.svg-event-transition, .svg-end-of-instance, .svg-two-branching, .svg-three-branching, .svg-rediraction, .svg-parallel, .svg-end-of-two-processes, .svg-end-of-three-processes{
   stroke-width: 2;
+}
+
+.svg-physically-flow, .svg-physically-flow-broken,  .svg-information-flow, .svg-information-flow-broken,  .svg-sequential-flow, .svg-sequential-flow-broken{
+  stroke-width: 3;
 }
 
 /* .svg-elements{

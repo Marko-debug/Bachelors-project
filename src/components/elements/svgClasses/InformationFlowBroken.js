@@ -1,4 +1,4 @@
-export class PhysicallyFlowBroken{
+export class InformationFlowBroken{
     constructor(id, name, objects){
         this.id = id;
         this.name = name;
@@ -75,6 +75,7 @@ export class PhysicallyFlowBroken{
         L ${this.objects[1].xLine2} ${this.objects[1].yLine2} 
         L ${this.objects[1].xLine3} ${this.objects[1].yLine3} Z`;
     }
+
 
     get getPathDot1X(){
         return `${this.objects[2].x - this.valueX}`;

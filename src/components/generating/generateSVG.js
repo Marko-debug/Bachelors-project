@@ -20,7 +20,7 @@ export function generateSVG(id, className, object){
     });
     svg.appendChild(g);
 
-    if(className === "svg-input"){      
+    if(className === "svg-input-right" || className === "svg-input-left"){      
       g.appendChild(makeSVGEl("path", {
         onmousedown: "svgMoving(event)",
         d: object.getPath,
@@ -29,7 +29,7 @@ export function generateSVG(id, className, object){
       }));
       textGenerateInside(object.idText, object.contentText, object.topText, object.leftText, object);
     }
-    if(className === "svg-output"){      
+    if(className === "svg-output-right" || className === "svg-output-left"){      
       g.appendChild(makeSVGEl("path", {
         onmousedown: "svgMoving(event)",
         d: object.getPath,

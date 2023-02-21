@@ -34,7 +34,15 @@ window.resize2 = function resize2(event){
         svg.valueX = valueX;    
         svg.valueY = valueY; 
 
+        const width = svg.width - svg.valueX;
+        const height = svg.height + valueY;
+
         if(event.target.parentNode.className.baseVal === "svg-process"){
+
+            //checking whether it is not too small
+            if(width < 200 || height < 150){
+                return;
+            }
 
             const textTimerStyle = path.parentNode.children[3].children[0].children[0].style;
             const textProcessStyle = path.parentNode.children[5].children[0].children[0].style;
@@ -76,6 +84,11 @@ window.resize2 = function resize2(event){
             svg.cx4 = svg.cx4 - svg.valueX;
         }
         if(event.target.parentNode.className.baseVal === "svg-event-transition"){
+
+            //checking whether it is not too small
+            if(width < 160 || height < 60){
+                return;
+            }
 
             const textStyle = path.parentNode.children[1].children[0].children[0].style;
             //main shape

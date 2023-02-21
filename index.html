@@ -22,51 +22,69 @@
   <script type="module" src="./src/components/screenshot/createPNG.js"></script>
 
   <!-- Dynamic Bar -->
-  <div class="navbar" style="width: 400px; height: 500px">
-    <button class="btn-navbar">☰</button>
-    <div class="navbar-inner">
+  <div class="navbar" style="width: 400px; height: 750px">
+    <div style="display:flex">
+      <button class="btn-navbar">☰</button>
       <div class="zoom">
         <button class="zoom-in">Zoom in</button>
         <button class="zoom-out">Zoom out</button>
       </div>
+    </div>
+    <div class="navbar-inner">
       <div class="shapes">
         <button class="btn-process">Process</button>
         <button class="btn-text">Text</button>
-
         <button class="btn-physically">Physically flow</button>
-        <div class="wrapper-flows">
+        <div class="wrapper-flows" hidden="true">
           <button class="btn-physically-flow">Physically flow</button>
           <button class="btn-physically-flow-broken">
-            Physically flow broken
+            Physically flow
         </div>
         </button>
-
-        <button class="btn-information-flow">Information flow</button>
+        <button class="btn-information">Information flow</button>
+        <div class="wrapper-information" hidden="true">
+          <button class="btn-information-flow">Information flow</button>
+          <button class="btn-information-flow-broken">Information flow broken</button>
+        </div>
+        <button class="btn-sequential">Sequential flow</button>
+        <div class="wrapper-sequential" hidden="true">
+          <button class="btn-sequential-flow">Sequential flow</button>
+          <button class="btn-sequential-flow-broken">Sequential flow-broken</button>
+        </div>
         <button class="btn-input">Input</button>
+        <div class="wrapper-inputs" hidden="true">
+          <button class="btn-input-right">Input right</button>
+          <button class="btn-input-left">Input left</button>
+        </div>
         <button class="btn-output">Output</button>
+        <div class="wrapper-outputs" hidden="true">
+          <button class="btn-output-right">Output right</button>
+          <button class="btn-output-left">Output left</button>
+        </div>
         <button class="btn-end-of-instance">End of instance</button>
         <button class="btn-event-transition">Event transition</button>
+        <button class="btn-split-branches">Split branches</button>
         <button class="btn-two-branches">
           Two-branching with positive and negative branch
         </button>
         <button class="btn-three-branches">
           Three-branching with connected value branches
         </button>
-        <button class="btn-split-branches">Split branches</button>
         <button class="btn-parallel">Parallel</button>
         <button class="btn-rediraction">Redirection symbols</button>
         <button class="btn-end-of-two-processes">End of two processes</button>
         <button class="btn-end-of-three-processes">End of three processes</button>
       </div>
-      <button class="grid">Grid</button>
+      <!-- <button class="grid">Grid</button> -->
+      <button class="grid"><span>Grid </span></button>
       <button class="save">Save</button>
-      <button class="open-file">Open file</button>
+      <!-- <button class="open-file">Open file</button> -->
       <button class="download">Download</button>
       <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
         
         <fieldset>
-          <input type='file' id='fileinput'>
-          <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+          <input class="browse" type='file' id='fileinput'>
+          <button class="load" type='button' id='btnLoad' onclick='loadFile();'><span>Load</span></button>
         </fieldset>
       </form>
       <!-- <p>
@@ -85,7 +103,6 @@
       <image width="200" height="150" src="./src/images/text.png"></image>
       <div class="show-name">Text</div>
     </div>
-
     <div class="pf" hidden="true" style="margin-top: 100px">
       <image
         width="200"
@@ -98,21 +115,40 @@
       <image
         width="200"
         height="150"
-        src="./src/images/physically-flow.png"
+        src="./src/images/physically-flow-broken.png"
       ></image>
-      <div class="show-name">Physically flow broken</div>
+      <div class="show-name">Physically flow</div>
     </div>
-
     <div class="if" hidden="true" style="margin-top: 100px">
       <image width="200" height="150"></image>
       <div class="show-name">Information flow</div>
     </div>
-    <div class="in" hidden="true" style="margin-top: 100px">
-      <image width="200" height="150" src="./src/images/input.png"></image>
+    <div class="ifb" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150"></image>
+      <div class="show-name">Information flow</div>
+    </div>
+    <div class="sf" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150"></image>
+      <div class="show-name">Sequential flow</div>
+    </div>
+    <div class="sfb" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150"></image>
+      <div class="show-name">Sequential flow</div>
+    </div>
+    <div class="inr" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150" src="./src/images/inputRight.png"></image>
       <div class="show-name">Input</div>
     </div>
-    <div class="ou" hidden="true" style="margin-top: 150px">
-      <image width="200" height="150" src="./src/images/output.png"></image>
+    <div class="inl" hidden="true" style="margin-top: 100px">
+      <image width="200" height="150" src="./src/images/inputLeft.png"></image>
+      <div class="show-name">Input</div>
+    </div>
+    <div class="our" hidden="true" style="margin-top: 150px">
+      <image width="200" height="150" src="./src/images/outputRight.png"></image>
+      <div class="show-name">Output</div>
+    </div>
+    <div class="oul" hidden="true" style="margin-top: 150px">
+      <image width="200" height="150" src="./src/images/outputLeft.png"></image>
       <div class="show-name">Output</div>
     </div>
     <div class="ei" hidden="true" style="margin-top: 150px">
@@ -131,40 +167,60 @@
       ></image>
       <div class="show-name">Event transition</div>
     </div>
-    <div class="wb" hidden="true" style="margin-top: 150px">
+    <div class="wb" hidden="true" style="margin-top: 150px; height: 260px">
       <image
         width="200"
         height="150"
-        src="./src/images/two-branching-with-positive-and-negative-branch.png"
+        src="./src/images/three-branching.png"
       ></image>
       <div class="show-name">Two-branching with positive and negative branch</div>
     </div>
-    <div class="hb" hidden="true" style="margin-top: 200px">
+    <div class="hb" hidden="true" style="margin-top: 200px; height: 240px;">
       <image
         width="200"
         height="150"
-        src="./src/images/three-branching-with-connected-value-branches.png"
+        src="./src/images/three-branching.png"
       ></image>
       <div class="show-name">Three-branching with connected value branches</div>
     </div>
     <div class="sb" hidden="true" style="margin-top: 200px">
-      <image width="200" height="150"></image>
+      <image
+        width="200"
+        height="150"
+        src="./src/images/split-branches.png"
+      ></image>
       <div class="show-name">Split braches</div>
     </div>
     <div class="pa" hidden="true" style="margin-top: 200px">
-      <image width="200" height="150"></image>
+      <image
+        width="200"
+        height="150"
+        src="./src/images/parallel.png"
+      ></image>
       <div class="show-name">Parallel</div>
     </div>
     <div class="re" hidden="true" style="margin-top: 200px">
-      <image width="200" height="150"></image>
+      <image
+        width="200"
+        height="150"
+        src="./src/images/rediraction.png"
+      ></image>
       <div class="show-name">Redirection symbol</div>
     </div>
     <div class="ep" hidden="true" style="margin-top: 250px">
-      <image width="200" height="150"></image>
+      <image
+        width="200"
+        height="150"
+        src="./src/images/end-of-two-processes.png"
+      ></image>
       <div class="show-name">End of two processes</div>
     </div>
     <div class="eh" hidden="true" style="margin-top: 250px">
-      <image width="200" height="150"></image>
+      <image
+        width="200"
+        height="150"
+        src="./src/images/end-of-three-processes.png"
+      ></image>
       <div class="show-name">End of three processes</div>
     </div>
 </div>
@@ -231,6 +287,7 @@
       "
     >
     </svg>
+    <!-- <svg class="svg-elements" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"></svg> -->
   </div>
   <!-- <div>
 

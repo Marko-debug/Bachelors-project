@@ -22,19 +22,51 @@ export function generatePhysicallyFlowBroken(id, className, object){
     });
     svg.appendChild(g);
     
-    g.appendChild(makeSVGEl("path", {
-        class: "line",
-        d: object.getPathLine,
-        stroke: "rgb(0, 0, 0)",
-        fill: "transparent",
-    }));
-
-    g.appendChild(makeSVGEl("path", {
-        class: "arrow",
-        d: object.getPathArrow,
-        stroke: "rgb(0, 0, 0)",
-        fill: "transparent",
-    }));
+    if(className === "svg-information-flow-broken"){
+        g.appendChild(makeSVGEl("path", {
+            class: "line",
+            d: object.getPathLine,
+            stroke: "#009933",
+            fill: "transparent",
+        }));
+    
+        g.appendChild(makeSVGEl("path", {
+            class: "arrow",
+            d: object.getPathArrow,
+            stroke: "#009933",
+            fill: "rgb(0, 0, 0)",
+        }));
+    }
+    else if(className === "svg-sequential-flow-broken"){
+        g.appendChild(makeSVGEl("path", {
+            class: "line",
+            d: object.getPathLine,
+            stroke: "#00a3cc",
+            fill: "transparent",
+        }));
+    
+        g.appendChild(makeSVGEl("path", {
+            class: "arrow",
+            d: object.getPathArrow,
+            stroke: "#00a3cc",
+            fill: "rgb(0, 0, 0)",
+        }));
+    }
+    else{
+        g.appendChild(makeSVGEl("path", {
+            class: "line",
+            d: object.getPathLine,
+            stroke: "rgb(0, 0, 0)",
+            fill: "transparent",
+        }));
+    
+        g.appendChild(makeSVGEl("path", {
+            class: "arrow",
+            d: object.getPathArrow,
+            stroke: "rgb(0, 0, 0)",
+            fill: "rgb(0, 0, 0)",
+        }));
+    }
 
     dataset.forEach(function(coords){
         g.appendChild(makeSVGEl("circle", {

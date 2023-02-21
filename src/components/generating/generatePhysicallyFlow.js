@@ -21,20 +21,64 @@ export function generatePhysicallyFlow(id, className, object){
         style: "visibility: visible; cursor: pointer;"
     });
     svg.appendChild(g);
-    
-    g.appendChild(makeSVGEl("path", {
-        class: "line",
-        d: object.getPathLine,
-        stroke: "rgb(0, 0, 0)",
-        fill: "transparent",
-    }));
 
-    g.appendChild(makeSVGEl("path", {
-        class: "arrow",
-        d: object.getPathArrow,
-        stroke: "rgb(0, 0, 0)",
-        fill: "transparent",
-    }));
+    //choosing color arrow
+    if(className === "svg-information-flow"){
+        g.appendChild(makeSVGEl("path", {
+            class: "line",
+            d: object.getPathLine,
+            stroke: "#009933",
+            fill: "transparent",
+        }));
+
+        g.appendChild(makeSVGEl("path", {
+            class: "arrow",
+            d: object.getPathArrow,
+            stroke: "#009933",
+        }));
+
+    }
+    else if(className === "svg-sequential-flow"){
+        
+        // const line = makeSVGEl("path", {
+        //     class: "line",
+        //     d: object.getPathLine,
+        //     stroke: "#00a3cc",
+        //     fill: "transparent",
+        // })
+        // line.setAttribute("stroke-dasharray", "10")
+        // g.appendChild(line)
+        
+        g.appendChild(makeSVGEl("path", {
+            class: "line",
+            d: object.getPathLine,
+            stroke: "#00a3cc",
+            fill: "transparent",
+        }));
+
+        g.appendChild(makeSVGEl("path", {
+            class: "arrow",
+            d: object.getPathArrow,
+            stroke: "#00a3cc",
+        }));
+    }
+    else{
+        g.appendChild(makeSVGEl("path", {
+            class: "line",
+            d: object.getPathLine,
+            stroke: "rgb(0, 0, 0)",
+            fill: "transparent",
+        }));
+
+        g.appendChild(makeSVGEl("path", {
+            class: "arrow",
+            d: object.getPathArrow,
+            stroke: "rgb(0, 0, 0)",
+        }));
+
+    }
+
+
 
     dataset.forEach(function(coords){
         g.appendChild(makeSVGEl("circle", {

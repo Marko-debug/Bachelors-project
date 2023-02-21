@@ -43,6 +43,18 @@ window.selectElement = function selectElement(event){
             popped.children[2].style.visibility = 'hidden';
             popped.children[3].style.visibility = 'hidden';
         }
+        if(poppedName == "svg-information-flow" || poppedName == "svg-information-flow-broken"){
+            popped.children[2].style.visibility = 'hidden';
+            popped.children[3].style.visibility = 'hidden';
+        }
+        if(poppedName == "svg-sequential-flow" || poppedName == "svg-sequential-flow-broken"){
+            popped.children[2].style.visibility = 'hidden';
+            popped.children[3].style.visibility = 'hidden';
+        }
+        if(poppedName == "svg-split-branches"){
+            popped.children[2].style.visibility = 'hidden';
+            popped.children[3].style.visibility = 'hidden';
+        }
     }
 
     //to show manipulable dots for specifically elements
@@ -59,6 +71,18 @@ window.selectElement = function selectElement(event){
         event.target.parentNode.children[5].style.visibility = 'visible';
     }
     if(name == "svg-physically-flow" || name == "svg-physically-flow-broken"){
+        event.target.parentNode.children[2].style.visibility = 'visible';
+        event.target.parentNode.children[3].style.visibility = 'visible';
+    }
+    if(name == "svg-information-flow" || name == "svg-information-flow-broken"){
+        event.target.parentNode.children[2].style.visibility = 'visible';
+        event.target.parentNode.children[3].style.visibility = 'visible';
+    }
+    if(name == "svg-sequential-flow" || name == "svg-sequential-flow-broken"){
+        event.target.parentNode.children[2].style.visibility = 'visible';
+        event.target.parentNode.children[3].style.visibility = 'visible';
+    }
+    if(name == "svg-split-branches"){
         event.target.parentNode.children[2].style.visibility = 'visible';
         event.target.parentNode.children[3].style.visibility = 'visible';
     }
@@ -79,7 +103,6 @@ window.selectElement = function selectElement(event){
             svg.contentText = popped.innerText;
         }
 
-        console.log(svg)
         //checking svg, whether it exists
         if(svg === undefined){
             objIndex = allElements.findIndex(obj => obj.id == popped.parentNode.parentNode.parentNode.parentNode.id);
@@ -87,10 +110,10 @@ window.selectElement = function selectElement(event){
         }
         const prefix = popped.id.split('-');
         // update content of instance
-        if(prefix[0] == "timer") svg.contentTimer = popped.innerText;
-        else if(prefix[0] == "owner") svg.contentOwner = popped.innerText;
-        else if(prefix[0] == "process") svg.contentProcess = popped.innerText;
-        else svg.contentText = popped.innerText;
+        if(prefix[0] == "timer") svg.contentTimer = popped.innerHTML;
+        else if(prefix[0] == "owner") svg.contentOwner = popped.innerHTML;
+        else if(prefix[0] == "process") svg.contentProcess = popped.innerHTML;
+        else svg.contentText = popped.innerHTML;
     };
     console.log(allElements)
     //push element to an array select[]
@@ -115,10 +138,10 @@ window.writingText = function writingText(event){
         if(svg === undefined)return;
         const prefix = popped.id.split('-');
         // update content of instance
-        if(prefix[0] == "timer") svg.contentTimer = popped.innerText;
-        else if(prefix[0] == "owner") svg.contentOwner = popped.innerText;
-        else if(prefix[0] == "process") svg.contentProcess = popped.innerText;
-        else svg.contentText = popped.innerText;
+        if(prefix[0] == "timer") svg.contentTimer = popped.innerHTML;
+        else if(prefix[0] == "owner") svg.contentOwner = popped.innerHTML;
+        else if(prefix[0] == "process") svg.contentProcess = popped.innerHTML;
+        else svg.contentText = popped.innerHTML;
         console.log(allElements)
     }
 
@@ -132,7 +155,7 @@ window.writingText = function writingText(event){
         return;
     }
 }
-export {select}
+export {select, edit}
 
 //there is a problem when i click on red circle of physically flow broken 
 // window.svgSelect = function svgSelect(e){

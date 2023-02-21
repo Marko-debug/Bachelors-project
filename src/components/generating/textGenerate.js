@@ -67,7 +67,7 @@ export function textGenerateInside(id ,content, top, left,object){
     div.setAttribute("id", id);
     div.setAttribute("class", "text" );
     div.setAttribute("ondblclick", "writingText(event)");
-    if(object.name == "svg-output"){
+    if(object.name == "svg-output-right" || object.name == "svg-output-left"){
         div.setAttribute("style", `display: inline-block; color: rgb(255, 255, 255); font-size: 20px; pointer-events: all;`);
     }
     else{

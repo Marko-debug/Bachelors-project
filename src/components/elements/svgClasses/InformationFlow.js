@@ -1,4 +1,4 @@
-export class PhysicallyFlow{
+export class InformationFlow{
     constructor(id, name, objects, valueX, valueY) {
         this.id = id;
         this.name = name;
@@ -7,20 +7,16 @@ export class PhysicallyFlow{
         this.valueY = valueY;
     }
 
-    //get ID
     get getId(){
         return this.id;
     }
 
-    //MOVING
-    // moving line
     get getPathLine(){
         return `
         M ${this.objects[0].xMove} ${this.objects[0].yMove}
         L ${this.objects[0].xLine1} ${this.objects[0].yLine1}`;
     }
 
-    //moving arrow
     get getPathArrow(){
         return `
         M ${this.objects[1].xMove} ${this.objects[1].yMove}
@@ -34,6 +30,14 @@ export class PhysicallyFlow{
         return `
         M ${this.objects[0].xMove} ${this.objects[0].yMove} 
         L ${this.objects[0].xLine1 - this.valueX} ${this.objects[0].yLine1 - this.valueY}`;
+    }
+
+    get getPathArrow1(){
+        return `
+        M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY} 
+        L ${this.objects[1].xLine1 - this.valueX} ${this.objects[1].yLine1 - this.valueY} 
+        L ${this.objects[1].xLine2 - this.valueX} ${this.objects[1].yLine2 - this.valueY} 
+        L ${this.objects[1].xLine3 - this.valueX} ${this.objects[1].yLine3 - this.valueY} Z`;
     }
 
     //ROTATION dot 1
@@ -104,7 +108,7 @@ export class PhysicallyFlow{
         L ${this.objects[1].xLine3 + 14} ${this.objects[1].yLine3} Z`;
     }
 
-    //MOVING manipalble dots
+
     get getPathDot1X(){
         return `${this.objects[2].x - this.valueX}`;
     }
@@ -120,7 +124,6 @@ export class PhysicallyFlow{
         L ${this.objects[0].xLine1} ${this.objects[0].yLine1}`;
     }
 
-    //MOVING manipalble dots
     get getPathDot2X(){
         return `${this.objects[3].x - this.valueX}`;
     }

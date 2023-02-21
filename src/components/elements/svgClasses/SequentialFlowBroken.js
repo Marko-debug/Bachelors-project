@@ -1,4 +1,4 @@
-export class PhysicallyFlowBroken{
+export class SequentialFlowBroken{
     constructor(id, name, objects){
         this.id = id;
         this.name = name;

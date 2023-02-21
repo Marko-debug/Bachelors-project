@@ -4,7 +4,7 @@
     opacity: 0.3;
     position: fixed;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin: 25px 0px 0px 25px;
+    margin: 10px 0px 0px 10px;
     transition: 0.5s;
     overflow: hidden;
     z-index: 1;
@@ -22,8 +22,8 @@
 }
 
 .zoom{
-    text-align: end;
-    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 130px;
 }
 
 .btn-navbar{
@@ -38,27 +38,256 @@
 }
 
 .wrapper-flows{
-    position: fixed;
-    top: 122px;
-    height: 42px;
-    z-index: 2;
-    background-color: rgb(255, 255, 255);
-    width: 258px;
-    left: 98px;
+  position: fixed;
+  top: 88px;
+  height: 42px;
+  z-index: 2;
+  background-color: rgb(255, 255, 255);
+  width: 360px;
+  left: 135px;
 }
 
 .btn-physically-flow{
-    z-index: 2;
-    position: fixed;
-    top: 125px;
-    height: 40px;
-    left: 100px;
+  z-index: 2;
+  position: fixed;
+  top: 90px;
+  height: 40px;
+  left: 135px;
 }
 
 .btn-physically-flow-broken{
-    z-index: 2;
-    position: fixed;
-    top: 125px;
-    height: 40px;
-    left: 210px;
+  z-index: 2;
+  position: fixed;
+  top: 90px;
+  height: 40px;
+  left: 281px;
 }
+
+.wrapper-sequential{
+  position: fixed;
+  top: 132px;
+  height: 42px;
+  z-index: 2;
+  background-color: rgb(255, 255, 255);
+  width: 370px;
+  left: 134px;
+}
+
+.btn-sequential-flow{
+  z-index: 2;
+  position: fixed;
+  top: 131px;
+  height: 40px;
+  left: 132px;
+}
+
+.btn-sequential-flow-broken{
+  z-index: 2;
+  position: fixed;
+  top: 131px;
+  height: 40px;
+  left: 286px;
+}
+
+.wrapper-information{
+  position: fixed;
+  top: 133px;
+  height: 42px;
+  z-index: 2;
+  background-color: rgb(255, 255, 255);
+  width: 388px;
+  left: 10px;
+}
+
+.btn-information-flow{
+  z-index: 2;
+  position: fixed;
+  top: 132px;
+  height: 40px;
+  left: 8px;
+}
+
+.btn-information-flow-broken{
+  z-index: 2;
+  position: fixed;
+  top: 132px;
+  height: 40px;
+  left: 170px;
+}
+
+.wrapper-inputs{
+  position: fixed;
+  top: 176px;
+  height: 42px;
+  z-index: 2;
+  background-color: rgb(255, 255, 255);
+  width: 209px;
+  left: 8px;
+}
+
+.btn-input-right{
+  z-index: 2;
+  position: fixed;
+  top: 176px;
+  height: 40px;
+  left: 6px;
+}
+
+.btn-input-left{
+  z-index: 2;
+  position: fixed;
+  top: 175px;
+  height: 40px;
+  left: 115px;
+}
+
+.wrapper-outputs{
+  position: fixed;
+  top: 176px;
+  height: 42px;
+  z-index: 2;
+  background-color: rgb(255, 255, 255);
+  width: 238px;
+  left: 35px;
+}
+
+.btn-output-right{
+  z-index: 2;
+  position: fixed;
+  top: 175px;
+  height: 40px;
+  left: 34px;
+}
+
+.btn-output-left {
+  z-index: 2;
+  position: fixed;
+  top: 175px;
+  height: 40px;
+  left: 157px;
+}
+
+  
+/* .load{
+    position: relative;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 280px;
+    height: 76px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid #a5a5a5;
+
+    overflow: hidden;
+    transition: .3s;
+
+    &:before {
+        display: block;
+        content: 'DOWNLOAD';
+        color: #a5a5a5;
+        letter-spacing: 4px;
+        font-weight: 200;
+        opacity: 1;
+    }
+    &:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        right: 110%;
+        height: 100%;
+        width: 200%;
+        background: #a5a5a5;
+        transition: inherit;
+    }
+}
+  
+  .active {
+    &:before {
+      animation-name: check;
+      animation-duration: 1s;
+      animation-iteration-count: 2;
+      animation-timing-function: ease-out;
+      animation-direction: alternate;
+      animation-delay: .3s;
+    }
+    &:after {
+      right: -10%;
+      animation-name: goaway;
+      animation-duration: 1s;
+      animation-iteration-count: 2;
+      animation-timing-function: ease-out;
+      animation-direction: alternate;
+      animation-delay: .3s;
+    }
+    
+    border: none;
+    animation-name: shrink;
+    animation-duration: 1s;
+    animation-iteration-count: 2;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+    animation-delay: .3s;
+  }
+  
+  @keyframes shrink {
+    0% {
+      opacity: 1;
+      margin: 0;
+    }
+    10% {
+      background-color: #a5a5a5;
+      border-radius: 76px;
+    }
+    20% {
+      width: 76px;
+      height: 76px;
+    }
+    60% {
+      border-radius: 100%;
+      width: 76px;
+      height: 76px;
+      opacity: 1;
+    }
+    100% {
+      border: none;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes check {
+    0% {
+      content: '✓';
+      font-size: 3em;
+    }
+    20% {
+      color: #fff;
+      opacity: 1; 
+    }
+    80% {
+      content: '✓';
+      font-size: 2em;
+      opacity: 1;
+    }
+    100% {
+      content: '';
+      opacity: 0;  
+    }
+  }
+  
+  @keyframes goaway {
+    0% {
+      opacity: 1;
+    }  
+    10% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  } */
