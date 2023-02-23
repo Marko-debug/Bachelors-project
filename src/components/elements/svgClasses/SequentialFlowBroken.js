@@ -16,7 +16,18 @@ export class SequentialFlowBroken{
         L ${this.objects[0].xLine2} ${this.objects[0].yLine2}`;
     }
 
+    //moving arrow
     get getPathArrow(){
+        return `
+        M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY}
+        L ${this.objects[1].xLine1 - this.valueX} ${this.objects[1].yLine1 - this.valueY}
+        L ${this.objects[1].xLine2 - this.valueX} ${this.objects[1].yLine2 - this.valueY}
+        L ${this.objects[1].xLine3 - this.valueX} ${this.objects[1].yLine3 - this.valueY}
+        Z`;
+    }
+
+    //moving arrow
+    get getPathArrow2(){
         return `
         M ${this.objects[1].xMove} ${this.objects[1].yMove}
         L ${this.objects[1].xLine1} ${this.objects[1].yLine1}

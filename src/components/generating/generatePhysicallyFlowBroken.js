@@ -34,7 +34,7 @@ export function generatePhysicallyFlowBroken(id, className, object){
             class: "arrow",
             d: object.getPathArrow,
             stroke: "#009933",
-            fill: "rgb(0, 0, 0)",
+            fill: "#009933",
         }));
     }
     else if(className === "svg-sequential-flow-broken"){
@@ -49,7 +49,7 @@ export function generatePhysicallyFlowBroken(id, className, object){
             class: "arrow",
             d: object.getPathArrow,
             stroke: "#00a3cc",
-            fill: "rgb(0, 0, 0)",
+            fill: "#00a3cc",
         }));
     }
     else{

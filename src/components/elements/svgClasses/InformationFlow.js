@@ -26,6 +26,16 @@ export class InformationFlow{
         Z`;
     }
 
+    //moving arrow
+    get getPathArrow2(){
+        return `
+        M ${this.objects[1].xMove} ${this.objects[1].yMove}
+        L ${this.objects[1].xLine1} ${this.objects[1].yLine1}
+        L ${this.objects[1].xLine2} ${this.objects[1].yLine2}
+        L ${this.objects[1].xLine3} ${this.objects[1].yLine3}
+        Z`;
+    }
+
     get getPathLine1(){
         return `
         M ${this.objects[0].xMove} ${this.objects[0].yMove} 

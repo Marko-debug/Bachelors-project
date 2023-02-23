@@ -78,7 +78,7 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 790, yLine1: 180},
-            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187}, //right
+            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187, direction: "right"}, //right
             // {name: "arrow", xMove: 790, yMove: 180, xLine1: 797, yLine1: 173, xLine2: 790, yLine2: 192, xLine3: 783, yLine3: 173}, //downside
             // {name: "arrow", xMove: 790, yMove: 180, xLine1: 797, yLine1: 187, xLine2: 778, yLine2: 180, xLine3: 797, yLine3: 173}, //left
             // {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 187, xLine2: 790, yLine2: 168, xLine3: 797, yLine3: 187}, //upside
@@ -93,11 +93,11 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 600, yLine1: 180, xLine2: 600, yLine2: 280},
-            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273},//downside 
+            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273, direction: "down"},//downside 
             // {name: "arrow", xMove: 600, yMove: 280, xLine1: 593, yLine1: 287, xLine2: 600, yLine2: 268, xLine3: 607, yLine3: 287},//upside
             {name: "dot1", x: 600, y: 280},
             {name: "dot2", x: 500, y: 180}];
-        const object = new PhysicallyFlowBroken(id, className, path)
+        const object = new PhysicallyFlowBroken(id, className, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(id, className, object);
     }
@@ -106,7 +106,7 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 790, yLine1: 180},
-            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187},
+            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187, direction: "right"},
             {name: "dot1", x: 790, y: 180},
             {name: "dot2", x: 500, y: 180}];
         const object = new PhysicallyFlow(id, className, path, 0, 0)
@@ -118,10 +118,10 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 600, yLine1: 180, xLine2: 600, yLine2: 280},
-            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273}, 
+            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273, direction: "down"}, 
             {name: "dot1", x: 600, y: 280},
             {name: "dot2", x: 500, y: 180}];
-        const object = new PhysicallyFlowBroken(id, className, path)
+        const object = new PhysicallyFlowBroken(id, className, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(id, className, object);
     }
@@ -130,7 +130,7 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 790, yLine1: 180},
-            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187}, 
+            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187, direction: "right"}, 
             {name: "dot1", x: 790, y: 180},
             {name: "dot2", x: 500, y: 180}];
         const object = new PhysicallyFlow(id, className, path, 0, 0)
@@ -142,10 +142,10 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 600, yLine1: 180, xLine2: 600, yLine2: 280},
-            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273}, 
+            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273, direction: "down"}, 
             {name: "dot1", x: 600, y: 280},
             {name: "dot2", x: 500, y: 180}];
-        const object = new PhysicallyFlowBroken(id, className, path)
+        const object = new PhysicallyFlowBroken(id, className, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(id, className, object);
     }

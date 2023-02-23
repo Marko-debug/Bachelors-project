@@ -1,5 +1,6 @@
 import { allElements } from "../chooseShape.js"
-import { rotationArrows1, rotationArrows2, rotationArrowsBroken1, rotationArrowsBroken2 } from "./rotationArrows.js"
+import { rotationArrows1, rotationArrows2} from "./rotation/rotationArrows.js"
+import { rotationArrowsBroken1, rotationArrowsBroken2 } from "./rotation/rotationArrowsBroken.js"
 
 window.scaleSVG = function scaleSVG(event) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

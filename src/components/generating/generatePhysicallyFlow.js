@@ -35,6 +35,7 @@ export function generatePhysicallyFlow(id, className, object){
             class: "arrow",
             d: object.getPathArrow,
             stroke: "#009933",
+            fill: "#009933",
         }));
 
     }
@@ -60,6 +61,7 @@ export function generatePhysicallyFlow(id, className, object){
             class: "arrow",
             d: object.getPathArrow,
             stroke: "#00a3cc",
+            fill: "#00a3cc",
         }));
     }
     else{

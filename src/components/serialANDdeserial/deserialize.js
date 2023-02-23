@@ -92,7 +92,7 @@ const recoverElement = (element) => {
         const dot1 = element.objects[2];
         const dot2 = element.objects[3];
         const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1},
-                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction},
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
         const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
@@ -105,10 +105,10 @@ const recoverElement = (element) => {
         const dot1 = element.objects[2];
         const dot2 = element.objects[3];
         const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1, xLine2: line.xLine2, yLine2: line.yLine2},
-                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3}, 
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction}, 
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
-        const object = new PhysicallyFlowBroken(element.id, element.name, path)
+        const object = new PhysicallyFlowBroken(element.id, element.name, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(element.id, element.name, object);
     }
@@ -118,7 +118,7 @@ const recoverElement = (element) => {
         const dot1 = element.objects[2];
         const dot2 = element.objects[3];
         const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1},
-                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction},
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
         const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
@@ -131,10 +131,10 @@ const recoverElement = (element) => {
         const dot1 = element.objects[2];
         const dot2 = element.objects[3];
         const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1, xLine2: line.xLine2, yLine2: line.yLine2},
-                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3}, 
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction}, 
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
-        const object = new PhysicallyFlowBroken(element.id, element.name, path)
+        const object = new PhysicallyFlowBroken(element.id, element.name, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(element.id, element.name, object);
     }
@@ -144,7 +144,7 @@ const recoverElement = (element) => {
         const dot1 = element.objects[2];
         const dot2 = element.objects[3];
         const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1},
-                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3},
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction},
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
         const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
@@ -157,10 +157,10 @@ const recoverElement = (element) => {
         const dot1 = element.objects[2];
         const dot2 = element.objects[3];
         const path = [{name: line.name, xMove: line.xMove, yMove: line.yMove, xLine1: line.xLine1, yLine1: line.yLine1, xLine2: line.xLine2, yLine2: line.yLine2},
-                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3}, 
+                      {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction}, 
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
-        const object = new PhysicallyFlowBroken(element.id, element.name, path)
+        const object = new PhysicallyFlowBroken(element.id, element.name, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(element.id, element.name, object);
     }

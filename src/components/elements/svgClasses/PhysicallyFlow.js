@@ -23,6 +23,16 @@ export class PhysicallyFlow{
     //moving arrow
     get getPathArrow(){
         return `
+        M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY}
+        L ${this.objects[1].xLine1 - this.valueX} ${this.objects[1].yLine1 - this.valueY}
+        L ${this.objects[1].xLine2 - this.valueX} ${this.objects[1].yLine2 - this.valueY}
+        L ${this.objects[1].xLine3 - this.valueX} ${this.objects[1].yLine3 - this.valueY}
+        Z`;
+    }
+
+    //moving arrow
+    get getPathArrow2(){
+        return `
         M ${this.objects[1].xMove} ${this.objects[1].yMove}
         L ${this.objects[1].xLine1} ${this.objects[1].yLine1}
         L ${this.objects[1].xLine2} ${this.objects[1].yLine2}
@@ -38,12 +48,20 @@ export class PhysicallyFlow{
 
     //ROTATION dot 1
     //right
-    get getPathArrowRight1(){
+        get getPathArrowRight1D(){
         return `
         M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY} 
         L ${this.objects[1].xLine1 - this.valueX} ${this.objects[1].yLine1 - this.valueY} 
         L ${this.objects[1].xLine2 - this.valueX} ${this.objects[1].yLine2 - this.valueY} 
         L ${this.objects[1].xLine3 - this.valueX} ${this.objects[1].yLine3 - this.valueY} Z`;
+    }
+    
+    get getPathArrowRight1(){
+        return `
+        M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY} 
+        L ${this.objects[1].xLine1 - this.valueX - 14} ${this.objects[1].yLine1 - this.valueY} 
+        L ${this.objects[1].xLine2 - this.valueX + 12} ${this.objects[1].yLine2 - this.valueY - 12} 
+        L ${this.objects[1].xLine3 - this.valueX} ${this.objects[1].yLine3 - this.valueY + 14} Z`;
     }
     //downside
     get getPathArrowDown1(){

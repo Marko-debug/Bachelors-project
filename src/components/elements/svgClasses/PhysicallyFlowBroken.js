@@ -1,8 +1,10 @@
 export class PhysicallyFlowBroken{
-    constructor(id, name, objects){
+    constructor(id, name, objects, valueX, valueY){
         this.id = id;
         this.name = name;
         this.objects = objects;
+        this.valueX = valueX;
+        this.valueY = valueY;
     }
 
     get getId(){
@@ -16,7 +18,18 @@ export class PhysicallyFlowBroken{
         L ${this.objects[0].xLine2} ${this.objects[0].yLine2}`;
     }
 
+    //moving arrow
     get getPathArrow(){
+        return `
+        M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY}
+        L ${this.objects[1].xLine1 - this.valueX} ${this.objects[1].yLine1 - this.valueY}
+        L ${this.objects[1].xLine2 - this.valueX} ${this.objects[1].yLine2 - this.valueY}
+        L ${this.objects[1].xLine3 - this.valueX} ${this.objects[1].yLine3 - this.valueY}
+        Z`;
+    }
+
+    //moving arrow
+    get getPathArrow2(){
         return `
         M ${this.objects[1].xMove} ${this.objects[1].yMove}
         L ${this.objects[1].xLine1} ${this.objects[1].yLine1}
@@ -44,24 +57,6 @@ export class PhysicallyFlowBroken{
     //upside
     get getPathArrowUp1(){
         return `
-        M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY} 
-        L ${this.objects[1].xLine1 - this.valueX - 14} ${this.objects[1].yLine1 - this.valueY + 14} 
-        L ${this.objects[1].xLine2 - this.valueX} ${this.objects[1].yLine2 - this.valueY - 24} 
-        L ${this.objects[1].xLine3 - this.valueX + 14} ${this.objects[1].yLine3 - this.valueY + 14} Z`;
-    }
-    //downside
-    get getPathArrowDown1(){
-        return `
-        M ${this.objects[1].xMove - this.valueX} ${this.objects[1].yMove - this.valueY} 
-        L ${this.objects[1].xLine1 - this.valueX} ${this.objects[1].yLine1 - this.valueY} 
-        L ${this.objects[1].xLine2 - this.valueX} ${this.objects[1].yLine2 - this.valueY} 
-        L ${this.objects[1].xLine3 - this.valueX} ${this.objects[1].yLine3 - this.valueY} Z`;
-    }
-
-    //ROTATION dot2
-    //upside
-    get getPathArrowUp1(){
-        return `
         M ${this.objects[1].xMove} ${this.objects[1].yMove} 
         L ${this.objects[1].xLine1 - 14} ${this.objects[1].yLine1 + 14} 
         L ${this.objects[1].xLine2} ${this.objects[1].yLine2 - 24} 
@@ -69,6 +64,24 @@ export class PhysicallyFlowBroken{
     }
     //downside
     get getPathArrowDown1(){
+        return `
+        M ${this.objects[1].xMove} ${this.objects[1].yMove} 
+        L ${this.objects[1].xLine1 + 14} ${this.objects[1].yLine1 - 14} 
+        L ${this.objects[1].xLine2} ${this.objects[1].yLine2 + 24} 
+        L ${this.objects[1].xLine3 - 14} ${this.objects[1].yLine3 - 14} Z`;
+    }
+
+    //ROTATION dot2
+    //upside
+    get getPathArrowUp2(){
+        return `
+        M ${this.objects[1].xMove} ${this.objects[1].yMove} 
+        L ${this.objects[1].xLine1 - 14} ${this.objects[1].yLine1 + 14} 
+        L ${this.objects[1].xLine2} ${this.objects[1].yLine2 - 24} 
+        L ${this.objects[1].xLine3 + 14} ${this.objects[1].yLine3 + 14} Z`;
+    }
+    //downside
+    get getPathArrowDown2(){
         return `
         M ${this.objects[1].xMove} ${this.objects[1].yMove} 
         L ${this.objects[1].xLine1} ${this.objects[1].yLine1} 
