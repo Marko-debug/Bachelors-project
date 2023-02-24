@@ -22,7 +22,7 @@ export function generatePhysicallyFlow(id, className, object){
     });
     svg.appendChild(g);
 
-    //choosing color arrow
+    //choosing color of arrow
     if(className === "svg-information-flow"){
         g.appendChild(makeSVGEl("path", {
             class: "line",
@@ -80,8 +80,7 @@ export function generatePhysicallyFlow(id, className, object){
 
     }
 
-
-
+    //generate manipulable dots 
     dataset.forEach(function(coords){
         g.appendChild(makeSVGEl("circle", {
             class: coords.class,
@@ -90,7 +89,7 @@ export function generatePhysicallyFlow(id, className, object){
             onmousedown: "scaleSVG(event)",
             r: 7,
             fill: "red",
-            style: "visibility: hidden; cursor: ew-resize;"
+            style: "visibility: hidden; cursor: grabbing;"
         }));
     });
 }

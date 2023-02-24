@@ -1,5 +1,7 @@
 // import { dataForSelectDots } from "../selectActions/selectDots.js";
 
+
+// it is not working right now
 export function generateElements(elements, name, object){
     
     if(name === "text"){

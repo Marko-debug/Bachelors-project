@@ -1,4 +1,4 @@
-import { removeElement} from '../remove.js';
+import { removeElement} from '../removing/remove.js';
 import { allElements } from '../chooseShape.js';
 
 //array select save final clicked element

@@ -1,4 +1,4 @@
-import { allElements } from "../chooseShape.js"
+import { allElements } from "../../chooseShape.js"
 
 window.resize2 = function resize2(event){
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

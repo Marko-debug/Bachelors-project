@@ -25,7 +25,7 @@ const getBtnEnd = document.querySelector(".btn-end-of-instance")
 const getBtnEventTrans = document.querySelector(".btn-event-transition")
 const getBtnTwoBranch = document.querySelector(".btn-two-branches")
 const getBtnThreeBranch = document.querySelector(".btn-three-branches")
-const getBtnSplitBranch = document.querySelector(".btn-split-branches")
+// const getBtnSplitBranch = document.querySelector(".btn-split-branches")
 const getBtnParallel = document.querySelector(".btn-parallel")
 const getBtnRediraction = document.querySelector(".btn-rediraction")
 const getBtnEndOfTwoProcess = document.querySelector(".btn-end-of-two-processes")
@@ -53,7 +53,7 @@ const getButtons = [
     {ref: getBtnEventTrans, shape: "btn-event-transition", short: "et"}, 
     {ref: getBtnTwoBranch, shape: "btn-two-branches", short: "wb"}, 
     {ref: getBtnThreeBranch, shape: "btn-three-branches", short: "hb"},
-    {ref: getBtnSplitBranch, shape: "btn-split-branches", short: "sb"},
+    // {ref: getBtnSplitBranch, shape: "btn-split-branches", short: "sb"},
     {ref: getBtnParallel, shape: "btn-parallel", short: "pa"},
     {ref: getBtnRediraction, shape: "btn-rediraction", short: "re"},
     {ref: getBtnEndOfTwoProcess, shape: "btn-end-of-two-processes", short: "ep"},
@@ -121,8 +121,8 @@ getBtnTwoBranch.addEventListener("mouseout", () => CloseShow(getButtons.find(get
 getBtnThreeBranch.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "hb")))
 getBtnThreeBranch.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "hb")))
 
-getBtnSplitBranch.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "sb")))
-getBtnSplitBranch.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "sb")))
+// getBtnSplitBranch.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "sb")))
+// getBtnSplitBranch.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "sb")))
 
 getBtnParallel.addEventListener("mouseover", () => ShowUp(getButtons.find(getButton => getButton.short  === "pa")))
 getBtnParallel.addEventListener("mouseout", () => CloseShow(getButtons.find(getButton => getButton.short  === "pa")))

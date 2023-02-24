@@ -108,7 +108,7 @@ function updateOfRotationArrowsUpR(svg){
     svg.objects[1].xLine3 = svg.objects[1].xLine3 + 14; 
     svg.objects[1].yLine3 = svg.objects[1].yLine3;
 }
-
+//left
 function updateOfRotationArrowsLeftR(svg){
     svg.objects[1].xLine1 = svg.objects[1].xLine1 + 14;
     svg.objects[1].yLine1 = svg.objects[1].yLine1 + 14;
@@ -177,6 +177,7 @@ function updateOfRotationArrowsLeftU(svg){
 }
 
 //LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+//right
 function updateOfRotationArrowsRightL(svg){
     svg.objects[1].xLine1 = svg.objects[1].xLine1 - 14;
     svg.objects[1].yLine1 = svg.objects[1].yLine1 - 14;

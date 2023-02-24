@@ -14,21 +14,21 @@
   <script type="module" src="./src/components/moving/svgMoving.js"></script>
   <script type="module" src="./src/components/scaling/scaleSVGArrows.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/serialize.js"></script>
-  <script type="module" src="./src/components/scaling/resize1.js"></script>
-  <script type="module" src="./src/components/scaling/resize2.js"></script>
-  <script type="module" src="./src/components/scaling/resize3.js"></script>
-  <script type="module" src="./src/components/scaling/resize4.js"></script>
+  <script type="module" src="./src/components/scaling/resizing/resize1.js"></script>
+  <script type="module" src="./src/components/scaling/resizing/resize2.js"></script>
+  <script type="module" src="./src/components/scaling/resizing/resize3.js"></script>
+  <script type="module" src="./src/components/scaling/resizing/resize4.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/deserialize.js"></script>
-  <script type="module" src="./src/components/screenshot/createPNG.js"></script>
+  <!-- <script type="module" src="./src/components/screenshot/createPNG.js"></script> -->
 
   <!-- Dynamic Bar -->
   <div class="navbar" style="width: 400px; height: 750px">
     <div style="display:flex">
       <button class="btn-navbar">☰</button>
-      <div class="zoom">
+      <!-- <div class="zoom">
         <button class="zoom-in">Zoom in</button>
         <button class="zoom-out">Zoom out</button>
-      </div>
+      </div> -->
     </div>
     <div class="navbar-inner">
       <div class="shapes">
@@ -63,7 +63,7 @@
         </div>
         <button class="btn-end-of-instance">End of instance</button>
         <button class="btn-event-transition">Event transition</button>
-        <button class="btn-split-branches">Split branches</button>
+        <!-- <button class="btn-split-branches">Split branches</button> -->
         <button class="btn-two-branches">
           Two-branching with positive and negative branch
         </button>
@@ -79,7 +79,7 @@
       <button class="grid"><span>Grid </span></button>
       <button class="save">Save</button>
       <!-- <button class="open-file">Open file</button> -->
-      <button class="download">Download</button>
+      <!-- <button class="download">Download</button> -->
       <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
         
         <fieldset>
@@ -120,19 +120,35 @@
       <div class="show-name">Physically flow</div>
     </div>
     <div class="if" hidden="true" style="margin-top: 100px">
-      <image width="200" height="150"></image>
+      <image
+      width="200"
+      height="150"
+      src="./src/images/information-flow.png"
+    ></image>
       <div class="show-name">Information flow</div>
     </div>
     <div class="ifb" hidden="true" style="margin-top: 100px">
-      <image width="200" height="150"></image>
+      <image
+      width="200"
+      height="150"
+      src="./src/images/information-flow-broken.png"
+    ></image>
       <div class="show-name">Information flow</div>
     </div>
     <div class="sf" hidden="true" style="margin-top: 100px">
-      <image width="200" height="150"></image>
+      <image
+      width="200"
+      height="150"
+      src="./src/images/sequential-flow.png"
+    ></image>
       <div class="show-name">Sequential flow</div>
     </div>
     <div class="sfb" hidden="true" style="margin-top: 100px">
-      <image width="200" height="150"></image>
+      <image
+      width="200"
+      height="150"
+      src="./src/images/sequential-flow-broken.png"
+    ></image>
       <div class="show-name">Sequential flow</div>
     </div>
     <div class="inr" hidden="true" style="margin-top: 100px">
@@ -226,7 +242,7 @@
 </div>
 
   <!-- Grid -->
-  <div class="grid-canvas" hidden="true" style="width: 5000px; height: 3000px">
+  <div class="grid-canvas" hidden="true" style="width: 8000px; height: 6000px">
     <svg width="100%" height="100%">
       <defs>
         <pattern
@@ -282,8 +298,8 @@
       top: 0px;
       width: 100%;
       height: 100%;
-      min-width: 5000px;
-      min-height: 3000px;
+      min-width: 8000px;
+      min-height: 6000px;
       "
     >
     </svg>

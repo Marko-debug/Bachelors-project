@@ -1,8 +1,10 @@
-export class SequentialFlowBroken{
-    constructor(id, name, objects){
+export class InformationFlowBroken{
+    constructor(id, name, objects, valueX,valueY){
         this.id = id;
         this.name = name;
         this.objects = objects;
+        this.valueX = valueX;
+        this.valueY = valueY;
     }
 
     get getId(){
@@ -86,6 +88,7 @@ export class SequentialFlowBroken{
         L ${this.objects[1].xLine2} ${this.objects[1].yLine2} 
         L ${this.objects[1].xLine3} ${this.objects[1].yLine3} Z`;
     }
+
 
     get getPathDot1X(){
         return `${this.objects[2].x - this.valueX}`;

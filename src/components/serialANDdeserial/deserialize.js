@@ -1,10 +1,13 @@
-import { generateElements} from "../generating/generateElements.js";
 import { Process} from "../elements/svgClasses/Process.js";
 import { Text } from "../elements/svgClasses/Text.js";
-import {PhysicallyFlow} from "../elements/svgClasses/PhysicallyFlow.js";
-import { PhysicallyFlowBroken } from "../elements/svgClasses/PhysicallyFlowBroken.js";
-import {Input} from "../elements/svgClasses/Input.js";
-import {Output}  from "../elements/svgClasses/Output.js"
+import { PhysicallyFlow} from "../elements/svgClasses/arrows/PhysicallyFlow.js";
+import { PhysicallyFlowBroken } from "../elements/svgClasses/arrows/PhysicallyFlowBroken.js";
+import { InformationFlow} from "../elements/svgClasses/arrows/InformationFlow.js";
+import { InformationFlowBroken } from "../elements/svgClasses/arrows/InformationFlowBroken.js";
+import { SequentialFlow} from "../elements/svgClasses/arrows/SequentialFlow.js";
+import { SequentialFlowBroken } from "../elements/svgClasses/arrows/SequentialFlowBroken.js";
+import { Input} from "../elements/svgClasses/inputAndOutput/Input.js";
+import { Output } from "../elements/svgClasses/inputAndOutput/Output.js"
 import {EventTransition} from "../elements/svgClasses/EventTransition.js"
 import {EndOfInstance} from "../elements/svgClasses/EndOfInstance.js";
 import {TwoBranching} from "../elements/svgClasses/TwoBranching.js";
@@ -19,14 +22,9 @@ import { generatePhysicallyFlow } from "../generating/generatePhysicallyFlow.js"
 import { generatePhysicallyFlowBroken } from "../generating/generatePhysicallyFlowBroken.js";
 import { EndOfTwoProcess } from "../elements/svgClasses/EndOfTwoProcess.js";
 import { EndOfThreeProcess } from "../elements/svgClasses/EndOfThreeProcess.js";
-// import { allData } from "./serialize.js";
 import { allElements } from "../chooseShape.js";
 
-// const getBtnDeserialize = document.querySelector(".open-file");
-
-// getBtnDeserialize.addEventListener("click", ()=> deserializeData())
-
-//it is not fully fuctional
+//loading json file function 
 window.loadFile = function loadFile() {
   var input, file, fr;
 
@@ -55,16 +53,17 @@ window.loadFile = function loadFile() {
   }
 
   function receivedText(e) {
-    let lines = e.target.result;
-    var newArr = JSON.parse(lines); 
+        let lines = e.target.result;
+        var newArr = JSON.parse(lines); 
 
-    newArr.forEach((element) =>{
-        recoverElement(element);
+        newArr.forEach((element) =>{
+            recoverElement(element);
+        })
         console.log('...deserialized...')
-    })
-  }
+    }
 }
 
+// remove all elements from svg-elements and all items in array allElements
 function check(){
     let shapeSVG = document.querySelector(".svg-elements");
     if(shapeSVG !== null){
@@ -72,8 +71,10 @@ function check(){
             shapeSVG.removeChild(shapeSVG.firstChild);
         }
     }
+    allElements.length = 0
 }
 
+//render all elements to svg
 const recoverElement = (element) => {
     if(element.name === "svg-process"){
 
@@ -121,7 +122,7 @@ const recoverElement = (element) => {
                       {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction},
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
-        const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
+        const object = new InformationFlow(element.id, element.name, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlow(element.id, element.name, object);
     }
@@ -134,7 +135,7 @@ const recoverElement = (element) => {
                       {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction}, 
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
-        const object = new PhysicallyFlowBroken(element.id, element.name, path, 0, 0)
+        const object = new InformationFlowBroken(element.id, element.name, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(element.id, element.name, object);
     }
@@ -147,7 +148,7 @@ const recoverElement = (element) => {
                       {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction},
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
-        const object = new PhysicallyFlow(element.id, element.name, path, 0, 0)
+        const object = new SequentialFlow(element.id, element.name, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlow(element.id, element.name, object);
     }
@@ -160,7 +161,7 @@ const recoverElement = (element) => {
                       {name: arrow.name, xMove: arrow.xMove, yMove: arrow.yMove, xLine1: arrow.xLine1, yLine1: arrow.yLine1, xLine2: arrow.xLine2, yLine2: arrow.yLine2, xLine3: arrow.xLine3, yLine3: arrow.yLine3, direction: arrow.direction}, 
                       {name: dot1.name, x: dot1.x, y: dot1.y}, 
                       {name: dot2.name, x: dot2.x, y: dot2.y}];
-        const object = new PhysicallyFlowBroken(element.id, element.name, path, 0, 0)
+        const object = new SequentialFlowBroken(element.id, element.name, path, 0, 0)
         allElements.push(object);
         generatePhysicallyFlowBroken(element.id, element.name, object);
     }
@@ -228,5 +229,4 @@ const recoverElement = (element) => {
     else{
         console.log('i do not know')
     }
-
 }

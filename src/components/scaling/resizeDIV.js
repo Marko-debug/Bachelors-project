@@ -1,5 +1,6 @@
 import {allElements} from '../chooseShape.js';
 
+// it is not working right now
 export function resizeElement(event, pos1, pos2) {
     event.preventDefault();
     let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);

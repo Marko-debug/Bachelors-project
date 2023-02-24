@@ -1,5 +1,5 @@
-  import {select, edit} from "./selectActions/select.js";
-  import { allElements } from "./chooseShape.js";
+  import {select, edit} from "../selectActions/select.js";
+  import { allElements } from "../chooseShape.js";
 
   export function removeElement(event){
     if(select.length === 0) return;

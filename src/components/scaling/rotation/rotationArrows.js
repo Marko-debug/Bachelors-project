@@ -1,15 +1,18 @@
 import {updateArrowsRight, updateArrowsDown, updateArrowsUp, updateArrowsLeft} from "./updateOfRotationArrows.js"; 
 
+//grabbing dot 1 (right)
 export function rotationArrows1(svg, arrowPath){
 
     const line = svg.objects[0];
     const direction = svg.objects[1].direction;
     
+    //calculate the difference
     const xLineMove = line.xLine1 - line.xMove;
     const yLineMove = line.yLine1 - line.yMove;
     const xMoveLine = line.xMove - line.xLine1;
     const yMoveLine = line.yMove - line.yLine1;
     
+    //find out direction of arrow and set to another if it is changed
     if(direction === "right"){
         if(xLineMove > yLineMove && xLineMove > yMoveLine){
             arrowPath.setAttribute("d", svg.getPathArrow); 
@@ -107,7 +110,7 @@ export function rotationArrows1(svg, arrowPath){
     }
 }
 
-// when is taking dot 2
+// grabbing dot 2 (left)
 export function rotationArrows2(svg, arrowPath){
     if(svg.name === "svg-physically-flow-broken" || svg.name === "svg-information-flow-broken") return;
     if(svg.name === "svg-sequential-flow-broken")return;

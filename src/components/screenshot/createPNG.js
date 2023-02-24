@@ -1,6 +1,7 @@
 const download = document.querySelector(".download");
 download.addEventListener("click", ()=>convertToPNG())
 
+// it is not working right now
 export function convertToPNG(){
 
     // function svg2img(){

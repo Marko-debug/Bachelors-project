@@ -14,12 +14,13 @@ function serializeData(){
     
     //remove all elements in both containers SVG and DIV
     let shapeSVG = document.querySelector(".svg-elements");
-    let shapeDIV = document.querySelector(".elements");
     if(shapeSVG !== null){
         while (shapeSVG.firstChild) {
             shapeSVG.removeChild(shapeSVG.firstChild);
         }
     }
+    //remove all items in array allElements
+    allElements.length = 0
 
     var link = document.createElement('a');
     link.download = 'data.json';
