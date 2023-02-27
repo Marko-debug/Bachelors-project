@@ -5,7 +5,7 @@ export function textMoving(event){
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.id);
     const svg = allElements[objIndex];
-    let positionDiv = document.getElementById(event.target.id)
+    let positionDiv = document.getElementById(event.target.id);
     dragMouseDown()
 
     function dragMouseDown(e) {

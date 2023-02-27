@@ -10,7 +10,7 @@
 
 <body>
   <script type="module" src="./src/index.js"></script>
-  <script type="module" src="./src/components/selectActions/select.js"></script>
+  <script type="module" src="./src/components/selectActionsAndWriting/select.js"></script>
   <script type="module" src="./src/components/moving/svgMoving.js"></script>
   <script type="module" src="./src/components/scaling/scaleSVGArrows.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/serialize.js"></script>
@@ -293,6 +293,7 @@
     <div id="21" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
     <svg
       class="svg-elements"
+      onclick="selectElement(event)"
       style="
       left: 0px;
       top: 0px;

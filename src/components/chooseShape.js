@@ -181,7 +181,7 @@ const chooseElement = (element) => {
         const className = "svg-event-transition";
         const id = s4();
         const idText = s4();
-        const object = new EventTransition(id, className, 500, 100, 170, 60, 510, 110, 660, 110, 510, 150, 660, 150, idText,"Event Name", 120, 510, 0, 0);
+        const object = new EventTransition(id, className, 500, 100, 170, 60, 510, 110, 660, 110, 510, 150, 660, 150, idText,"Event Name", 120, 530, 0, 0);
         allElements.push(object);
         processGenerate(id, className, object);  
     }

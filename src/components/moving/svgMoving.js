@@ -2,7 +2,7 @@ import { allElements } from "../chooseShape.js"
 import { textMoving } from "./textMoving.js"
 
 window.svgMoving = function svgMoving(event){
-    if(event.target.className === "svg-text"){textMoving(event);return;}
+    if(event.target.className === "svg-text" || event.target.parentNode.className === "svg-text"){textMoving(event);return;}
     if(event.target.parentNode.className.baseVal === "svg-physically-flow")return;
     if(event.target.parentNode.className.baseVal === "svg-physically-flow-broken")return;
     

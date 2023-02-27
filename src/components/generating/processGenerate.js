@@ -14,7 +14,7 @@ export function processGenerate(id, className, object){
     var g = makeSVGEl("g", { 
         id: `${id}`,
         class: className,
-        onclick: "selectElement(event)",
+        // onclick: "selectElement(event)",
         transform: "translate(0.5, 0.5)",
         style: "visibility: visible; cursor: move;"
     });

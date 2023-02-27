@@ -12,7 +12,6 @@ export function textGenerate(id, className, object){
     var svg = document.querySelector(".svg-elements");
     var g = makeSVGEl("g", { 
         style: "visibility: visible; cursor: move;",
-        onclick: "selectElement(event)",
     });
     
     const foreignObject = document.createElementNS('http://www.w3.org/2000/svg', "foreignObject")
