@@ -13,7 +13,7 @@ export function updateText(){
     if(popped.className == "svg-text"){
         popped.parentNode.parentNode.parentNode.setAttribute("style", "visibility: visible; cursor: move")
         //update content of instance
-        svg.contentText = popped.innerText;
+        // svg.contentText = popped.innerText;
     }
 
     //checking svg, whether it exists
@@ -25,8 +25,8 @@ export function updateText(){
     //this condition change divs to br in text
     
     if(popped.children.length > 1){
-        console.log(popped.children.length)
-        console.log(popped.children)
+        const br = popped.innerHTML.includes('<div>');
+        if(br === false)return;
         updateTextWithMoreRows(popped);
     }
 

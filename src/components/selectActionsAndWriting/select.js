@@ -31,7 +31,7 @@ window.selectElement = function selectElement(event){
         };
     }
     //when is clicked into some shape
-    else if(event.target.className === "svg-text"){
+    else if(event.target.className === "svg-text" && event.target.parentNode.parentNode.parentNode.style.cursor === "move"){
         name = event.target.className.baseVal;
         if(select.length === 1){
             hideManipulableDots();
