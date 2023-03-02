@@ -76,7 +76,7 @@ export function generatePhysicallyFlowBroken(id, className, object){
             onmousedown: "scaleSVG(event)",
             r: 7,
             fill: "red",
-            style: "visibility: hidden; cursor: ns-resize;"
+            style: "visibility: hidden; cursor: grabbing;"
         }));
     });
 }
