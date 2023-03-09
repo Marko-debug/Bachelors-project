@@ -59,10 +59,7 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 790, yLine1: 180},
-            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187, direction: "right"}, //right
-            // {name: "arrow", xMove: 790, yMove: 180, xLine1: 797, yLine1: 173, xLine2: 790, yLine2: 192, xLine3: 783, yLine3: 173}, //downside
-            // {name: "arrow", xMove: 790, yMove: 180, xLine1: 797, yLine1: 187, xLine2: 778, yLine2: 180, xLine3: 797, yLine3: 173}, //left
-            // {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 187, xLine2: 790, yLine2: 168, xLine3: 797, yLine3: 187}, //upside
+            {name: "arrow", xMove: 790, yMove: 180, xLine1: 783, yLine1: 173, xLine2: 802, yLine2: 180, xLine3: 783, yLine3: 187, direction: "right"},
             {name: "dot1", x: 790, y: 180},
             {name: "dot2", x: 500, y: 180}];
         const object = new PhysicallyFlow(id, className, path, 0, 0)
@@ -74,8 +71,7 @@ const chooseElement = (element) => {
         const id = s4();
         const path = [
             {name: "line", xMove: 500, yMove: 180, xLine1: 600, yLine1: 180, xLine2: 600, yLine2: 280},
-            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273, direction: "down"},//downside 
-            // {name: "arrow", xMove: 600, yMove: 280, xLine1: 593, yLine1: 287, xLine2: 600, yLine2: 268, xLine3: 607, yLine3: 287},//upside
+            {name: "arrow", xMove: 600, yMove: 280, xLine1: 607, yLine1: 273, xLine2: 600, yLine2: 292, xLine3: 593, yLine3: 273, direction: "down"},
             {name: "dot1", x: 600, y: 280},
             {name: "dot2", x: 500, y: 180}];
         const object = new PhysicallyFlowBroken(id, className, path, 0, 0)
@@ -134,10 +130,7 @@ const chooseElement = (element) => {
         const className = "svg-input-right";
         const id = s4();
         const idText = s4();
-        const object = new Input(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Input", 65, 510, 0, 0) // right
-        // const object = new Input(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60, idText,"Input", 65, 540, 0, 0)  // left
-        // const object = new Input(id, className, 550, 250, 600, 250, 600, 100, 630, 100, 575, 50, 520, 100, 550, 100, 550, 250, 0, 0)  // upwards
-        // const object = new Input(id, className, 550, 50, 600, 50, 600, 200, 630, 200, 575, 250, 520, 200, 550, 200, 550, 50, 0, 0)  // downwards
+        const object = new Input(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Input", 65, 510, 0, 0) 
         allElements.push(object);
         generateSVG(id, className, object);  
     }
@@ -146,10 +139,7 @@ const chooseElement = (element) => {
         const className = "svg-output-right";
         const id = s4();
         const idText = s4();
-        const object = new Output(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Output", 65, 510, 0, 0) // right
-        // const object = new Output(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60,idText,"Output", 65, 540, 0, 0)  // left
-        // const object = new Output(id, className, 550, 250, 600, 250, 600, 100, 630, 100, 575, 50, 520, 100, 550, 100, 550, 250, 0, 0)  // upwards
-        // const object = new Output(id, className, 550, 50, 600, 50, 600, 200, 630, 200, 575, 250, 520, 200, 550, 200, 550, 50, 0, 0)  // downwards
+        const object = new Output(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Output", 65, 510, 0, 0) 
         allElements.push(object);
         generateSVG(id, className, object);  
     }
@@ -157,10 +147,7 @@ const chooseElement = (element) => {
         const className = "svg-input-left";
         const id = s4();
         const idText = s4();
-        // const object = new Input(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Input", 65, 510, 0, 0) // right
-        const object = new Input(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60, idText,"Input", 65, 540, 0, 0)  // left
-        // const object = new Input(id, className, 550, 250, 600, 250, 600, 100, 630, 100, 575, 50, 520, 100, 550, 100, 550, 250, 0, 0)  // upwards
-        // const object = new Input(id, className, 550, 50, 600, 50, 600, 200, 630, 200, 575, 250, 520, 200, 550, 200, 550, 50, 0, 0)  // downwards
+        const object = new Input(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60, idText,"Input", 65, 540, 0, 0) 
         allElements.push(object);
         generateSVG(id, className, object);  
     }
@@ -169,10 +156,8 @@ const chooseElement = (element) => {
         const className = "svg-output-left";
         const id = s4();
         const idText = s4();
-        // const object = new Output(id, className, 500, 60, 500, 110, 650, 110, 650, 140, 700, 85, 650, 30, 650, 60, 500, 60, idText,"Output", 65, 510, 0, 0) // right
-        const object = new Output(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60,idText,"Output", 65, 540, 0, 0)  // left
-        // const object = new Output(id, className, 550, 250, 600, 250, 600, 100, 630, 100, 575, 50, 520, 100, 550, 100, 550, 250, 0, 0)  // upwards
-        // const object = new Output(id, className, 550, 50, 600, 50, 600, 200, 630, 200, 575, 250, 520, 200, 550, 200, 550, 50, 0, 0)  // downwards
+        
+        const object = new Output(id, className, 700, 60, 700, 110, 550, 110, 550, 140, 500, 85, 550, 30, 550, 60, 700, 60,idText,"Output", 65, 540, 0, 0)
         allElements.push(object);
         generateSVG(id, className, object);  
     }

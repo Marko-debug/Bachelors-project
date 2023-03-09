@@ -6,11 +6,9 @@ export function rotationArrowsBroken1(svg, arrowPath){
     const direction = svg.objects[1].direction;
 
     if(direction === "down"){
-        // if(line.yMove > line.yLine2){
         if(line.yMove < line.yLine2){
             arrowPath.setAttribute("d", svg.getPathArrow); 
         }
-        // else if(line.yMove < line.yLine2){
         else if(line.yMove > line.yLine2){
             arrowPath.setAttribute("d", svg.getPathArrowUp1); 
             svg.objects[1].direction = "up";
@@ -21,13 +19,11 @@ export function rotationArrowsBroken1(svg, arrowPath){
         }
     }
     else if(direction === "up"){
-        // if(line.yMove > line.yLine2){
         if(line.yMove < line.yLine2){
             arrowPath.setAttribute("d", svg.getPathArrowDown1); 
             svg.objects[1].direction = "down";
             updateArrowsBrokenUp(svg)
         }
-        // else if(line.yMove < line.yLine2){
         else if(line.yMove > line.yLine2){
             arrowPath.setAttribute("d", svg.getPathArrow); 
         }
@@ -45,26 +41,11 @@ export function rotationArrowsBroken2(svg, arrowPath){
     const line = svg.objects[0];
     const direction = svg.objects[1].direction;
 
-    // if(line.yMove > line.yLine2){
-    //     arrowPath.setAttribute("d", svg.getPathArrowUp1); 
-    //     svg.objects[1].direction = "down";
-    // }
-    // else if(line.yMove < line.yLine2){
-    //     arrowPath.setAttribute("d", svg.getPathArrowDown1); 
-    // }
-    // else{
-    //     console.log("none")
-    // }
-    console.log(svg)
-    console.log(direction)
-
     if(direction === "down"){
-        // if(line.yMove > line.yLine2){
         if(line.yMove < line.yLine2){
             console.log("down1")
             arrowPath.setAttribute("d", svg.getPathArrow2); 
         }
-        // else if(line.yMove < line.yLine2){
         else if(line.yMove > line.yLine2){
             console.log("up1")
             arrowPath.setAttribute("d", svg.getPathArrowUp1); 
@@ -76,14 +57,12 @@ export function rotationArrowsBroken2(svg, arrowPath){
         }
     }
     else if(direction === "up"){
-        // if(line.yMove > line.yLine2){
         if(line.yMove < line.yLine2){
             console.log("down2")
             arrowPath.setAttribute("d", svg.getPathArrowDown1); 
             svg.objects[1].direction = "down";
             updateArrowsBrokenUp(svg)
         }
-        // else if(line.yMove < line.yLine2){
         else if(line.yMove > line.yLine2){
             console.log("up2")
             arrowPath.setAttribute("d", svg.getPathArrow2); 

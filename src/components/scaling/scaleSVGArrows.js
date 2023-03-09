@@ -7,7 +7,6 @@ window.scaleSVG = function scaleSVG(event) {
 
     let objIndex = allElements.findIndex(obj => obj.id == event.target.parentNode.id);
     const svg = allElements[objIndex];
-    // elmnt.onmousedown = dragMouseDown;
     let path = event.target;
     dragMouseDown()
     
@@ -112,10 +111,6 @@ window.scaleSVG = function scaleSVG(event) {
             svg.objects[3].x = svg.objects[3].x - svg.valueX;
             svg.objects[3].y = svg.objects[3].y - svg.valueY;
         }
-
-        // set the element's new position:
-        // elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        // elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     }
         
     function closeDragElement() {

@@ -17,7 +17,6 @@ export function splitBranchesGenerate(id, className, object){
     let g = makeSVGEl("g", { 
         id: `${id}`,
         class: className,
-        // onclick: "selectElement(event)",
         style: "visibility: visible; cursor: pointer;"
     });
     svg.appendChild(g);

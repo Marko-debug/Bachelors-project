@@ -4,9 +4,6 @@ export function updateArrowsBrokenDown(svg){
 
     const line = svg.objects[0];
 
-    // if(line.yMove > line.yLine2){
-    //     arrowPath.setAttribute("d", svg.getPathArrowUp1); 
-    // }
     if(line.yMove > line.yLine2){
         updateOfRotationArrowsUp(svg);
     }
@@ -22,9 +19,6 @@ export function updateArrowsBrokenUp(svg){
     if(line.yMove < line.yLine2){
         updateOfRotationArrowsDown(svg);
     }
-    // else if(line.yMove < line.yLine2){
-    //     arrowPath.setAttribute("d", svg.getPathArrowDown1); 
-    // }
     else{
         console.log("none")
     }

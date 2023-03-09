@@ -1,4 +1,3 @@
-// const fs = require('fs')
 import { allElements } from "../chooseShape.js";
 
 const getBtnSerialize = document.querySelector(".save");

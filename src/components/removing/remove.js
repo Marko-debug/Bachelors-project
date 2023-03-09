@@ -14,22 +14,6 @@
       return;
     }
 
-    //when it is svg-text, because it has different structure, but structure is possible change, but it should be change from genereting and it should be like this:
-    // <g id="0795" class="svg-text" onmousedown="svgMoving(event)" style="visibility: visible; cursor: move;">
-    //   <g style="visibility: visible; cursor: move;">
-    //     <foreignObject pointer-events="none" width="100%" height="100%" style="overflow: visible; text-align: left;">
-    //       <div style="display: flex; padding-top: 150px; margin-left: 600px;">
-    //         <div id="0795" class="text" ondblclick="writingText(event)" onmousedown="svgMoving(event)" style="display: inline-block; color: rgb(0, 0, 0); font-size: 20px; 
-    //   font-family: Georgia, serif; pointer-events: all;">
-    //           Text
-    //         </div>
-    //       </div>
-    //     </foreignObject>
-    //   </g>
-    // </g>
-    //and other shapes should have onmousedown in text, because it wont move when i click on text in shapes
-    //but without change of svg-text structure, deleting works only with this
-
     element = document.getElementById(popped.childNodes[0].id) 
     objIndex = allElements.findIndex(obj => obj.id == popped.childNodes[0].id);
     if(event.key === 'Delete' && element){

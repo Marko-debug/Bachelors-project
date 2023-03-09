@@ -16,33 +16,6 @@
   stroke-width: 3;
 }
 
-/* .svg-elements{
-    position: absolute;
-    border-width: 1px;
-    overflow: hidden;
-    width: 3299px;
-    height: 2338px;
-    border-color: rgb(255, 255, 255);
-    border-style: solid;
-} */
-
-/* .text{
-  position: absolute;
-  top: 60px;
-  left: 500px;
-  width: 100px;
-  border: 5px solid #0000;
-  text-align: center;
-  max-width: 120px;
-  cursor:move;
-  font-size: 1.4rem;
-  overflow-wrap: normal;
-  font-family: Helvetica;
-  min-width: 3rem; 
-  text-decoration: none;
-  z-index: 20;
-} */
-
 .edit-text{
   position: absolute;
   /* top: 60px;

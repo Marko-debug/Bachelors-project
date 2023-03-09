@@ -19,7 +19,6 @@
   <script type="module" src="./src/components/scaling/resizing/resize3.js"></script>
   <script type="module" src="./src/components/scaling/resizing/resize4.js"></script>
   <script type="module" src="./src/components/serialANDdeserial/deserialize.js"></script>
-  <!-- <script type="module" src="./src/components/screenshot/createPNG.js"></script> -->
 
   <!-- Dynamic Bar -->
   <div class="navbar" style="width: 400px; height: 750px">
@@ -75,7 +74,6 @@
         <button class="btn-end-of-two-processes">End of two processes</button>
         <button class="btn-end-of-three-processes">End of three processes</button>
       </div>
-      <!-- <button class="grid">Grid</button> -->
       <button class="grid"><span>Grid </span></button>
       <button class="save">Save</button>
       <!-- <button class="open-file">Open file</button> -->
@@ -87,9 +85,6 @@
           <button class="load" type='button' id='btnLoad' onclick='loadFile();'><span>Load</span></button>
         </fieldset>
       </form>
-      <!-- <p>
-        <a class="download" href="" id="link" download="image.png">Download</a>
-      </p> -->
     </div>
   </div>
 
@@ -274,23 +269,7 @@
   </div>
 
   <!--Elements in div/svg-->
-  <!-- <div class="elements"> -->
   <div class="elements">
-    <!-- <div id="36" onclick="selectElement(event)" onmousedown="dragElement(event);" style="width: 300px; height: 200px; top: 60px; left: 500px" class="process">
-      <div class="process-time" onclick="selectElement(event)" style="width: 150px; height: 60px; top: -2px; left: 148px; z-index: 4;">Timer
-      </div>
-      <div class="process-owner" style="width: 180px; height: 60px; top: 138px; left: -2px; z-index: 4;" contenteditable="true">Owner
-      </div>
-      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: -8px; cursor: nw-resize" class="select-circle">
-      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: -8px; cursor: sw-resize" class="select-circle">
-      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: 286px; cursor: ne-resize" class="select-circle">
-      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: 290px; cursor: se-resize" class="select-circle">
-    </div> -->
-    <!-- <div style="top: 400px; left: 100px" contenteditable="true">Entity</div> -->
-    <!-- <p class='item_content' contenteditable='true' onclick='$(this).focus();'>hello</p> -->
-
-    <!-- <div id="20" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" hidden="false" style="top:60px; left: 500px; width: 60px;" >Entity</div>
-    <div id="21" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
     <svg
       class="svg-elements"
       onclick="selectElement(event)"
@@ -304,54 +283,8 @@
       "
     >
     </svg>
-    <!-- <svg class="svg-elements" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"></svg> -->
   </div>
-  <!-- <div>
-
-    <svg
-      class="svg-elements"
-      id="svg"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-    </svg>
-  </div> -->
-  <!-- <textarea class="text-area" hidden="true"></textarea> -->
+ 
   <script type="module" src="src/buttons/btnNavbar.js"></script>
   <script type="module" src="src/buttons/btnGrid.js"></script>
 </body>
-
-<!-- <div id="36" onclick="selectElement(event)" onmousedown="dragElement(event);" style="width: 300px; height: 200px; top: 60px; left: 500px" class="process">
-      <div class="process-time" onclick="selectElement(event)" style="width: 150px; height: 60px; top: -2px; left: 148px; z-index: 4;">Timer
-      </div>
-      <div class="process-owner" style="width: 180px; height: 60px; top: 138px; left: -2px; z-index: 4;" contenteditable="true">Owner
-      </div>
-      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: -8px; cursor: nw-resize" class="select-circle">
-      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: -8px; cursor: sw-resize" class="select-circle">
-      <img src="./src/images/circle.png" onmousedown="null" style="top: -8px; left: 286px; cursor: ne-resize" class="select-circle">
-      <img src="./src/images/circle.png" onmousedown="null" style="top: 190px; left: 290px; cursor: se-resize" class="select-circle">
-    </div> -->
-    <!-- <div style="top: 400px; left: 100px" contenteditable="true">Entity</div> -->
-    <!-- <p class='item_content' contenteditable='true' onclick='$(this).focus();'>hello</p> -->
-
-    <!-- <div id="20" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" hidden="false" style="top:60px; left: 500px; width: 60px;" >Entity</div>
-    <div id="21" class="text" onmousedown="dragElement(event);" ondblclick="selectElement(event)" style="top:60px; left: 500px; width: 60px;" >Entity</div> -->
-
-
-<!-- <g
-        id="6"
-        class="svg-parallel"
-        onclick="selectElement(event)"
-        onmousedown="svgMoving(event)"
-        transform="translate(0.5, 0.5)"
-        style="visibility: visible; cursor: move"
-      >
-        <path
-          d="M 650 80 L 630 60 L 500 60 L 500 150 L 650 150 L 650 80 L 630 80 L 630 60 "
-          stroke="black"
-          fill="transparent"
-          stroke-width="2"
-        ></path>
-          <foreignObject width="40px" height="40px" style="top: 100px; left: 600px; position: relative">
-            <div contenteditable="true">Marek</div>
-          </foreignObject>
-      </g> -->
